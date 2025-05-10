@@ -4,22 +4,16 @@ import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 </script>
 
 <template>
-<nav class="navbar bg-neutral text-neutral-content">
-  <div class="flex-none">
-    <a class="btn btn-ghost" routerLink="/" style="color: white">
-      <ng-icon name="heroHomeSolid"></ng-icon>
-    </a>
-  </div>
-</nav>
+  <nav class="navbar bg-neutral text-neutral-content">
+    <div class="flex-none">
+      <a class="btn btn-square btn-ghost hover:text-neutral" routerLink="/">
+        <ng-icon name="heroHomeSolid"></ng-icon>
+      </a>
+    </div>
+  </nav>
 
-<router-outlet />
+  <router-outlet />
 </template>
 
 <style>
-  :host {
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
-    text-align: center;
-  }
 </style>

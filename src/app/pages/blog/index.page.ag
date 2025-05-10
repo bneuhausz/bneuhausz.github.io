@@ -8,26 +8,15 @@
 </script>
 
 <template>
-  <h1>Just doing some testing...</h1>
-  <!-- <h1>Blog Archive</h1>
+  <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground.</h1>
 
   @for (post of posts; track post.attributes.slug) {
   <a [routerLink]="['/blog/', post.attributes.slug]">
     <h2 class="post__title">{{ post.attributes.title }}</h2>
     <p class="post__desc">{{ post.attributes.description }}</p>
   </a>
-  } -->
+  }
 </template>
 
 <style>
-  a {
-    text-align: left;
-    display: block;
-    margin-bottom: 2rem;
-  }
-
-  .post__title,
-  .post__desc {
-    margin: 0;
-  }
 </style>
