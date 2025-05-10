@@ -1,25 +1,25 @@
 <script lang="ts">
-  import { RouterLink, RouterOutlet } from '@angular/router' with { analog: 'imports' };
+import { RouterLink, RouterOutlet } from '@angular/router' with { analog: 'imports' };
+import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 </script>
 
 <template>
-  <nav>
-    <a routerLink="/">Home</a>
-  </nav>
+<nav class="navbar bg-neutral text-neutral-content">
+  <div class="flex-none">
+    <a class="btn btn-ghost" routerLink="/" style="color: white">
+      <ng-icon name="heroHomeSolid"></ng-icon>
+    </a>
+  </div>
+</nav>
 
-  <router-outlet />
+<router-outlet />
 </template>
 
 <style>
   :host {
-    max-width: 1280px;
+    width: 100vw;
+    height: 100vh;
     margin: 0 auto;
-    padding: 2rem;
     text-align: center;
-  }
-
-  nav {
-    text-align: left;
-    padding: 0 0 2rem 0;
   }
 </style>
