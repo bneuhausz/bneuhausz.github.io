@@ -10,13 +10,27 @@
 <template>
   <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground.</h1>
 
-  @for (post of posts; track post.attributes.slug) {
-  <a [routerLink]="['/blog/', post.attributes.slug]">
-    <h2 class="post__title">{{ post.attributes.title }}</h2>
-    <p class="post__desc">{{ post.attributes.description }}</p>
-  </a>
-  }
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4 justify-items-center">
+    @for (post of posts; track post.attributes.slug) {
+      <a class="card bg-base-100 w-96 shadow-sm" [routerLink]="['/blog/', post.attributes.slug]">
+        <figure>
+          <img src="{{ post.attributes.coverImage }}" alt="{{ post.attributes.coverImageDescription }}" />
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">
+            {{ post.attributes.title }}
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>{{ post.attributes.description }}</p>
+          <div class="card-actions justify-end">
+            @for (tag of post.attributes.tags; track tag) {
+              <div class="badge badge-outline">{{ tag }}</div>
+            }
+          </div>
+        </div>
+      </a>
+    }
+  </main>
 </template>
 
-<style>
-</style>
+<style></style>
