@@ -1,0 +1,32 @@
+<script lang="ts">
+  import { input } from '@angular/core';
+  import PostAttributes from '../../post-attributes';
+
+  const post = input<PostAttributes>();
+</script>
+
+<template>
+  <a
+    class="card w-64 shadow-sm hover:shadow-angular transition hover:scale-105 duration-500"
+    [routerLink]="['/blog/', post().attributes.slug]"
+  >
+    <figure>
+      <img
+        [src]="post().attributes.coverImage"
+        [alt]="post().attributes.coverImageDescription"
+      />
+    </figure>
+    <div class="card-body items-center text-center">
+      <h2 class="card-title">
+        {{ post().attributes.title }}
+        <div class="badge badge-secondary">NEW</div>
+      </h2>
+      <p>{{ post().attributes.description }}</p>
+      <div class="card-actions justify-end">
+        @for (tag of post().attributes.tags; track tag) {
+          <div class="badge badge-outline">{{ tag }}</div>
+        }
+      </div>
+    </div>
+  </a>
+</template>

@@ -3,6 +3,7 @@
 
 @theme {
   --color-angular: #b52e31;
+  --shadow-angular: 0 0 20px 10px var(--color-angular);
 }
 
 /* You can add global styles to this file, and also import other style files */
