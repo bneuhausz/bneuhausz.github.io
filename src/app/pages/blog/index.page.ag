@@ -9,7 +9,7 @@
 <template>
   <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground.</h1>
 
-  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6 justify-items-center">
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-6 justify-items-center">
     @for (post of posts; track post.attributes.slug) {
       <BlogCard [post]="post" />
     }
