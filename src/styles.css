@@ -6,9 +6,11 @@
   --color-angular: #b52e31;
   --color-dotnet: #512bd4;
 
-  --shadow-default: 0 0 20px 10px var(--color-default);
-  --shadow-angular: 0 0 20px 10px var(--color-angular);
-  --shadow-dotnet: 0 0 20px 10px var(--color-dotnet);
+  --shadow-size: 0 0 20px 10px;
+
+  --shadow-default: var(--shadow-size) var(--color-default);
+  --shadow-angular: var(--shadow-size) var(--color-angular);
+  --shadow-dotnet: var(--shadow-size) var(--color-dotnet);
 }
 
 @source inline("hover:shadow-default");
