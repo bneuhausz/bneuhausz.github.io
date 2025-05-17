@@ -4,7 +4,6 @@
   import PostAttributes from '../../post-attributes';
 
   const post = input<PostAttributes>();
-  console.log('post', post());
 </script>
 
 <template>
