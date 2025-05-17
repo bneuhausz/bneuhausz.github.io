@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { RouterLink } from '@angular/router' with { analog: 'imports' };
   import { injectContentFiles } from '@analogjs/content';
   import BlogCard from './blog-card.analog' with { analog: 'imports' };
-
   import PostAttributes from '../../post-attributes';
 
   const posts = injectContentFiles<PostAttributes>();
