@@ -3,7 +3,7 @@
   import BlogCard from './blog-card.analog' with { analog: 'imports' };
   import PostAttributes from '../../post-attributes';
 
-  const posts = injectContentFiles<PostAttributes>();
+  const posts = injectContentFiles<PostAttributes>().reverse();
 </script>
 
 <template>
