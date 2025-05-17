@@ -1,6 +1,7 @@
 <script lang="ts">
   import { RouterLink } from '@angular/router' with { analog: 'imports' };
   import { injectContentFiles } from '@analogjs/content';
+  import BlogCard from './blog-card.analog' with { analog: 'imports' };
 
   import PostAttributes from '../../post-attributes';
 
@@ -12,23 +13,7 @@
 
   <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6 justify-items-center">
     @for (post of posts; track post.attributes.slug) {
-      <a class="card w-64 shadow-sm hover:shadow-angular transition hover:scale-105 duration-500" [routerLink]="['/blog/', post.attributes.slug]">
-        <figure>
-          <img src="{{ post.attributes.coverImage }}" alt="{{ post.attributes.coverImageDescription }}" />
-        </figure>
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">
-            {{ post.attributes.title }}
-            <div class="badge badge-secondary">NEW</div>
-          </h2>
-          <p>{{ post.attributes.description }}</p>
-          <div class="card-actions justify-end">
-            @for (tag of post.attributes.tags; track tag) {
-              <div class="badge badge-outline">{{ tag }}</div>
-            }
-          </div>
-        </div>
-      </a>
+      <BlogCard [post]="post" />
     }
   </main>
 </template>
