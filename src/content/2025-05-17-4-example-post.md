@@ -1,14 +1,14 @@
 ---
-title: Example title
-slug: example-post2
+title: Example title 4
+slug: 2025-05-17-4-example-post
 description: Example description
 coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
 coverImageDescription: example cover image
 tags: [tag1, tag2]
-shadowColor: dotnet
+shadowColor: default
 ---
 
-# Example Blog Post
+# Example Blog Post 4
 
 This is an example blog post written in markdown!
 
