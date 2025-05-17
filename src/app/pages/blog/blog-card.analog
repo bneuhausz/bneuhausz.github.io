@@ -4,6 +4,7 @@
   import PostAttributes from '../../post-attributes';
 
   const post = input<PostAttributes>();
+  const isNewest = input<boolean>();
 </script>
 
 <template>
@@ -20,7 +21,9 @@
     <div class="card-body items-center text-center">
       <h2 class="card-title">
         {{ post().attributes.title }}
-        <div class="badge badge-secondary">NEW</div>
+        @if (isNewest()) {
+          <div class="badge badge-secondary">NEW</div>
+        }
       </h2>
       <p>{{ post().attributes.description }}</p>
       <div class="card-actions justify-end">

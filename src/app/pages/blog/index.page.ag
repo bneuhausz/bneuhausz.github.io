@@ -11,7 +11,7 @@
 
   <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-6 justify-items-center">
     @for (post of posts; track post.attributes.slug) {
-      <BlogCard [post]="post" />
+      <BlogCard [post]="post" [isNewest]="$first" />
     }
   </main>
 </template>
