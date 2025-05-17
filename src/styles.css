@@ -2,9 +2,18 @@
 @plugin 'daisyui';
 
 @theme {
+  --color-default: #000;
   --color-angular: #b52e31;
+  --color-dotnet: #512bd4;
+
+  --shadow-default: 0 0 20px 10px var(--color-default);
   --shadow-angular: 0 0 20px 10px var(--color-angular);
+  --shadow-dotnet: 0 0 20px 10px var(--color-dotnet);
 }
+
+@source inline("hover:shadow-default");
+@source inline("hover:shadow-angular");
+@source inline("hover:shadow-dotnet");
 
 /* You can add global styles to this file, and also import other style files */
 :root {
