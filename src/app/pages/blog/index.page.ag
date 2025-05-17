@@ -10,9 +10,9 @@
 <template>
   <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground.</h1>
 
-  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4 justify-items-center">
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6 justify-items-center">
     @for (post of posts; track post.attributes.slug) {
-      <a class="card bg-base-100 w-96 shadow-sm hover:shadow-xl hover:shadow-angular transition-shadow duration-500" [routerLink]="['/blog/', post.attributes.slug]">
+      <a class="card w-64 shadow-sm hover:shadow-angular transition hover:scale-105 duration-500" [routerLink]="['/blog/', post.attributes.slug]">
         <figure>
           <img src="{{ post.attributes.coverImage }}" alt="{{ post.attributes.coverImageDescription }}" />
         </figure>
@@ -32,5 +32,3 @@
     }
   </main>
 </template>
-
-<style></style>
