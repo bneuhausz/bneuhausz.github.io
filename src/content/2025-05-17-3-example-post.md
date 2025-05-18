@@ -2,8 +2,10 @@
 title: Example title 3
 slug: 2025-05-17-3-example-post
 description: Example description
-coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
+coverImage: /images/angular_wordmark_gradient.png
 coverImageDescription: example cover image
+thumbnail: /images/dotnet-logo.png
+thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
 shadowColor: default
 ---

@@ -12,7 +12,9 @@ import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
     </div>
   </nav>
 
-  <router-outlet />
+  <main>
+    <router-outlet />
+  </main>  
 </template>
 
 <style>
