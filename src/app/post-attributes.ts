@@ -4,6 +4,8 @@ export default interface PostAttributes {
   description: string;
   coverImage: string;
   coverImageDescription: string;
+  thumbnail: string;
+  thumbnailDescription: string;
   tags: string[];
   shadowColor: string;
 }
