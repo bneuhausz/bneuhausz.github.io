@@ -2,15 +2,37 @@
   import { injectContentFiles } from '@analogjs/content';
   import BlogCard from './blog-card.analog' with { analog: 'imports' };
   import PostAttributes from '../../post-attributes';
+  import { computed, signal } from '@angular/core';
 
-  const posts = injectContentFiles<PostAttributes>().reverse();
+  const posts = signal(injectContentFiles<PostAttributes>());
+  const sortedPosts = computed(() => {
+    return posts().sort((a, b) => {
+      const slugAParts = a.attributes.slug.split('-');
+      const slugBParts = b.attributes.slug.split('-');
+
+      const dateAString = slugAParts.slice(0, 3).join('-');
+      const dateBString = slugBParts.slice(0, 3).join('-');
+
+      const incrementA = parseInt(slugAParts[3] || '0', 10);
+      const incrementB = parseInt(slugBParts[3] || '0', 10);
+
+      const dateA = new Date(dateAString);
+      const dateB = new Date(dateBString);
+
+      if (dateB.getTime() !== dateA.getTime()) {
+        return dateB.getTime() - dateA.getTime();
+      }
+
+      return incrementB - incrementA;
+    });
+  });
 </script>
 
 <template>
   <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground.</h1>
 
   <section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 place-items-center py-8">
-    @for (post of posts; track post.attributes.slug) {
+    @for (post of sortedPosts(); track post.attributes.slug) {
       <BlogCard [post]="post" [isNewest]="$first" />
     }
   </section>
