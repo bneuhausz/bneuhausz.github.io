@@ -1,24 +1,15 @@
 <script lang="ts">
-  import { RouterLink, RouterOutlet } from '@angular/router' with { analog: 'imports' };
-  import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
+  import { RouterOutlet } from '@angular/router' with { analog: 'imports' };
+  import AppHeader from './app-header.analog' with { analog: 'imports' };
   import AppFooter from './app-footer.analog' with { analog: 'imports' };
 </script>
 
-<template>
-  <nav class="navbar bg-neutral text-neutral-content">
-    <div class="flex-none">
-      <a class="btn btn-square btn-ghost hover:text-neutral" routerLink="/">
-        <ng-icon name="heroHomeSolid"></ng-icon>
-      </a>
-    </div>
-  </nav>
+<template class="flex flex-col h-screen">
+  <AppHeader />
 
-  <main>
+  <main class="flex-1">
     <router-outlet />
   </main>
 
   <AppFooter />
 </template>
-
-<style>
-</style>
