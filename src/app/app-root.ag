@@ -1,6 +1,7 @@
 <script lang="ts">
-import { RouterLink, RouterOutlet } from '@angular/router' with { analog: 'imports' };
-import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
+  import { RouterLink, RouterOutlet } from '@angular/router' with { analog: 'imports' };
+  import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
+  import AppFooter from './app-footer.analog' with { analog: 'imports' };
 </script>
 
 <template>
@@ -14,7 +15,9 @@ import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 
   <main>
     <router-outlet />
-  </main>  
+  </main>
+
+  <AppFooter />
 </template>
 
 <style>
