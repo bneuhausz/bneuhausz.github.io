@@ -4,7 +4,7 @@ slug: 2025-05-17-2-example-post
 description: Example description
 coverImage: /images/angular_wordmark_gradient.png
 coverImageDescription: example cover image
-thumbnail: /images/dotnet-logo.png
+thumbnail: /images/dotnet_resized_thumbnail.png
 thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
 shadowColor: dotnet
