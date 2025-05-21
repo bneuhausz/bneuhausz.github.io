@@ -2,9 +2,9 @@
 title: Example title
 slug: 2025-05-17-1-example-post
 description: Example description
-coverImage: /images/angular_wordmark_gradient.png
+coverImage: /images/angular_wordmark_gradient_resized_header.png
 coverImageDescription: example cover image
-thumbnail: /images/angular_gradient.png
+thumbnail: /images/angular_gradient_resized_thumbnail.png
 thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
 shadowColor: angular
