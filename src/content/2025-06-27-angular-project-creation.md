@@ -21,4 +21,8 @@ Obviously, depending on context, skipping tests might not be a good idea, but I 
 ng new new-app --defaults --style=scss --inline-template --inline-style --skip-tests
 ```
 
+```bash
+ng new new-app --defaults --style=scss --inline-template --inline-style --skip-tests
+```
+
 If, for whatever reason, you find this page, this command is the exact same Josh Morony uses in his course [Angular start](https://angularstart.com/), which I wholeheartedly recommend to anyone who is not a seasoned veteran in declarative programming, regardless of general developer experience, or even experience in Angular itself.
