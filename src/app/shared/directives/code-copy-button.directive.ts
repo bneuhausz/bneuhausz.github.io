@@ -16,7 +16,7 @@ export class CodeCopyButtonDirective implements AfterViewInit {
       if (preElements.length === 0) return;
 
       preElements.forEach((pre: HTMLPreElement) => {
-        if (pre.parentElement?.querySelector('button')) return;
+        if (pre.querySelector('button')) return;
 
         this.renderer.setAttribute(pre, 'class', 'relative pt-8');
 
