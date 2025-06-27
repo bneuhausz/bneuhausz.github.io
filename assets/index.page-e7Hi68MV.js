@@ -1,0 +1,1 @@
+import{ɵ as c,a as n,b as i,c as l}from"./index-YQ-RS_vw.js";const t=class t{};t.ɵfac=function(e){return new(e||t)},t.ɵcmp=c({type:t,selectors:[["ng-component"]],decls:2,vars:0,template:function(e,o){e&1&&(n(0,"h2"),i(1,"Welcome"),l())},encapsulation:2});let a=t;export{a as default};
