@@ -16,9 +16,14 @@ export default defineConfig(({ mode }) => ({
     analog({
       content: {
         highlighter: 'shiki',
+        shikiOptions: {
+          highlighter: {
+            additionalLangs: ['bash'],
+          },
+        },
       },
       prerender: {
-        routes: ['/', '/blog', '/blog/2022-12-27-my-first-post'],
+        routes: ['/', '/blog', '/blog/2025-06-27-angular-project-creation'],
       },
       vite: { experimental: { supportAnalogFormat: true } },
     }),
