@@ -10,9 +10,11 @@
 
 <template>
   @if (post$ | async; as post) {
-  <article class="flex flex-col items-center *:max-w-screen-2xl">
+  <article class="flex flex-col items-center *:max-w-screen-2xl *:mx-32">
     <img [src]="post.attributes.coverImage" />
-    <analog-markdown [content]="post.content" />
+    <div class="prose dark:prose-invert">
+      <analog-markdown [content]="post.content" />
+    </div>
   </article>
   }
 </template>

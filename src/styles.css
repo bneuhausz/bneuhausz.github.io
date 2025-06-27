@@ -1,5 +1,21 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @plugin 'daisyui';
+
+@layer utilities {
+  .prose pre code {
+    text-align: left;
+    display: block;
+  }
+
+  .prose pre {
+    overflow-x: auto;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 @theme {
   --color-default: #000;
