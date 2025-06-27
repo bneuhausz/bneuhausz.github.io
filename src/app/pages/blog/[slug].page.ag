@@ -1,6 +1,7 @@
 <script lang="ts">
   import { AsyncPipe } from '@angular/common' with { analog: 'imports' };
   import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
+  import { CodeCopyButtonDirective } from '../../shared/directives/code-copy-button.directive' with { analog: 'imports' };
   import { injectContent } from '@analogjs/content';
 
   import PostAttributes from '../../post-attributes';
@@ -12,7 +13,7 @@
   @if (post$ | async; as post) {
   <article class="flex flex-col items-center *:max-w-screen-2xl *:mx-32">
     <img [src]="post.attributes.coverImage" />
-    <div class="prose dark:prose-invert">
+    <div appCodeCopyButton class="prose dark:prose-invert">
       <analog-markdown [content]="post.content" />
     </div>
   </article>
