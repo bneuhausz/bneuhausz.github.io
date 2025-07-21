@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
         },
       },
       prerender: {
-        routes: ['/', '/blog', '/blog/2025-06-27-angular-project-creation'],
+        routes: ['/', '/blog', '/privacy', '/blog/2025-06-27-angular-project-creation'],
       },
       vite: { experimental: { supportAnalogFormat: true } },
     }),
