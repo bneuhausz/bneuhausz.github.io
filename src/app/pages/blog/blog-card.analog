@@ -9,29 +9,35 @@
 
 <template>
   <a
-    class="card w-72 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500"
+    class="card card-side bg-base-100 h-62 w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500"
     [routerLink]="['/blog/', post().attributes.slug]"
   >
-    <figure class="bg-slate-100">
-      <img
-        [src]="post().attributes.thumbnail"
-        [alt]="post().attributes.thumbnailDescription"
-        class="w-full"
-      />
-    </figure>
-    <div class="card-body items-center text-center">
-      <h2 class="card-title">
-        {{ post().attributes.title }}
+    <div class="w-36 flex-shrink-0 flex flex-col">
+      <figure class="w-36 h-36 bg-slate-100 rounded-tl-lg">
+        <img
+          [src]="post().attributes.thumbnail"
+          [alt]="post().attributes.thumbnailDescription"
+          class="h-full w-full object-cover"
+        />
+      </figure>
+      <div class="p-4 mt-auto">
+        <div class="card-actions justify-center">
+          @for (tag of post().attributes.tags; track tag) {
+            <div class="badge badge-outline">{{ tag }}</div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="flex items-center gap-2">
+        <h2 class="card-title m-0">
+          {{ post().attributes.title }}
+        </h2>
         @if (isNewest()) {
           <div class="badge badge-secondary">NEW</div>
         }
-      </h2>
-      <p>{{ post().attributes.description }}</p>
-      <div class="card-actions justify-end">
-        @for (tag of post().attributes.tags; track tag) {
-          <div class="badge badge-outline">{{ tag }}</div>
-        }
       </div>
+      <p class="mt-2">{{ post().attributes.description }}</p>
     </div>
   </a>
 </template>
