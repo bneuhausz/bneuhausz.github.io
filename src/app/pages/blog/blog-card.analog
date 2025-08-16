@@ -39,7 +39,7 @@
     <div class="p-4 border-t border-base-300">
       <div class="card-actions justify-start">
         @for (tag of post().attributes.tags; track tag) {
-        <div class="badge badge-outline">{{ tag }}</div>
+        <div class="badge badge-ghost">{{ tag }}</div>
         }
       </div>
     </div>

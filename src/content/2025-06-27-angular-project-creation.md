@@ -6,7 +6,7 @@ coverImage: /images/angular_wordmark_gradient_resized_header.png
 coverImageDescription: angular gradient image
 thumbnail: /images/angular_gradient_resized_thumbnail.png
 thumbnailDescription: angular logo
-tags: [Angular]
+tags: [ANGULAR]
 shadowColor: angular
 ---
 
