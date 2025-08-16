@@ -3,6 +3,11 @@
   import BlogCard from './blog-card.analog' with { analog: 'imports' };
   import PostAttributes from '../../post-attributes';
   import { computed, signal } from '@angular/core';
+  import { RouteMeta } from '@analogjs/router';
+
+  export const routeMeta: RouteMeta = {
+    title: 'Blog - bneuhausz.dev',
+  };
 
   const posts = signal(injectContentFiles<PostAttributes>());
 

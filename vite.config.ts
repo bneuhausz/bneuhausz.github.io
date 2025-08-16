@@ -27,8 +27,8 @@ export default defineConfig(({ mode }) => ({
           '/',
           '/blog',
           '/privacy',
-          '/blog/2025-06-27-angular-project-creation',
-          '/blog/2025-08-16-angular-material-20-theming'
+          '/blog/angular-project-creation',
+          '/blog/angular-material-20-theming'
         ],
       },
       vite: { experimental: { supportAnalogFormat: true } },
