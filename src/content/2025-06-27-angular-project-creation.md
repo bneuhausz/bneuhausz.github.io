@@ -1,7 +1,8 @@
 ---
 title: Angular CLI Project Creation
-slug: 2025-06-27-angular-project-creation
+slug: angular-project-creation
 description: Just an easily bookmarkable note to myself
+date: 2025-06-27
 coverImage: /images/angular_wordmark_gradient_resized_header.png
 coverImageDescription: angular gradient image
 thumbnail: /images/angular_gradient_resized_thumbnail.png
