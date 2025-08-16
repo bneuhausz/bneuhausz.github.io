@@ -1,12 +1,24 @@
 <script lang="ts">
+  import { inject, effect } from '@angular/core';
   import { AsyncPipe } from '@angular/common' with { analog: 'imports' };
   import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
   import { CodeCopyButtonDirective } from '../../shared/directives/code-copy-button.directive' with { analog: 'imports' };
   import { injectContent } from '@analogjs/content';
+  import { Meta, Title } from '@angular/platform-browser';
 
   import PostAttributes from '../../post-attributes';
 
   const post$ = injectContent<PostAttributes>('slug');
+  const title = inject(Title);
+  const meta = inject(Meta);
+
+  post$.subscribe(post => {
+    title.setTitle(`${post.attributes.title} - bneuhausz.dev`);
+    meta.updateTag({ name: 'description', content: post.attributes.description });
+    meta.updateTag({ property: 'og:title', content: post.attributes.title });
+    meta.updateTag({ property: 'og:description', content: post.attributes.description });
+    meta.updateTag({ property: 'og:image', content: post.attributes.thumbnail });
+  });
 </script>
 
 <template>

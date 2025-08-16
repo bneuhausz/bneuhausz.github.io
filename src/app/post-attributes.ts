@@ -8,4 +8,5 @@ export default interface PostAttributes {
   thumbnailDescription: string;
   tags: string[];
   shadowColor: string;
+  date: string;
 }

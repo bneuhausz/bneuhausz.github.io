@@ -1,16 +1,17 @@
 ---
-title: Example title 3
-slug: 2025-05-17-3-example-post
+title: Example title
+slug: example-dotnet
 description: Example description
+date: 2025-01-01
 coverImage: /images/angular_wordmark_gradient.png
 coverImageDescription: example cover image
 thumbnail: /images/dotnet_resized_thumbnail.png
 thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
-shadowColor: default
+shadowColor: dotnet
 ---
 
-# Example Blog Post 3
+# Example Blog Post 2
 
 This is an example blog post written in markdown!
 

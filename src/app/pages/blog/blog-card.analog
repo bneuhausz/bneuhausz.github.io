@@ -2,9 +2,10 @@
   import { input } from '@angular/core';
   import { RouterLink } from '@angular/router' with { analog: 'imports' };
   import PostAttributes from '../../post-attributes';
+  import { ContentFile } from '@analogjs/content';
 
-  const post = input<PostAttributes>();
-  const isNewest = input<boolean>();
+  const post = input.required<ContentFile<PostAttributes>>();
+  const isNewest = input.required<boolean>();
 </script>
 
 <template>
