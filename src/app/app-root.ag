@@ -2,6 +2,11 @@
   import { RouterOutlet } from '@angular/router' with { analog: 'imports' };
   import AppHeader from './app-header.analog' with { analog: 'imports' };
   import AppFooter from './app-footer.analog' with { analog: 'imports' };
+  import { RouteMeta } from '@analogjs/router';
+
+  export const routeMeta: RouteMeta = {
+    title: 'bneuhausz.dev',
+  };
 </script>
 
 <template class="flex flex-col h-screen">
