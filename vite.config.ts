@@ -28,7 +28,8 @@ export default defineConfig(({ mode }) => ({
           '/blog',
           '/privacy',
           '/blog/angular-project-creation',
-          '/blog/angular-material-20-theming'
+          '/blog/angular-material-20-theming',
+          '/blog/angular-material-recreating-color-attribute',
         ],
       },
       vite: { experimental: { supportAnalogFormat: true } },
