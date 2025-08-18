@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { inject, effect } from '@angular/core';
+  import { inject } from '@angular/core';
   import { AsyncPipe } from '@angular/common' with { analog: 'imports' };
+  import { DOCUMENT } from '@angular/common';
   import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
   import { CodeCopyButtonDirective } from '../../shared/directives/code-copy-button.directive' with { analog: 'imports' };
   import { injectContent } from '@analogjs/content';
@@ -11,6 +12,7 @@
   const post$ = injectContent<PostAttributes>('slug');
   const title = inject(Title);
   const meta = inject(Meta);
+  const doc = inject(DOCUMENT);
 
   post$.subscribe(post => {
     title.setTitle(`${post.attributes.title} - bneuhausz.dev`);
@@ -18,6 +20,46 @@
     meta.updateTag({ property: 'og:title', content: post.attributes.title });
     meta.updateTag({ property: 'og:description', content: post.attributes.description });
     meta.updateTag({ property: 'og:image', content: post.attributes.thumbnail });
+
+    meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    meta.updateTag({ name: 'twitter:title', content: post.attributes.title });
+    meta.updateTag({ name: 'twitter:description', content: post.attributes.description });
+    meta.updateTag({ name: 'twitter:image', content: post.attributes.thumbnail });
+
+    const ldJson = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.attributes.title,
+      "image": post.attributes.thumbnail,
+      "author": {
+        "@type": "Person",
+        "name": "Bálint Neuhausz",
+          "url": "https://bneuhausz.dev"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "bneuhausz.dev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://bneuhausz.dev/analog.svg"
+        }
+      },
+      "datePublished": post.attributes.date,
+      "description": post.attributes.description
+    };
+
+    const prev = doc.getElementById('blogpost-ldjson');
+    if (prev) prev.remove();
+    const script = doc.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'blogpost-ldjson';
+    script.text = JSON.stringify(ldJson);
+    doc.head.appendChild(script);
+
+    const canonicalLink: HTMLLinkElement = doc.querySelector('link[rel="canonical"]') || doc.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    canonicalLink.setAttribute('href', `https://yourdomain.com/blog/${post.attributes.slug}`);
+    doc.head.appendChild(canonicalLink);
   });
 </script>
 
