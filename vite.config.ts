@@ -3,6 +3,7 @@
 import { defineConfig } from 'vite';
 import analog, { PrerenderContentFile } from '@analogjs/platform';
 import tailwindcss from '@tailwindcss/vite';
+import { formatDateToYYYYMMDD } from './src/app/shared/utils/date.utils';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -35,6 +36,13 @@ export default defineConfig(({ mode }) => ({
               }
               const slug = file.attributes['slug'] || file.name;
               return `/blog/${slug}`;
+            },
+            sitemap: (file: PrerenderContentFile) => {
+              const rawDate = file.attributes['lastMod'] ?? file.attributes['date'];
+              return {
+                lastmod: formatDateToYYYYMMDD(rawDate),
+                changefreq: 'yearly',
+              };
             },
           },
         ],
