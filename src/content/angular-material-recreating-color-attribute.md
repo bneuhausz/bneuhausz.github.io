@@ -9,6 +9,7 @@ thumbnail: /images/angular_gradient_resized_thumbnail.png
 thumbnailDescription: angular logo
 tags: [ANGULAR, ANGULAR MATERIAL, THEMING]
 shadowColor: angular
+draft: false
 ---
 
 # Angular Material 20 - Recreating The \[color\] Attribute

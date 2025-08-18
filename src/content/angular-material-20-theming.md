@@ -1,6 +1,6 @@
 ---
 title: Customizing Angular Material 20
-slug: customizing-angular-material-20
+slug: angular-material-20-theming
 description: Some notes about customization and theming in Angular Material 20
 date: 2025-08-16
 coverImage: /images/angular_wordmark_gradient_resized_header.png
@@ -9,6 +9,7 @@ thumbnail: /images/angular_gradient_resized_thumbnail.png
 thumbnailDescription: angular logo
 tags: [ANGULAR, ANGULAR MATERIAL, THEMING]
 shadowColor: angular
+draft: false
 ---
 
 # Customizing Angular Material 20

@@ -9,6 +9,7 @@ thumbnail: /images/dotnet_resized_thumbnail.png
 thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
 shadowColor: default
+draft: true
 ---
 
 # Example Blog Post 4
