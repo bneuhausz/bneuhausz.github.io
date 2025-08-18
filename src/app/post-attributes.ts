@@ -9,5 +9,6 @@ export default interface PostAttributes {
   tags: string[];
   shadowColor: string;
   date: string;
+  lastMod?: string;
   draft: boolean;
 }
