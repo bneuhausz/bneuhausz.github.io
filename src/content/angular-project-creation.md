@@ -9,6 +9,7 @@ thumbnail: /images/angular_gradient_resized_thumbnail.png
 thumbnailDescription: angular logo
 tags: [ANGULAR]
 shadowColor: angular
+draft: false
 ---
 
 # Angular CLI project creation
