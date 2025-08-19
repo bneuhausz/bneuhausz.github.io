@@ -3,9 +3,11 @@ title: Example title 2
 slug: example-default
 description: Example description
 date: 2025-01-02
-coverImage: /images/angular_wordmark_gradient.png
+coverImage: /images/angular_wordmark_gradient_header.avif
+coverImageMedium: /images/angular_wordmark_gradient_header_medium.avif
+coverImageSmall: /images/angular_wordmark_gradient_header_small.avif
 coverImageDescription: example cover image
-thumbnail: /images/dotnet_resized_thumbnail.png
+thumbnail: /images/dotnet_thumbnail.avif
 thumbnailDescription: example thumbnail image
 tags: [tag1, tag2]
 shadowColor: default
