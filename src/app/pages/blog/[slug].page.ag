@@ -65,7 +65,7 @@
 
 <template>
   @if (post$ | async; as post) {
-    <article class="flex flex-col items-center *:max-w-screen-xl *:mx-32">
+    <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32">
       <img
         [srcset]="post.attributes.coverImageSmall + ' 480w, ' + 
           post.attributes.coverImageMedium + ' 800w, ' + 
