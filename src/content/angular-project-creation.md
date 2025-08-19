@@ -3,9 +3,11 @@ title: Angular CLI Project Creation
 slug: angular-project-creation
 description: Just an easily bookmarkable note to myself
 date: 2025-06-27
-coverImage: /images/angular_wordmark_gradient_resized_header.png
+coverImage: /images/angular_wordmark_gradient_header.avif
+coverImageMedium: /images/angular_wordmark_gradient_header_medium.avif
+coverImageSmall: /images/angular_wordmark_gradient_header_small.avif
 coverImageDescription: angular gradient image
-thumbnail: /images/angular_gradient_resized_thumbnail.png
+thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 tags: [ANGULAR]
 shadowColor: angular

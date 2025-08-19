@@ -66,7 +66,15 @@
 <template>
   @if (post$ | async; as post) {
     <article class="flex flex-col items-center *:max-w-screen-xl *:mx-32">
-      <img [src]="post.attributes.coverImage" />
+      <img
+        [srcset]="post.attributes.coverImageSmall + ' 480w, ' + 
+          post.attributes.coverImageMedium + ' 800w, ' + 
+          post.attributes.coverImage + ' 1280w'"
+        sizes="(max-width: 1280px) 100vw, 1280px"
+        [src]="post.attributes.coverImage"
+        [alt]="post.attributes.coverImageDescription"
+        class="w-full h-auto"
+      />
       <div appCodeCopyButton class="prose dark:prose-invert text-left">
         <analog-markdown [content]="post.content" />
       </div>

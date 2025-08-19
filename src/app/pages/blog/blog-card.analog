@@ -5,7 +5,6 @@
   import { ContentFile } from '@analogjs/content';
 
   const post = input.required<ContentFile<PostAttributes>>();
-  const isNewest = input.required<boolean>();
 </script>
 
 <template>
@@ -29,9 +28,6 @@
             <h2 class="card-title m-0">
               {{ post().attributes.title }}
             </h2>
-            @if (isNewest()) {
-            <div class="badge badge-secondary">NEW</div>
-            }
           </div>
           <p class="mt-2">{{ post().attributes.description }}</p>
         </div>
