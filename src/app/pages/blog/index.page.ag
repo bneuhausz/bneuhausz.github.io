@@ -26,7 +26,10 @@
 </script>
 
 <template>
-  <h1 class="text-3xl">This is just an Analog, Tailwind, DaisyUI and GitHub Pages playground</h1>
+  <h1 class="text-3xl">Some of my thoughts are documented here.</h1>
+  <p>
+    I mostly write these as notes for myself, but if somehow you've got here, I hope you find them useful!
+  </p>
 
   <section class="grid gap-8 grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center py-8">
     @for (post of sortedPosts(); track post.attributes.slug) {
