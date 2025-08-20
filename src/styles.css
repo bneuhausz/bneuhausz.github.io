@@ -25,6 +25,24 @@
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+  .prose,
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: inherit;
+  }
+
+  .prose a {
+    color: inherit;
+    transition: color 0.2s;
+  }
+  .prose a:hover {
+    color: gray;
+  }
 }
 
 @theme {

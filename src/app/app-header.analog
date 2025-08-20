@@ -5,11 +5,17 @@ import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 
 <template>
   <nav class="navbar bg-neutral text-neutral-content gap-2">
-    <a class="btn btn-square btn-ghost hover:text-neutral" routerLink="/">
+    <!-- <a class="btn btn-square btn-ghost hover:text-neutral" routerLink="/">
       <ng-icon name="heroHomeSolid"></ng-icon>
+    </a> -->
+    <a routerLink="/">
+      <img src="/images/nb_logo_small.avif" alt="logo of the site">
     </a>
     <a class="btn btn-square btn-ghost hover:text-neutral px-8" routerLink="/blog">
       Blog
+    </a>
+    <a class="btn btn-square btn-ghost hover:text-neutral px-8" routerLink="/about">
+      About
     </a>
   </nav>
 </template>
