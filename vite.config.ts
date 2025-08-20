@@ -27,7 +27,9 @@ export default defineConfig(({ mode }) => ({
         routes: [
           '/',
           '/blog',
+          '/about',
           '/privacy',
+          '/creative-commons',
           {
             contentDir: 'src/content',
             transform: (file: PrerenderContentFile) => {

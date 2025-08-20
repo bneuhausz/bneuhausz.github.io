@@ -1,5 +1,10 @@
 <script lang="ts">
   import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
+  import { RouteMeta } from '@analogjs/router';
+
+  export const routeMeta: RouteMeta = {
+    title: 'About - bneuhausz.dev',
+  };
 </script>
 
 <template>

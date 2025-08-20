@@ -1,0 +1,10 @@
+<template>
+  <h1 class="text-3xl mb-16">Creative Commons</h1>
+  <p>
+    <a href="https://angular.dev/press-kit" target="_blank" rel="noopener">Angular logo © Google</a>
+    <br>
+    <a href="https://github.com/dotnet/brand" target="_blank" rel="noopener">.NET logo © Microsoft</a>
+    <br>
+    <a href="https://github.com/logos" target="_blank" rel="noopener">GitHub logo © GitHub</a>
+  </p>
+</template>
