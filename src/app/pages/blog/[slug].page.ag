@@ -4,6 +4,7 @@
   import { DOCUMENT } from '@angular/common';
   import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
   import { CodeCopyButtonDirective } from '../../shared/directives/code-copy-button.directive' with { analog: 'imports' };
+  import { ExternalLinksDirective } from '../../shared/directives/external-links.directive' with { analog: 'imports' };
   import { injectContent } from '@analogjs/content';
   import { Meta, Title } from '@angular/platform-browser';
 
@@ -41,7 +42,7 @@
         "name": "bneuhausz.dev",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://bneuhausz.dev/analog.svg"
+          "url": "https://bneuhausz.dev/images/nb_logo_small.avif"
         }
       },
       "datePublished": post.attributes.date,
@@ -75,7 +76,7 @@
         [alt]="post.attributes.coverImageDescription"
         class="w-full h-auto"
       />
-      <div appCodeCopyButton class="prose dark:prose-invert text-left">
+      <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left text-neutral-content">
         <analog-markdown [content]="post.content" />
       </div>
     </article>

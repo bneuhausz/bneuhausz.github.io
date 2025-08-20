@@ -1,0 +1,16 @@
+<template>
+  about
+  <!-- <div class="flex items-center justify-center">
+    <img src="/images/nb_face.jpg" alt="Bálint Neuhausz" class="w-32 h-32 rounded-full" />
+    <h1 class="text-3xl ml-4">Hi, my name is Bálint</h1>
+  </div>
+  <section class="mt-4">
+    <p>
+      I'm a software engineer based in Pécs, Hungary.
+      <br>
+      My background is mainly in internal enterprise software, although I do have experience with some client facing applications as well.
+      <br>
+      This site is mostly just a playground to try out some tech
+    </p>
+  </section> -->
+</template>

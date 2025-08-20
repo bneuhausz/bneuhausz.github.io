@@ -10,12 +10,12 @@
 <template>
   <a
     [routerLink]="['/blog/', post().attributes.slug]"
-    class="card bg-base-100 h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
+    class="card bg-slate-500 h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
   >
     <div class="flex-grow">
       <div class="flex h-full">
         <div class="w-36 flex-shrink-0">
-          <figure class="w-36 h-36 bg-slate-100 rounded-tl-lg">
+          <figure class="w-36 h-36 bg-slate-200 rounded-tl-lg">
             <img
               [src]="post().attributes.thumbnail"
               [alt]="post().attributes.thumbnailDescription"
