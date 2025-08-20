@@ -1,16 +1,33 @@
+<script lang="ts">
+  import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
+</script>
+
 <template>
-  about
-  <!-- <div class="flex items-center justify-center">
-    <img src="/images/nb_face.jpg" alt="Bálint Neuhausz" class="w-32 h-32 rounded-full" />
-    <h1 class="text-3xl ml-4">Hi, my name is Bálint</h1>
+  <div class="w-4/5 mx-auto">
+    <div class="flex items-center justify-center">
+      <img src="/images/nb_face.jpg" alt="Bálint Neuhausz" class="w-32 h-32 rounded-full" />
+      <h1 class="text-3xl ml-4">Hi, my name is Bálint</h1>
+      <a href="https://github.com/bneuhausz" target="_blank" rel="noopener">
+        <img src="/images/github/github-mark-white.svg" alt="GitHub Logo" class="w-5 h-5 ml-3" />
+      </a>
+      <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
+        <ng-icon name="heroEnvelopeSolid" />
+      </a>
+    </div>
+    <section class="mt-4">
+      <p>
+        I'm a software engineer based in Pécs, Hungary.
+        <br>
+        My background is mainly in internal enterprise software, although I do have experience with some client facing applications as well.
+        <br>
+        Most of my experience is in the Angular and .NET ecosystems, but some other stuff, like Node.js scripts, NestJS, Laravel or Java (both EE and Spring) for example has also crossed my path, either professionally or just in my free time.
+      </p>
+      <br>
+      <p>
+        This site is mostly just a playground for me to try out some tech I'm interested in. It is being developed with Analog, Tailwind and DaisyUI.
+        <br>
+        While I'm at it, I thought I might as well start writing some notes, mostly for myself, but if you find them useful, that's great!
+      </p>
+    </section>
   </div>
-  <section class="mt-4">
-    <p>
-      I'm a software engineer based in Pécs, Hungary.
-      <br>
-      My background is mainly in internal enterprise software, although I do have experience with some client facing applications as well.
-      <br>
-      This site is mostly just a playground to try out some tech
-    </p>
-  </section> -->
 </template>

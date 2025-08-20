@@ -9,7 +9,7 @@ import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
 import { provideIcons, provideNgIconsConfig } from '@ng-icons/core';
-import { heroHomeSolid } from '@ng-icons/heroicons/solid';
+import { heroEnvelopeSolid } from '@ng-icons/heroicons/solid';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(),
     provideContent(withMarkdownRenderer(), withShikiHighlighter()),
-    provideIcons({ heroHomeSolid }),
+    provideIcons({ heroEnvelopeSolid }),
     provideNgIconsConfig({
       size: '1.5em',
     }),
