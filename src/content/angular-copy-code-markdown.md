@@ -11,7 +11,7 @@ thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 tags: [Angular, Analog, Tailwind CSS, daisyUI]
 shadowColor: angular
-draft: true
+draft: false
 ---
 
 # Markdown copy code button in Angular
