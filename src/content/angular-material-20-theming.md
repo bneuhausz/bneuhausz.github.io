@@ -9,7 +9,7 @@ coverImageSmall: /images/angular_wordmark_gradient_header_small.avif
 coverImageDescription: angular gradient image
 thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
-tags: [ANGULAR, ANGULAR MATERIAL, THEMING]
+tags: [Angular, Angular Material, Theming]
 shadowColor: angular
 draft: false
 ---

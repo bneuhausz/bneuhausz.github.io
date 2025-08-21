@@ -1,5 +1,5 @@
 ---
-title: Angular Material 20 - Recreating The [color] Attribute
+title: Angular Material 20 - Recreating the [color] attribute
 slug: angular-material-recreating-color-attribute
 description: In this post we'll recreate [color] attribute in Angular Material 20
 date: 2025-08-17
@@ -9,7 +9,7 @@ coverImageSmall: /images/angular_wordmark_gradient_header_small.avif
 coverImageDescription: angular gradient image
 thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
-tags: [ANGULAR, ANGULAR MATERIAL, THEMING]
+tags: [Angular, Angular Material, Theming]
 shadowColor: angular
 draft: false
 ---
