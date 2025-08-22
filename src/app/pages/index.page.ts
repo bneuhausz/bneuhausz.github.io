@@ -9,9 +9,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   standalone: true,
   template: `
-    <h1 class="text-3xl mb-16">Welcome to my playground! :)</h1>
-
-    <section class="flex flex-row gap-8 w-4/5 mx-auto justify-center">
+    <section class="flex flex-row gap-8 w-4/5 my-16 mx-auto justify-center">
       <div class="card w-96 bg-slate-500 card-xl shadow-sm">
         <div class="card-body items-center">
           <h2 class="card-title">Blog</h2>
