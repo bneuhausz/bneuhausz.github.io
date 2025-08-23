@@ -89,7 +89,7 @@
             }
           </div>
           <p class="list-col-wrap text-xs">
-            "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+            {{ post.attributes.description }}
           </p>
         </li>      
       </ul>
