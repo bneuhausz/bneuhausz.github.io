@@ -11,7 +11,7 @@
 <template>
   <a
     [routerLink]="['/blog/', post().attributes.slug]"
-    class="card bg-neutral h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
+    class="card bg-neutral h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:bg-neutral-900 hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
   >
     <div class="flex-grow">
       <div class="flex h-full">
