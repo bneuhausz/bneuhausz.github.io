@@ -4,15 +4,25 @@
   import PostAttributes from '../../post-attributes';
   import { computed, signal } from '@angular/core';
   import { RouteMeta } from '@analogjs/router';
+  import { DatePipe } from '@angular/common' with { analog: 'imports' };
+  import { FormsModule } from '@angular/forms' with { analog: 'imports' };
 
   export const routeMeta: RouteMeta = {
     title: 'Blog - bneuhausz.dev',
   };
 
   const posts = signal(injectContentFiles<PostAttributes>());
+  const selectedTag = signal('');
+  const selectedSort = signal('desc');
+
+  const uniqueTags = computed(() => {
+    const allTags = posts().flatMap(post => post.attributes.tags);
+    const unique = [...new Set(allTags)];
+    return unique.sort();
+  });
 
   const sortedPosts = computed(() => {
-    return posts().sort((a, b) => {
+    return [...posts()].sort((a, b) => {
       const dateA = new Date(a.attributes.date);
       const dateB = new Date(b.attributes.date);
 
@@ -23,17 +33,65 @@
       return 0;
     });
   });
+
+  const featuredPosts = computed(() => {
+    return sortedPosts().slice(0, 3);
+  });
+
+  const filteredPosts = computed(() => {
+    const tag = selectedTag();
+    const sort = selectedSort();
+    let posts = sort === 'asc' ? [...sortedPosts()].reverse() : sortedPosts();
+
+    if (tag) {
+      posts = posts.filter(post => post.attributes.tags.includes(tag));
+    }
+    return posts;
+  });
 </script>
 
 <template>
-  <h1 class="text-3xl">Some of my thoughts are documented here.</h1>
-  <p>
-    I mostly write these as notes for myself, but if somehow you've got here, I hope you find them useful!
-  </p>
+  <h1>
+    Some of my thoughts are documented here
+  </h1>
 
-  <section class="grid gap-8 grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center py-8">
-    @for (post of sortedPosts(); track post.attributes.slug) {
+  <section class="grid gap-8 grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center py-5">
+    @for (post of featuredPosts(); track post.attributes.slug) {
       <BlogCard [post]="post" />
+    }
+  </section>
+
+  <section class="w-3/5 mx-auto my-5">
+    <div class="flex justify-center mb-4 gap-4">
+      <select class="select bg-amber-100 text-amber-900" [(ngModel)]="selectedTag">
+        <option value="">All Tags</option>
+        @for (tag of uniqueTags(); track tag) {
+          <option value="{{ tag }}">{{ tag }}</option>
+        }
+      </select>
+  
+      <select class="select bg-amber-100 text-amber-900" [(ngModel)]="selectedSort">
+        <option value="desc">Newest first</option>
+        <option value="asc">Oldest first</option>
+      </select>
+    </div>
+
+    @for (post of filteredPosts(); track post.attributes.slug) {
+      <ul class="list bg-neutral rounded-box shadow-md">    
+        <li class="list-row pb-4 border-b border-amber-100">
+          <div><img class="size-10 rounded-box bg-amber-100" src="/images/angular_gradient_icon.avif"/></div>
+          <div>
+            <div>{{ post.attributes.title }}</div>
+            <div class="text-xs uppercase font-semibold opacity-60 mb-1">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</div>
+            @for (tag of post.attributes.tags; track tag) {
+              <div class="badge bg-amber-100 text-amber-900 mx-1">{{ tag }}</div>
+            }
+          </div>
+          <p class="list-col-wrap text-xs">
+            "Remaining Reason" became an instant hit, praised for its haunting sound and emotional depth. A viral performance brought it widespread recognition, making it one of Dio Lupa’s most iconic tracks.
+          </p>
+        </li>      
+      </ul>
     }
   </section>
 </template>

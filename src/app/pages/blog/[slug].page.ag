@@ -77,7 +77,7 @@
         class="w-full h-auto"
       />
 
-      <p class="mb-8">{{ post.attributes.date | date: 'YYYY-MM-dd' }}</p>
+      <p class="mb-8">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</p>
 
       <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left">
         <analog-markdown [content]="post.content" />
