@@ -76,7 +76,7 @@
         [alt]="post.attributes.coverImageDescription"
         class="w-full h-auto"
       />
-      <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left text-neutral-content">
+      <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left">
         <analog-markdown [content]="post.content" />
       </div>
     </article>
