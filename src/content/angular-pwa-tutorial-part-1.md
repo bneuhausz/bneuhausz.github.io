@@ -1,7 +1,7 @@
 ---
 title: Angular PWA tutorial part 1
 slug: angular-pwa-tutorial-part-1
-description: Just an easily bookmarkable note to myself
+description: Part 1 of a series of posts about PWA development, specifically in Angular
 date: 2025-08-23
 coverImage: /images/angular_wordmark_gradient_header.avif
 coverImageMedium: /images/angular_wordmark_gradient_header_medium.avif
