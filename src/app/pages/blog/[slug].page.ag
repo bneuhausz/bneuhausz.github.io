@@ -1,6 +1,6 @@
 <script lang="ts">
   import { inject } from '@angular/core';
-  import { AsyncPipe } from '@angular/common' with { analog: 'imports' };
+  import { AsyncPipe, DatePipe } from '@angular/common' with { analog: 'imports' };
   import { DOCUMENT } from '@angular/common';
   import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
   import { CodeCopyButtonDirective } from '../../shared/directives/code-copy-button.directive' with { analog: 'imports' };
@@ -76,6 +76,9 @@
         [alt]="post.attributes.coverImageDescription"
         class="w-full h-auto"
       />
+
+      <p class="mb-8">{{ post.attributes.date | date: 'YYYY-MM-dd' }}</p>
+
       <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left">
         <analog-markdown [content]="post.content" />
       </div>

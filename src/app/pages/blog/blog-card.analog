@@ -1,6 +1,7 @@
 <script lang="ts">
   import { input } from '@angular/core';
   import { RouterLink } from '@angular/router' with { analog: 'imports' };
+  import { DatePipe } from '@angular/common' with { analog: 'imports' };
   import PostAttributes from '../../post-attributes';
   import { ContentFile } from '@analogjs/content';
 
@@ -24,12 +25,13 @@
           </figure>
         </div>
         <div class="card-body">
-          <div class="flex items-center gap-2">
+          <div class="flex flex-col items-center gap-2">
             <h2 class="card-title m-0">
               {{ post().attributes.title }}
             </h2>
+            <p class="text-xs">{{ post().attributes.date | date: 'YYYY-MM-dd' }}</p>
           </div>
-          <p class="mt-2">{{ post().attributes.description }}</p>
+          <p>{{ post().attributes.description }}</p>
         </div>
       </div>
     </div>

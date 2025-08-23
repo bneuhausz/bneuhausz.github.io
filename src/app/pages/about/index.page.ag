@@ -12,9 +12,6 @@
     <div class="flex items-center justify-center">
       <img src="/images/nb_face.jpg" alt="Bálint Neuhausz" class="w-32 h-32 rounded-full" />
       <h1 class="text-3xl ml-4">Hi, my name is Bálint</h1>
-      <!-- <a href="https://github.com/bneuhausz" target="_blank" rel="noopener">
-        <img src="/images/github/github-mark-white.svg" alt="GitHub Logo" class="w-5 h-5 ml-3" />
-      </a> -->
       <a href="https://github.com/bneuhausz" target="_blank" rel="noopener">
         <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div>
       </a>
