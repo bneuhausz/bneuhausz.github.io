@@ -11,7 +11,7 @@ thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 tags: [Angular, PWA]
 shadowColor: angular
-draft: true
+draft: false
 ---
 
 # Angular PWA tutorial part 1
