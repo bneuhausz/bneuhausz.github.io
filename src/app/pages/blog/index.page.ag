@@ -6,12 +6,13 @@
   import { RouteMeta } from '@analogjs/router';
   import { DatePipe } from '@angular/common' with { analog: 'imports' };
   import { FormsModule } from '@angular/forms' with { analog: 'imports' };
+  import { RouterLink } from '@angular/router' with { analog: 'imports' };
 
   export const routeMeta: RouteMeta = {
     title: 'Blog - bneuhausz.dev',
   };
 
-  const posts = signal(injectContentFiles<PostAttributes>());
+  const posts = signal(injectContentFiles<PostAttributes>(post => !post.attributes.draft));
   const selectedTag = signal('');
   const selectedSort = signal('desc');
 
@@ -78,7 +79,7 @@
 
     @for (post of filteredPosts(); track post.attributes.slug) {
       <ul class="list bg-neutral rounded-box shadow-md">    
-        <li class="list-row pb-4 border-b border-amber-100">
+        <li class="list-row pb-4 border-b border-amber-100 cursor-pointer hover:bg-neutral-900 transition duration-500" [routerLink]="['/blog', post.attributes.slug]">
           <div><img class="size-10 rounded-box bg-amber-100" src="/images/angular_gradient_icon.avif"/></div>
           <div>
             <div>{{ post.attributes.title }}</div>
