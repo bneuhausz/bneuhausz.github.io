@@ -24,7 +24,7 @@ export class CodeCopyButtonDirective implements AfterViewInit {
         this.renderer.setAttribute(
           button,
           'class',
-          'btn btn-xs btn-ghost absolute top-1 right-2 z-10'
+          'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10'
         );
         this.renderer.setProperty(button, 'textContent', 'Copy');
 

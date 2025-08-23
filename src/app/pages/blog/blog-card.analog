@@ -10,12 +10,12 @@
 <template>
   <a
     [routerLink]="['/blog/', post().attributes.slug]"
-    class="card bg-slate-500 h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
+    class="card bg-neutral h:96 sm:h-72 w-80 sm:w-110 shadow-sm hover:shadow-{{ post().attributes.shadowColor }} transition hover:scale-105 duration-500 flex flex-col"
   >
     <div class="flex-grow">
       <div class="flex h-full">
         <div class="w-36 flex-shrink-0">
-          <figure class="w-36 h-36 bg-slate-200 rounded-tl-lg">
+          <figure class="w-36 h-36 bg-amber-100 rounded-tl-lg">
             <img
               [src]="post().attributes.thumbnail"
               [alt]="post().attributes.thumbnailDescription"
@@ -33,10 +33,10 @@
         </div>
       </div>
     </div>
-    <div class="p-4 border-t border-base-300">
+    <div class="p-4 border-t border-amber-100">
       <div class="card-actions justify-start">
         @for (tag of post().attributes.tags; track tag) {
-        <div class="badge badge-ghost">{{ tag }}</div>
+          <div class="badge bg-amber-100 text-amber-900">{{ tag }}</div>
         }
       </div>
     </div>

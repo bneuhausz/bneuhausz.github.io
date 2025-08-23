@@ -3,14 +3,14 @@
 </script>
 
 <template>
-  <nav class="navbar bg-neutral text-neutral-content gap-2">
+  <nav class="navbar bg-neutral text-amber-100 gap-2">
     <a routerLink="/">
       <img src="/images/nb_logo_small.avif" alt="logo of the site">
     </a>
-    <a class="btn btn-square btn-ghost hover:text-neutral px-8" routerLink="/blog">
+    <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" routerLink="/blog">
       Blog
     </a>
-    <a class="btn btn-square btn-ghost hover:text-neutral px-8" routerLink="/about">
+    <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" routerLink="/about">
       About
     </a>
   </nav>

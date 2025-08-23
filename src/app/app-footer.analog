@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <footer class="footer-horizontal bg-neutral text-neutral-content p-4">
+  <footer class="footer-horizontal bg-neutral text-amber-100 p-4">
     <aside class="flex gap-8 justify-center">
       <a routerLink="/creative-commons">© Creative Commons</a>
       <a routerLink="/privacy">Privacy Policy</a>
