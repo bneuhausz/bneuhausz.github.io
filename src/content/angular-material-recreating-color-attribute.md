@@ -12,9 +12,15 @@ thumbnailDescription: angular logo
 tags: [Angular, Angular Material, Theming]
 shadowColor: angular
 draft: false
+lastMod: 2025-08-25
 ---
 
 # Angular Material 20 - Recreating The \[color\] Attribute
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-08-25:</b> Made the toolbar example a bit more clear<br>
+> </sub>
 
 ## The \[color\] attribute
 
@@ -86,7 +92,7 @@ And you should get this outcome:
 
 ![Angular Material v20 buttons with color attribute](/images/angular-material/color-attribute-buttons.avif)
 
-The colors do not exactly match the old ones. You can do it a lot more finegrained if you wish:
+The colors do not exactly match the old ones, but you can create your own custom themes with the old colors or do it in a lot more finegrained way if you wish:
 
 ```scss
 [matButton="filled"][color="accent"] {
@@ -97,8 +103,30 @@ The colors do not exactly match the old ones. You can do it a lot more finegrain
 }
 ```
 
-This approach will apply your specific colors to every ``filled``material button that has the ``accent`` color applied to it. However, one advantage of the approach above, is that it not only applies to your buttons, but to everything that supports the material theming. Meaning, if you want to create a toolbar that has the ``warn`` color, you can just add the html below and it works automatically:
+This approach will apply your specific colors to every ``filled``material button that has the ``accent`` color applied to it. However, one advantage of the approach above, is that it not only applies to your buttons, but to everything that supports the material theming. Meaning, if you want to create a toolbar that has the ``warn`` color, you can just create a fairly basic setup that uses the ``mat.toolbar-overrides`` mixin to set up the ``mat-toolbar`` to utilize the color variables and it works automatically. So soemthing like:
+
+```scss
+:root {
+  @include mat.theme((
+    color: mat.$azure-palette
+  ));
+
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary),
+    container-text-color: var(--mat-sys-on-primary),
+  ));
+}
+
+[color="warn"] {
+  @include mat.theme((
+    color: mat.$red-palette
+  ))
+}
+
+```
 
 ```html
 <mat-toolbar color="warn"></mat-toolbar>
 ```
+
+This way, the default colors for the toolbars globally become the ``--mat-sys-primary`` and ``mat-sys-on-primary`` colors, but you can easily change it any time you want to by adding the ``color`` attribute.
