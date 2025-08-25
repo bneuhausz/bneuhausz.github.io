@@ -7,6 +7,8 @@ coverImage: /images/angular_wordmark_gradient_header.avif
 coverImageMedium: /images/angular_wordmark_gradient_header_medium.avif
 coverImageSmall: /images/angular_wordmark_gradient_header_small.avif
 coverImageDescription: angular gradient image
+metaImage: https://bneuhausz.dev/images/bneuhausz_dev.png
+metaImageDescription: bneuhausz.dev site logo
 thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 tags: [Angular, PWA]

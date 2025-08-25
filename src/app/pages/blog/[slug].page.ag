@@ -20,14 +20,14 @@
     meta.updateTag({ name: 'description', content: post.attributes.description });
     meta.updateTag({ property: 'og:title', content: post.attributes.title });
     meta.updateTag({ property: 'og:description', content: post.attributes.description });
-    meta.updateTag({ property: 'og:image', content: `https://bneuhausz.dev${post.attributes.coverImage}` });
-    meta.updateTag({ property: 'og:image:alt', content: post.attributes.coverImageDescription });
+    meta.updateTag({ property: 'og:image', content: post.attributes.metaImage });
+    meta.updateTag({ property: 'og:image:alt', content: post.attributes.metaImageDescription });
 
     meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     meta.updateTag({ name: 'twitter:title', content: post.attributes.title });
     meta.updateTag({ name: 'twitter:description', content: post.attributes.description });
-    meta.updateTag({ name: 'twitter:image', content: `https://bneuhausz.dev${post.attributes.coverImage}` });
-    meta.updateTag({ name: 'twitter:image:alt', content: post.attributes.coverImageDescription });
+    meta.updateTag({ name: 'twitter:image', content: post.attributes.metaImage });
+    meta.updateTag({ name: 'twitter:image:alt', content: post.attributes.metaImageDescription });
 
     const ldJson = {
       "@context": "https://schema.org",
