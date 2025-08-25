@@ -19,7 +19,7 @@ lastMod: 2025-08-25
 
 > <sub>
   > <b>Changelog:</b><br>
-  > <b>2025-08-25:</b> Made the toolbar example a bit more clear<br>
+  > <b>2025-08-25:</b> Made the toolbar example a bit more clear.<br>
 > </sub>
 
 ## The \[color\] attribute

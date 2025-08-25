@@ -1,5 +1,5 @@
 ---
-title: Angular PWA tutorial part 1
+title: Angular PWA tutorial part 1 - Setup
 slug: angular-pwa-tutorial-part-1
 description: Part 1 of a series of posts about PWA development, specifically in Angular
 date: 2025-08-23
@@ -12,9 +12,15 @@ thumbnailDescription: angular logo
 tags: [Angular, PWA]
 shadowColor: angular
 draft: false
+lastMod: 2025-08-25
 ---
 
-# Angular PWA tutorial part 1
+# Angular PWA tutorial part 1 - Setup
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-08-25:</b> Modified title to be consistent with the rest of the series and added link to part 2.<br>
+> </sub>
 
 This is the first part of a series of posts going through PWA development in the context of Angular specifically. At the time of writing this, I don't know how many posts I'll end up writing or what features we'll go through specifically, so the scope is fairly vague.
 
@@ -160,3 +166,5 @@ Our ``#isOnline`` signal will hold the online status at any given time. We set t
 That leaves us with our ``isOffline`` computed signal, which is just a publicly exposed signal in our service, that we can use in our ``app.ts`` or anywhere else and it provides the negated value of ``#isOnline``, since we most likely will want to check elsewhere if the app "is offline", not that it is "is not online".
 
 I'll wrap this up here for this post. The last thing I'll do is leave a link to the [GitHub repo](https://github.com/bneuhausz/pwa-tutorial/tree/part-1) for this series. The ``master`` branch will always contain the up to date version of this application, but I'll create a new branch for each post with a naming convention of part-1, part-2, part-n, etc...
+
+[Part 2 of this series about new version notification has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
