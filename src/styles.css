@@ -3,6 +3,11 @@
 @plugin 'daisyui';
 
 @layer utilities {
+  .prose blockquote {
+    color: var(--color-amber-100);
+    border-left-color: var(--color-amber-100);
+  }
+
   .prose pre code {
     text-align: left;
     display: block;
