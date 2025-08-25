@@ -8,4 +8,17 @@
     <br />
     It helps us understand how our site is being used so we can improve the visitor experience, without compromising user privacy.
   </p>
+
+  <h2 class="text-2xl m-2">Newsletter</h2>
+  <p>
+    If you choose to subscribe to our newsletter, we will collect your email address to send you content and updates.
+    <br />
+    We use MailerLite as our email marketing platform to manage our subscriber list and send emails on our behalf.
+    <br />
+    Your email address will be stored on MailerLite's servers.
+    <br />
+    You can review <strong><a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">MailerLite's privacy policy</a></strong> for information on how they handle your data.
+    <br />
+    You can unsubscribe from our newsletter at any time by clicking the "unsubscribe" link provided in the footer of every email.
+  </p>
 </template>
