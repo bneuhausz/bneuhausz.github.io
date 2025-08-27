@@ -15,6 +15,9 @@
       <a href="https://github.com/bneuhausz" target="_blank" rel="noopener">
         <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div>
       </a>
+      <a href="https://x.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center ml-3">
+        <ng-icon name="faBrandSquareXTwitter" />
+      </a>
       <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
         <ng-icon name="heroEnvelopeSolid" />
       </a>
