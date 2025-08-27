@@ -80,7 +80,7 @@
     @for (post of filteredPosts(); track post.attributes.slug) {
       <ul class="list bg-neutral rounded-box shadow-md">    
         <li class="list-row pb-4 border-b border-amber-100 cursor-pointer hover:bg-neutral-900 transition duration-500" [routerLink]="['/blog', post.attributes.slug]">
-          <div><img class="size-10 rounded-box bg-amber-100" src="/images/angular_gradient_icon.avif"/></div>
+          <div><img class="size-10 rounded-box bg-amber-100" src="{{ post.attributes.icon }}" alt="{{ post.attributes.iconDescription }}"/></div>
           <div>
             <div>{{ post.attributes.title }}</div>
             <div class="text-xs uppercase font-semibold opacity-60 mb-1">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</div>
