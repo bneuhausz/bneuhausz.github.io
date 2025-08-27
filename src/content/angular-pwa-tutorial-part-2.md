@@ -16,9 +16,15 @@ iconDescription: angular logo
 tags: [Angular, PWA]
 shadowColor: angular
 draft: false
+lastMod: 2025-08-27
 ---
 
 # Angular PWA tutorial part 2 - New version notification
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-08-27:</b> Added link to GitHub and part 3.<br>
+> </sub>
 
 In part 2 of this series, we will take a look at how you can notify your users about a new version of your app being available.
 
@@ -185,3 +191,7 @@ The next time you start the application from the home screen, after a few second
 If the user clicks the reload button, the app will reload and they instantly have access to the new version. If they choose not to reload, the new version was still downloaded in the background and after they refresh or they open the app the next time, the new version will be loaded.
 
 One important note is that you have to change something in your application that changes the build output to register it as a new version, so make sure something changes in your html, css and javascript before you create a new build for the notification to work.
+
+The complete code for this chapter is available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-2)
+
+[Part 3 of this series, where we implement a simple backend for push notifications has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3)
