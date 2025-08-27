@@ -10,6 +10,7 @@ import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
 import { provideIcons, provideNgIconsConfig } from '@ng-icons/core';
 import { heroEnvelopeSolid } from '@ng-icons/heroicons/solid';
+import { faBrandSquareXTwitter } from '@ng-icons/font-awesome/brands';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(),
     provideContent(withMarkdownRenderer(), withShikiHighlighter()),
-    provideIcons({ heroEnvelopeSolid }),
+    provideIcons({ heroEnvelopeSolid, faBrandSquareXTwitter }),
     provideNgIconsConfig({
       size: '1.5em',
     }),
