@@ -13,7 +13,7 @@ thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 icon: /images/angular_gradient_icon.avif
 iconDescription: angular logo
-tags: [Angular, PWA]
+tags: [JavaScript, Angular, PWA]
 shadowColor: angular
 draft: false
 lastMod: 2025-08-25
