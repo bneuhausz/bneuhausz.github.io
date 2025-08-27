@@ -13,7 +13,7 @@ thumbnail: /images/node_js_icon.svg
 thumbnailDescription: Node.js logo
 icon: /images/node_js_icon.svg
 iconDescription: Node.js logo
-tags: [PWA, Node.js, Express]
+tags: [JavaScript, PWA, Node.js, Express]
 shadowColor: nodejs
 draft: false
 ---

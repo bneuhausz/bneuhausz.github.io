@@ -13,7 +13,7 @@ thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 icon: /images/angular_gradient_icon.avif
 iconDescription: angular logo
-tags: [Angular, Angular Material, Theming]
+tags: [JavaScript, Angular, Angular Material, Theming]
 shadowColor: angular
 draft: false
 ---

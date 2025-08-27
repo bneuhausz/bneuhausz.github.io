@@ -13,7 +13,7 @@ thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
 icon: /images/angular_gradient_icon.avif
 iconDescription: angular logo
-tags: [Angular, Analog, Tailwind CSS, daisyUI]
+tags: [JavaScript, Angular, Analog, Tailwind CSS, daisyUI]
 shadowColor: angular
 draft: false
 ---
