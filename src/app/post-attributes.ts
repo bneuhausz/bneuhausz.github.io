@@ -10,6 +10,8 @@ export default interface PostAttributes {
   metaImageDescription: string;
   thumbnail: string;
   thumbnailDescription: string;
+  icon: string;
+  iconDescription: string;
   tags: string[];
   shadowColor: string;
   date: string;

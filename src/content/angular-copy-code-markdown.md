@@ -11,6 +11,8 @@ metaImage: https://bneuhausz.dev/images/bneuhausz_dev.png
 metaImageDescription: bneuhausz.dev site logo
 thumbnail: /images/angular_gradient_thumbnail.avif
 thumbnailDescription: angular logo
+icon: /images/angular_gradient_icon.avif
+iconDescription: angular logo
 tags: [Angular, Analog, Tailwind CSS, daisyUI]
 shadowColor: angular
 draft: false

@@ -20,7 +20,7 @@
             <img
               [src]="post().attributes.thumbnail"
               [alt]="post().attributes.thumbnailDescription"
-              class="h-full w-full object-cover"
+              class="h-full w-full object-contain"
             />
           </figure>
         </div>
