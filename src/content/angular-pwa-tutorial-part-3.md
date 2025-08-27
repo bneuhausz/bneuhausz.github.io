@@ -1,7 +1,7 @@
 ---
-title: Angular PWA tutorial part 3 - Backend for sending push notifications
+title: Angular PWA tutorial part 3 - Node backend for sending push notifications
 slug: angular-pwa-tutorial-part-3
-description: In part 3 of this series, we will implement the backend to be able to send push notifications
+description: In part 3 of this series, we will implement a simple node backend to be able to send push notifications
 date: 2025-08-27
 coverImage: /images/node_js_header.svg
 coverImageMedium: /images/node_js_header.svg
@@ -18,7 +18,7 @@ shadowColor: nodejs
 draft: false
 ---
 
-# Angular PWA tutorial part 3 - Sending push notifications
+# Angular PWA tutorial part 3 - Node backend for sending push notifications
 
 Sending push notifications is a bit more complex than what we've dealt with before in this series and it requires a separate backend to provide security and reliability. In part 3 of this series, we will set up a very simple backend using Node.js and Express that will be more than enough for learning purposes.
 
