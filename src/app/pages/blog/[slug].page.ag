@@ -68,7 +68,7 @@
 
 <template>
   @if (post$ | async; as post) {
-    <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32">
+    <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8">
       <img
         [srcset]="post.attributes.coverImageSmall + ' 480w, ' + 
           post.attributes.coverImageMedium + ' 800w, ' + 
@@ -81,8 +81,18 @@
 
       <p class="mb-8">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</p>
 
-      <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left">
+      <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left mb-8">
         <analog-markdown [content]="post.content" />
+      </div>
+
+      <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
+        <div class="card-body items-center">
+          <h2 class="card-title">Newsletter</h2>
+          <p>Sign up for my - probably - monthly newsletter to receive updates about new posts and possibly other content</p>
+          <div class="card-actions">
+            <button class="ml-onclick-form btn btn-ghost hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">Subscribe</button>
+          </div>
+        </div>
       </div>
     </article>
   }
