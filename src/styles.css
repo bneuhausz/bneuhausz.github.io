@@ -59,17 +59,20 @@
   --color-default: #000;
   --color-angular: #b52e31;
   --color-dotnet: #512bd4;
+  --color-nodejs: #5FA04E;
 
   --blog-shadow-dimensions: 0 0 20px 10px;
 
   --shadow-default: var(--blog-shadow-dimensions) var(--color-default);
   --shadow-angular: var(--blog-shadow-dimensions) var(--color-angular);
   --shadow-dotnet: var(--blog-shadow-dimensions) var(--color-dotnet);
+  --shadow-nodejs: var(--blog-shadow-dimensions) var(--color-nodejs);
 }
 
 @source inline("hover:shadow-default");
 @source inline("hover:shadow-angular");
 @source inline("hover:shadow-dotnet");
+@source inline("hover:shadow-nodejs");
 
 body {
   color: #213547;
