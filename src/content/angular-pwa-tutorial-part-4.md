@@ -52,7 +52,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Fun fact, starting with Angular 21, unless you need to do more configuration on the ``HttpClient``, like setting up interceptors for example, this step becomes unnecessary, [becuase it will be provided in root.](https://github.com/angular/angular/releases/tag/21.0.0-next.0)
+Fun fact, starting with Angular 21, unless you need to do more configuration on the ``HttpClient``, like setting up interceptors for example, this step becomes unnecessary, [because it will be provided in root.](https://github.com/angular/angular/releases/tag/21.0.0-next.0)
 
 One more thing we will do is set up environment files to store our VAPID public key and the api URL. In older versions, these were created by default in Angular projects, but in recent versions, you have to use the Angular CLI to create them:
 
@@ -60,7 +60,7 @@ One more thing we will do is set up environment files to store our VAPID public 
 ng g environments
 ```
 
-After running this, the ``src/environments`` folder and the ``environments.ts`` and ``environments.development.ts`` files in it will be created. The CLI also updates ``angular.json`` and adds to following lines to the ``development`` configuration:
+After running this, the ``src/environments`` folder and the ``environments.ts`` and ``environments.development.ts`` files in it will be created. The CLI also updates ``angular.json`` and adds the following lines to the ``development`` configuration:
 
 ```json
 "fileReplacements": [
@@ -141,7 +141,7 @@ With all the plumbing done, let's turn to ``app.ts``. First things first, let's 
 <router-outlet />
 ```
 
-Then, we will need to inject our ``NotificatioNService`` and ``SwPush``, so add these to the declarations at the top of our class definition:
+Then, we will need to inject our ``NotificationService`` and ``SwPush``, so add these to the declarations at the top of our class definition:
 
 ```ts
 private readonly notification = inject(NotificationService);
@@ -193,10 +193,10 @@ cd push-notification-server
 node index.js
 ```
 
-With both of the applications running, after you were notified about a new version being availabe and refreshing the PWA, you should see this:
+With both of the applications running, after you were notified about a new version being available and refreshing the PWA, you should see this:
 
 ![app with buttons added](/images/pwa-tutorial/part-4/app_buttons.avif)
 
-Make sure to click on the "Subscribe to Notifications" button, then click the "Senc Notification" button. If everything went well, you should see a notification native to your operating system. This is how a notifications looks like on Windows:
+Make sure to click on the "Subscribe to Notifications" button, then click the "Send Notification" button. If everything went well, you should see a notification native to your operating system. This is how a notifications looks like on Windows:
 
 ![windows notification](/images/pwa-tutorial/part-4/push_notification.avif)
