@@ -58,7 +58,7 @@ button {
 
 We've just added a bit darker background and styled our buttons a bit. It's not pretty, but at least it doesn't hurt to look at it. Moving forward, we might tweak some things here and there, but we might end up with this being our final form. We'll see.
 
-## Introducing the ``SwUpdate`` service
+## Introducing the SwUpdate service
 
 The ``@angular/service-worker`` package provides us with a service called ``SwUpdate``. This service lets us communicate with the service worker that is running in the background. With its help, we can subscribe to the ``versionUpdates`` observable and react to events emitted by it. We can also manually check for updates with the ``checkForUpdate`` method.
 
@@ -74,7 +74,7 @@ There are 5 events we can react to:
 
 Right now, we are interested in ``VersionReadyEvent``, but you can read a bit more about these [here.](https://angular.dev/ecosystem/service-workers/communications)
 
-## Handling ``VersionReadyEvent``
+## Handling VersionReadyEvent
 
 First thing first, I'll show the implemented code, then we will discuss the new additions to the code.
 
