@@ -16,9 +16,15 @@ iconDescription: Node.js logo
 tags: [JavaScript, PWA, Node.js, Express]
 shadowColor: nodejs
 draft: false
+lastMod: 2025-08-28
 ---
 
 # Angular PWA tutorial part 3 - Node backend for sending push notifications
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-08-28:</b> Added link to part 4.<br>
+> </sub>
 
 Sending push notifications is a bit more complex than what we've dealt with before in this series and it requires a separate backend to provide security and reliability. In part 3 of this series, we will set up a very simple backend using Node.js and Express that will be more than enough for learning purposes.
 
@@ -229,3 +235,5 @@ We have to create a notification. The only required field is the title, so we wi
 Then, we call ``sendNotification`` with our ``subscription`` and the stringified payload. That is literally all there is to it. Our application is ready to send notifications.
 
 Again, we will discuss the contents of the ``subscription`` in the next part, when we implement the frontend, but until then, the complete code for this chapter is available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-3)
+
+[Part 4 of this series, where we implement the frontend for our Express app has been released and you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4)
