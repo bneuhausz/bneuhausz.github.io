@@ -7,7 +7,7 @@ coverImage: /images/node_js_header.svg
 coverImageMedium: /images/node_js_header.svg
 coverImageSmall: /images/node_js_header.svg
 coverImageDescription: nodejs image
-metaImage: https://bneuhausz.dev/images/bneuhausz_dev.png
+metaImage: https://bneuhausz.dev/images/bneuhausz_dev_twitter.png
 metaImageDescription: bneuhausz.dev site logo
 thumbnail: /images/node_js_icon.svg
 thumbnailDescription: Node.js logo
