@@ -16,9 +16,16 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, PWA]
 shadowColor: angular
 draft: false
+lastMod: 2025-08-30
 ---
 
 # Angular PWA tutorial part 4 - Push notification frontend implementation
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-08-30:</b> Added link to part 5.<br>
+> </sub>
+
 
 In the previous posts [we've created our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1), [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2) and [we've created a simple backend with Node.js and Express to securely handle push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3).
 
@@ -200,3 +207,5 @@ With both of the applications running, after you were notified about a new versi
 Make sure to click on the "Subscribe to Notifications" button, then click the "Send Notification" button. If everything went well, you should see a notification native to your operating system. This is how a notifications looks like on Windows:
 
 ![windows notification](/images/pwa-tutorial/part-4/push_notification.avif)
+
+[Part 5 of this series, where we take a look at the role of the manifest.webmanifest file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5)
