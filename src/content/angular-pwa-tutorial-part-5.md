@@ -16,9 +16,15 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, PWA]
 shadowColor: angular
 draft: false
+lastMod: 2025-09-01
 ---
 
 # Angular PWA tutorial part 5 - Controlling appearance and installability
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-09-01:</b> Added link to part 6.<br>
+> </sub>
 
 In the first post of this series, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1). In the second, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2). In part 3 and 4 we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3) and [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4) for the web push notification feature.
 
@@ -168,3 +174,5 @@ After you're done, our new icon with the new name should show up on the home scr
 When it opens, you should see our app with some browser controls, our new icon and our new name in the toolbar, with the toolbar's color being set to the same blue our buttons are:
 
 ![new icon](/images/pwa-tutorial/part-5/pwa_colored.png)
+
+[Part 6 of this series, where we take a look at the role of the ngsw-config.json file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6)
