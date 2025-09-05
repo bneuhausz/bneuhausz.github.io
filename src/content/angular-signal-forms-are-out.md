@@ -16,9 +16,15 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, Node.js, Express]
 shadowColor: angular
 draft: false
+lastMod: 2025-09-05
 ---
 
 # Angular signal forms are out! (Experimentally)
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-09-05:</b> Fixed some typos.<br>
+> </sub>
 
 The day has come. Angular signal forms are out! It's in a highly experimental state, but so far, everything seems really promising. Let's take a look at it.
 
@@ -98,13 +104,13 @@ f = form(signal({
 });
 ```
 
-Through ``p``, which stands for ``FieldPath``, we can basically walk through the field tree of our form. This ``FieldPath`` has a ``PathKind`` of ``Root``. For our simple usecases this doesn't really matter, but for more advanced stuff, keep this in mind. So, in our config, we can call the ``required`` function and pass the field we want to make required through our ``FieldPath`` and that is all there is to it.
+Through ``p``, which stands for ``FieldPath``, we can basically walk through the field tree of our form. This ``FieldPath`` has a ``PathKind`` of ``Root``. For our simple use cases this doesn't really matter, but for more advanced stuff, keep this in mind. So, in our config, we can call the ``required`` function and pass the field we want to make required through our ``FieldPath`` and that is all there is to it.
 
 This also adds the ``required`` attribute to our input in the end, just like all of the other built in validator functions, which is really cool to be honest.
 
 The second config parameter is optional, but it can be used to define your own error messages for example. We can also add conditions in our config object to make the validator only apply conditionally, which we will take a look at in a bit.
 
-Before we do that though, I want to mention the error handling in our HTML. Our form variable created by the ``form`` function exposes a signal for each of the properties in our input signal. On these expose signals, also as signals, we have the usual ``valid``, ``invalid``, ``errors`` and so on available. This is also the functionality we used when we added the ``[control]`` directive to our inputs. Same thing with the form itself. We have access to ``f().invalid()`` for example.
+Before we do that though, I want to mention the error handling in our HTML. Our form variable created by the ``form`` function exposes a signal for each of the properties in our input signal. On these exposed signals, also as signals, we have the usual ``valid``, ``invalid``, ``errors`` and so on available. This is also the functionality we used when we added the ``[control]`` directive to our inputs. Same thing with the form itself. We have access to ``f().invalid()`` for example.
 
 Dealing with ``FormGroups`` and ``FormControls`` will soon be behind us! Well, when signal forms exit the experimental stage anyway.
 
@@ -201,7 +207,7 @@ And here is our template:
 </form>
 ```
 
-First, notice that we used the built-in ``email`` validator. There is not much to say about it, it's working as it always had, maybe just a bit less cumbersome to set up.
+First, notice that we used the built-in ``email`` validator. There is not much to say about it, it's working as it always has, maybe just a bit less cumbersome to set up.
 
 Secondly, let's talk ``required`` when it comes to the email. Our extra config so far consisted of just adding a ``message``, but now, we also added the ``when`` function. We can extract either ``value`` or ``valueOf`` from its input and use those to create our condition. This time I've opted for ``valueOf``, which receives ``p.canReceiveNewsletter`` as an input, which is our path to the appropriate signal and extracts its value for us. Since it is a boolean value, it returns either ``true`` or ``false``, which determines if the email input is required. Incredibly simple, right?
 
@@ -266,7 +272,7 @@ With everything we have discussed so far, this is fairly straightforward, but th
 
 ### Async validation
 
-I think this is my favorite feature so far. First in the repo containing this code, there is a server folder with a simple Express API, that contains these two endpoints, that return true or false depending on if the parameter matches my name:
+I think this is my favorite feature so far. First, in the repo containing this code, there is a server folder with a simple Express API, that contains these two endpoints, that return true or false depending on if the parameter matches my name:
 
 ```js
 app.get('/api/validate/first-name/:name', (req, res) => {
@@ -318,7 +324,7 @@ f = form(signal({
 });
 ```
 
-Yes, you see that right, we have several ways of handling async validation now. There is ``validateAsync``, which we use for ``lastName`` and it uses the a ``resource``, but there is also ``validateHttp``, which builds on an ``httpResource``, [which we discussed just a few days ago.](https://bneuhausz.dev/blog/angular-httpresource) Personally, I highly prefer ``httpResource``, which is also experimental for now, but hey, signal forms are also highly experimental, so you probably shouldn't be thinking about using ``validateAsync`` or ``validateHttp`` for now.
+Yes, you see that right, we have several ways of handling async validation now. There is ``validateAsync``, which we use for ``lastName`` and it uses a ``resource``, but there is also ``validateHttp``, which builds on an ``httpResource``, [which we discussed just a few days ago.](https://bneuhausz.dev/blog/angular-httpresource) Personally, I highly prefer ``httpResource``, which is also experimental for now, but hey, signal forms are also highly experimental, so you probably shouldn't be thinking about using ``validateAsync`` or ``validateHttp`` for now.
 
 One thing I noticed here, is that change detection is a bit iffy with these async validators. On our button, ``[disabled]="f().invalid()"`` works perfectly, but our inputs only get into an error state, when we click out of them. Same thing happens with our error messages, so it seems that ``f.firstName().invalid()`` and ``f.firstName().errors()[0].message`` does not pick up the changes. Since everything is very new and experimental, it is no wonder that there are some issues, but it is equally likely that I just messed up something or I haven't noticed something very obvious. If I end up finding a fix for this, I will update this post.
 
