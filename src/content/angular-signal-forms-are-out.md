@@ -24,7 +24,7 @@ lastMod: 2025-09-06
 > <sub>
   > <b>Changelog:</b><br>
   > <b>2025-09-05:</b> Fixed some typos.<br>
-  > <b>2025-09-06:</b> Added clarification about async issues at the bottom.<br>
+  > <b>2025-09-06:</b> Added clarification about async issues at the bottom and added link to part 2 about server side validation after submitting.<br>
 > </sub>
 
 The day has come. Angular signal forms are out! It's in a highly experimental state, but so far, everything seems really promising. Let's take a look at it.
@@ -334,3 +334,5 @@ Yes, you see that right, we have several ways of handling async validation now. 
 ~~One thing I noticed here, is that change detection is a bit iffy with these async validators. On our button, ``[disabled]="f().invalid()"`` works perfectly, but our inputs only get into an error state, when we click out of them. Same thing happens with our error messages, so it seems that ``f.firstName().invalid()`` and ``f.firstName().errors()[0].message`` does not pick up the changes. Since everything is very new and experimental, it is no wonder that there are some issues, but it is equally likely that I just messed up something or I haven't noticed something very obvious. If I end up finding a fix for this, I will update this post.~~
 
 I'm sure there will be lots of changes and additions to this new form type, so I feel like I have to say one more time that everything here is HIGHLY experimental, but I do think it looks great so far. The future is bright.
+
+[A bit shorter article about server side validation after submitting has been released. Take a look!](https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors)
