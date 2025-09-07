@@ -13,13 +13,12 @@ export class ExternalLinksDirective implements AfterViewInit {
 
     const observer = new MutationObserver(() => {
       const anchorElements = this.el.nativeElement.querySelectorAll('a');
+      console.log(anchorElements.length);
       if (anchorElements.length === 0) return;
 
       anchorElements.forEach((a: HTMLAnchorElement) => {
-        if (a.hostname !== window.location.hostname) {
-          this.renderer.setAttribute(a, 'target', '_blank');
-          this.renderer.setAttribute(a, 'rel', 'noopener noreferrer');
-        }
+        this.renderer.setAttribute(a, 'target', '_blank');
+        this.renderer.setAttribute(a, 'rel', 'noopener noreferrer');
       });
 
       observer.disconnect();
