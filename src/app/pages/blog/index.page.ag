@@ -85,7 +85,7 @@
             <div>{{ post.attributes.title }}</div>
             <div class="text-xs uppercase font-semibold opacity-60 mb-1">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</div>
             @for (tag of post.attributes.tags; track tag) {
-              <div class="badge bg-amber-100 text-amber-900 mx-1">{{ tag }}</div>
+              <div class="badge bg-amber-100 text-amber-900 mx-1 mb-1 md:mb-0">{{ tag }}</div>
             }
           </div>
           <p class="list-col-wrap text-xs">
