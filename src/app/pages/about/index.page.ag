@@ -39,12 +39,3 @@
     </section>
   </div>
 </template>
-
-<style>
-  .github-icon {
-    mask-image: url('/images/github/github-mark.svg');
-    mask-size: contain;
-    -webkit-mask-image: url('/images/github/github-mark.svg');
-    -webkit-mask-size: contain;
-  }
-</style>
