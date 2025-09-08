@@ -13,7 +13,6 @@ export class ExternalLinksDirective implements AfterViewInit {
 
     const observer = new MutationObserver(() => {
       const anchorElements = this.el.nativeElement.querySelectorAll('a');
-      console.log(anchorElements.length);
       if (anchorElements.length === 0) return;
 
       anchorElements.forEach((a: HTMLAnchorElement) => {
