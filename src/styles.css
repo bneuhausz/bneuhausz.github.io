@@ -81,3 +81,10 @@ body {
   color: #213547;
   background-color: #ffffff;
 }
+
+.github-icon {
+  mask-image: url('/images/github/github-mark.svg');
+  mask-size: contain;
+  -webkit-mask-image: url('/images/github/github-mark.svg');
+  -webkit-mask-size: contain;
+}

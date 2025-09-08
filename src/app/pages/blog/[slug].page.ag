@@ -7,6 +7,7 @@
   import { ExternalLinksDirective } from '../../shared/directives/external-links.directive' with { analog: 'imports' };
   import { injectContent } from '@analogjs/content';
   import { Meta, Title } from '@angular/platform-browser';
+  import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 
   import PostAttributes from '../../post-attributes';
 
@@ -79,21 +80,44 @@
         class="w-full h-auto"
       />
 
-      <p class="mb-8">{{ post.attributes.date | date: 'yyyy-MM-dd' }}</p>
+      <p class="flex flex-row items-center my-4">
+        <span>{{ post.attributes.date | date: 'yyyy-MM-dd' }}</span>
+        <a href="https://github.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center">
+          <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span>
+        </a>
+        <a href="https://x.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center ml-3">
+          <ng-icon name="faBrandSquareXTwitter" />
+        </a>
+        <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
+          <ng-icon name="heroEnvelopeSolid" />
+        </a>
+      </p>
 
       <div appCodeCopyButton appExternalLinks class="prose dark:prose-invert text-left mb-8">
         <analog-markdown [content]="post.content" />
       </div>
-
-      <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
-        <div class="card-body items-center">
-          <h2 class="card-title">Newsletter</h2>
-          <p>Sign up for my - probably - monthly newsletter to receive updates about new posts and possibly other content</p>
-          <div class="card-actions">
-            <button class="ml-onclick-form btn btn-ghost hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">Subscribe</button>
+      
+      <section class="flex flex-col md:flex-row gap-6 items-center">
+        <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
+          <div class="card-body items-center">
+            <h2 class="card-title">Follow me on <ng-icon name="faBrandSquareXTwitter" />!</h2>
+            <p>I post updates and small snippets. If you find these posts interesting or useful, I'd greatly appreciate a follow!</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost hover:bg-amber-100 hover:text-amber-900" target="_blank" rel="noopener" href="https://x.com/bneuhausz">Follow</a>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
+          <div class="card-body items-center">
+            <h2 class="card-title">Newsletter</h2>
+            <p>Sign up for my - probably - monthly newsletter to receive updates about new posts and possibly other content!</p>
+            <div class="card-actions">
+              <button class="ml-onclick-form btn btn-ghost hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </article>
   }
 </template>

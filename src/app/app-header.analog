@@ -1,9 +1,10 @@
 <script lang="ts">
   import { RouterLink } from '@angular/router' with { analog: 'imports' };
+  import { NgIcon } from '@ng-icons/core' with { analog: 'imports' };
 </script>
 
 <template>
-  <nav class="navbar bg-neutral text-amber-100 gap-2">
+  <nav class="navbar bg-neutral text-amber-100 gap-2 px-8">
     <a routerLink="/">
       <img src="/images/nb_logo_small.avif" alt="logo of the site">
     </a>
@@ -12,6 +13,16 @@
     </a>
     <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" routerLink="/about">
       About
+    </a>
+    <span class="flex-1"></span>
+    <a href="https://github.com/bneuhausz" target="_blank" rel="noopener">
+      <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div>
+    </a>
+    <a href="https://x.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center ml-3">
+      <ng-icon name="faBrandSquareXTwitter" />
+    </a>
+    <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
+      <ng-icon name="heroEnvelopeSolid" />
     </a>
   </nav>
 </template>
