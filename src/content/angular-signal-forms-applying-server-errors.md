@@ -16,9 +16,15 @@ iconDescription: angular logo
 tags: [JavaScript, Angular]
 shadowColor: angular
 draft: false
+lastMod: 2025-09-09
 ---
 
 # Angular signal forms - Server side error handling
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-09-09:</b> Added link to part 3 about more advanced topics.<br>
+> </sub>
 
 In our second, much shorter look at Angular signal forms, we'll take a look at the new ``submit`` function and how it enables us to apply server side validation errors to the affected inputs in a pretty neat way.
 
@@ -108,3 +114,5 @@ interface ValidationError {
 ```
 
 I'm sure these little errors will be fixed fairly quickly, but even with these being around, the new Angular signal forms are a huge step in the right direction. I honestly can't wait to actually start using these features in production.
+
+[The next issue about more advanced usages of Angular signal forms is out!](https://bneuhausz.dev/blog/angular-signal-forms-advanced)
