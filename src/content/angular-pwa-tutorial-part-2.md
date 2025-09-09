@@ -93,7 +93,7 @@ import { filter } from 'rxjs';
   template: `
     @if (isNewVersionReady()) {
       <span>🆕 New version available! Please reload the application.</span>
-      <button (click)="reload()">Reloaddd</button>
+      <button (click)="reload()">Reload</button>
     }
     <h1>Welcome to {{ title() }}!!</h1>
     @if (network.isOffline()) {
