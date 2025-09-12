@@ -21,4 +21,35 @@
     <br />
     You can unsubscribe from our newsletter at any time by clicking the "unsubscribe" link provided in the footer of every email.
   </p>
+
+  <h2 class="text-2xl m-2">Advertisements</h2>
+  <p>
+    This website displays ads through Google AdSense, a third-party advertising network operated by Google.
+  </p>
+
+  <h3 class="text-xl m-2">Google's Use of Data</h3>
+  <ul>
+    <li>
+      Google uses cookies to serve ads based on a user's prior visits to this website or other websites on the internet.
+    </li>
+    <li>
+      Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.
+    </li>
+    <li>
+      For more information on how Google collects and uses data, please see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses data when you use our partners' sites or apps</a>.
+    </li>
+  </ul>
+
+  <h3 class="text-xl m-2">Opting Out of Personalized Advertising</h3>
+  <p>
+    Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ad Settings</a>.
+  </p>
+  <p>
+    Alternatively, you can direct users to opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info/choices</a>.
+  </p>
+
+  <h3 class="text-xl m-2">Third-Party Vendors</h3>
+  <p>
+    Third-party vendors and ad networks may be serving ads on this site. You can find a list of AdSense's certified ad networks and links to their privacy policies on Google's documentation.
+  </p>
 </template>
