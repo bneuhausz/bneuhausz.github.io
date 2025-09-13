@@ -42,7 +42,7 @@ As of Angular Material 18 however, the color attribute only has an effect on the
 
 ## Customizing the button in v20
 
-I've wrote, at length, about how customizing and theming works in newer versions of Angular Material, so I'll not go into that here and just leave a [link](https://bneuhausz.dev/blog/customizing-angular-material-20) to that post instead.
+I've wrote, at length, about how customizing and theming works in newer versions of Angular Material, so I'll not go into that here and just leave a [link](https://bneuhausz.dev/blog/angular-material-20-theming) to that post instead.
 
 Anyway, bringing back the old ``color`` attribute's functionality is surprisingly easy using the new mixins. All you have to do to achieve that, assuming you use the prebuilt color palettes and the azure palette is your primary palette, is defining some rules in your ``styles.scss``:
 
