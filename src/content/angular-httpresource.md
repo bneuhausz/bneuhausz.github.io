@@ -16,9 +16,15 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, Node.js, Express]
 shadowColor: angular
 draft: false
+lastMod: 2025-09-15
 ---
 
 # Angular httpResource is awesome!
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-09-15:</b> Added link to "Angular - Beyond httpResource" article<br>
+> </sub>
 
 I've been a huge fan of the new [httpResource](https://angular.dev/api/common/http/httpResource) since release. It is still in experimental stage, but it was introduced in Angular 19.2 and it received a lot of love since then. Taking into account the direction Angular has been taking with embracing the signal way, I'm confident ``httpResource`` is here to stay. That said, I often see discussion that indicates many devs are not yet familiar with this new ecosystem, so I thought I'd throw out my thoughts to the wind. Maybe it helps someone out there.
 
@@ -467,3 +473,5 @@ Add this to our template:
 And BAM, we've just created a resource that sends ``POST`` requests, even though we probably shouldn't have.
 
 All in all, I instantly fell in love with ``httpResource`` when I started using it and I'm not planning on looking back. It was a huge quality of life improvement considering the DX of Angular. I can't wait for the new signal forms that should be introduced soon in an experimental state, so you can expect a similar write-up about it in the near future too. I hope you're as excited as I am!
+
+[Another article, looking at what's beyond httpResource is out. Go take a look!](https://bneuhausz.dev/blog/angular-beyond-httpresource)
