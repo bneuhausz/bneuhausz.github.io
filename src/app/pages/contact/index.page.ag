@@ -1,0 +1,51 @@
+<script lang="ts">
+  import { inject } from '@angular/core';
+  import { FormsModule } from '@angular/forms' with { analog: 'imports' };
+  import { DOCUMENT } from '@angular/common';
+
+  document = inject(DOCUMENT);
+
+  function sendEmail(formValue: { name: string, email: string, message: string }) {
+    const { name, email, message } = formValue;
+    const subject = `Contact form submission from ${name}`;
+    const body = `${message}\n\nFrom: ${name} <${email}>`;
+    const mailto = `mailto:bneuhauszdev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    document.location.href = mailto;
+  }
+</script>
+
+<template>
+  <div class="hero min-h-full bg-neutral-800 text-amber-100">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="text-center lg:text-left">
+        <h1 class="text-3xl font-bold">Contact me!</h1>
+        <p class="py-6">Feel free to send me a message about anything. I'll get back to you as soon as I can.</p>
+      </div>
+      <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-neutral text-amber-100">
+        <form class="card-body" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm.value)">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Name</span>
+            </label>
+            <input type="text" name="name" placeholder="name" class="input input-bordered bg-neutral-700 text-amber-100" ngModel required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Email</span>
+            </label>
+            <input type="email" name="email" placeholder="email" class="input input-bordered bg-neutral-700 text-amber-100" ngModel required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Message</span>
+            </label>
+            <textarea name="message" class="textarea textarea-bordered bg-neutral-700 text-amber-100" placeholder="message" ngModel required></textarea>
+          </div>
+          <div class="form-control mt-6">
+            <button type="submit" class="btn btn-ghost hover:bg-amber-100 hover:text-amber-900">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
