@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => ({
           '/',
           '/blog',
           '/about',
+          '/contact',
           '/privacy',
           '/creative-commons',
           {
