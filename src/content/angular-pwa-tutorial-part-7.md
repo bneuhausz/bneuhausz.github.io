@@ -16,9 +16,15 @@ iconDescription: github logo
 tags: [Angular, PWA, Node.js, Render, GitHub]
 shadowColor: github
 draft: false
+lastMod: 2025-09-20
 ---
 
 # Angular PWA tutorial part 7 - Deploying our apps to GitHub Pages and Render
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-09-20:</b> Added link to part 8.<br>
+> </sub>
 
 Today, we will talk about deploying our application, but this article builds on the earlier pieces of this series. In case you are new here, make sure to catch up on them:
 - [Setup](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1)
@@ -324,3 +330,5 @@ npm run deploy
 ```
 
 and your app will be up and running in a minute or two at the https://\<your-github-username\>.github.io/\<repo-name\> URL. In fact, I just did everything exactly like this and you can access the current version of this app [here.](https://bneuhausz.dev/pwa-tutorial/)
+
+[Part 8 of this series, where we create our own install button is out. Go, take a look!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-8)
