@@ -16,7 +16,7 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, PWA]
 shadowColor: angular
 draft: false
-lastMod: 2025-09-01
+lastMod: 2025-09-20
 ---
 
 # Angular PWA tutorial part 5 - Controlling appearance and installability
@@ -24,6 +24,7 @@ lastMod: 2025-09-01
 > <sub>
   > <b>Changelog:</b><br>
   > <b>2025-09-01:</b> Added link to part 6.<br>
+  > <b>2025-09-20:</b> Fixed icons in manifest.<br>
 > </sub>
 
 In the first post of this series, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1). In the second, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2). In part 3 and 4 we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3) and [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4) for the web push notification feature.
@@ -140,8 +141,9 @@ Now let's change some stuff! I've renamed the application, changed the ``display
   "start_url": "./",
   "icons": [
     {
-      "src": "icons/nb_logo_original.avif",
-      "type": "image/avif"
+      "src": "icons/nb-logo-original.png",
+      "type": "image/png",
+      "sizes": "144x144"
     }
   ]
 }
