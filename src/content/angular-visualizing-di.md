@@ -146,7 +146,7 @@ Then, in ``DummyComponent``, we add it to providers:
 })
 export default class DummyComponent {
   globalService = inject(GlobalService);
-  dummyService = inject(GlobalService);
+  dummyService = inject(DummyService);
 }
 ```
 
