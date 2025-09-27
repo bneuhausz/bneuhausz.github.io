@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
         highlighter: 'shiki',
         shikiOptions: {
           highlighter: {
-            additionalLangs: ['bash', 'dotenv'],
+            additionalLangs: ['bash', 'dotenv', 'yaml', 'csharp'],
           },
         },
       },
