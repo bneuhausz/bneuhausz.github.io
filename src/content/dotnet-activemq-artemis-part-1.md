@@ -16,9 +16,15 @@ iconDescription: apache activemq artemis logo
 tags: [dotnet, AMQP, ActiveMQ, Artemis]
 shadowColor: dotnet
 draft: false
+lastMod: 2025-10-01
 ---
 
 # AMQP 1.0 Messaging in .NET with Apache Artemis - Part 1
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-10-01:</b> Added link to part 2.<br>
+> </sub>
 
 In this series, we will look at using AMQP 1.0 in .NET. We will use a dockerized instance of Apache's ActiveMQ Artemis as our message broker. We'll briefly discuss AMQP 1.0, but a deep dive is beyond the scope of this article. In this first post, we will look at setting up Artemis and creating our .NET application.
 
@@ -103,3 +109,5 @@ The last thing I want to cover in this article is installing the [AMQPNetLite.Co
 With this, the basic building blocks are in place, so I'll end this article here. In the following posts, we'll start talking about more practical things, like setting up our queues/topics and sending messages to them, so stay tuned!
 
 [The source code for this article can be found here.](https://github.com/bneuhausz/dotnet-amqp-messaging/tree/part-1)
+
+[Part 2, covering actually sending a message to Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2)
