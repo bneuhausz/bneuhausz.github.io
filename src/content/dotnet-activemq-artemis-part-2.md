@@ -16,9 +16,16 @@ iconDescription: dotnet logo
 tags: [dotnet, AMQP, ActiveMQ, Artemis]
 shadowColor: dotnet
 draft: false
+lastMod: 2025-10-03
 ---
 
 # AMQP 1.0 Messaging in .NET with Apache Artemis - Part 2
+
+> <sub>
+  > <b>Changelog:</b><br>
+  > <b>2025-10-03:</b> Added link to part 3.<br>
+> </sub>
+
 
 In [part 1 of this series](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1), we've created a dockerized Artemis instance and our starting .NET application. This time, we'll take a look at creating an address on the Artemis console and sending a message to it.
 
@@ -135,3 +142,5 @@ Now let's click on the Message ID to see the message content:
 ![message content](/images/dotnet-artemis/part-2/message_sent_4.avif)
 
 And we're done! Our AmqpSender is fully functional. Next time we'll take a look at receiving messages sent by Artemis.
+
+[Part 3, covering actually receiving messages from Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-3)
