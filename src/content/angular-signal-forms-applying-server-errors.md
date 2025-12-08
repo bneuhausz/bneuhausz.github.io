@@ -16,7 +16,7 @@ iconDescription: angular logo
 tags: [JavaScript, Angular]
 shadowColor: angular
 draft: false
-lastMod: 2025-09-09
+lastMod: 2025-12-08
 ---
 
 # Angular signal forms - Server side error handling
@@ -24,6 +24,7 @@ lastMod: 2025-09-09
 > <sub>
   > <b>Changelog:</b><br>
   > <b>2025-09-09:</b> Added link to part 3 about more advanced topics.<br>
+  > <b>2025-12-08:</b> This article has been upgraded to the released version of Angular 21.<br>
 > </sub>
 
 In our second, much shorter look at Angular signal forms, we'll take a look at the new ``submit`` function and how it enables us to apply server side validation errors to the affected inputs in a pretty neat way.
@@ -32,19 +33,19 @@ The repo that belongs to this article is the same that we used for the last post
 
 ## The new submit function
 
-So this new ``submit`` function accepts a ``Field`` and an ``action``. The ``Field`` will be our entire form and ``action`` will be a mock HTTP request. With this, we will demonstrate how you could validate the entire form on the server side after submitting, but the errors returned by our ``action`` will be applied automatically to the correct sub-field.
+So this new ``submit`` function accepts a ``FieldTree`` and an ``action``. The ``FieldTree`` will be our entire form and ``action`` will be a mock HTTP request. With this, we will demonstrate how you could validate the entire form on the server side after submitting, but the errors returned by our ``action`` will be applied automatically to the correct sub-field.
 
 Let's take a look at our code and it will make more sense:
 
 ```angular-ts
 @Component({
   selector: 'app-submit-form',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, Control],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, Field],
   template: `
     <form>
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput [control]="f.name" />
+        <input matInput [field]="f.name" />
         @if (f.name().invalid()) {
           <mat-error>{{ f.name().errors()[0].kind }}: {{ f.name().errors()[0].message }}</mat-error>
         }
@@ -65,7 +66,7 @@ export default class ValidatedForm {
     submit(this.f, (f) => this.mockHttpRequest(f));
   }
 
-  mockHttpRequest(form: Field<{ name: string }>) {
+  mockHttpRequest(form: FieldTree<{ name: string }>) {
     return Promise.resolve(
       form().value().name === 'Bálint'
         ? undefined
@@ -81,7 +82,7 @@ export default class ValidatedForm {
 
 We added a ``(click)`` listener to our button, which will invoke our ``submitForm`` function when it fires.
 
-Then, we create our ``mockHttpRequest``, which accepts our ``Field`` as a parameter and it will simply return a Promise, which is enough for demonstration purposes. It's important to note that our function accepts the ``Field`` itself, not the value inside. If our validation criteria passes, we return undefined. If it doesn't, then we have to return our error in a specific format.
+Then, we create our ``mockHttpRequest``, which accepts our ``FieldTree`` as a parameter and it will simply return a Promise, which is enough for demonstration purposes. It's important to note that our function accepts the ``FieldTree`` itself, not the value inside. If our validation criteria passes, we return undefined. If it doesn't, then we have to return our error in a specific format.
 
 We are returning an array of errors. The ``kind`` and ``message`` are pretty straightforward and we looked at those in the [first post about the new signal forms.](https://bneuhausz.dev/blog/angular-signal-forms-are-out)
 
