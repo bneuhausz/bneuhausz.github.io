@@ -20,7 +20,7 @@ export const routeMeta: RouteMeta = {
         </div>
       </div>
 
-      <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
+      <!-- <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
         <div class="card-body items-center">
           <h2 class="card-title">Newsletter</h2>
           <p>Sign up for my - probably - monthly newsletter to receive updates about new posts and possibly other content</p>
@@ -28,7 +28,7 @@ export const routeMeta: RouteMeta = {
             <button class="ml-onclick-form btn btn-ghost hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">Subscribe</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
         <div class="card-body items-center">

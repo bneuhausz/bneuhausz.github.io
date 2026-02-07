@@ -15,6 +15,7 @@
   const posts = signal(injectContentFiles<PostAttributes>(post => !post.attributes.draft));
   const selectedTag = signal('');
   const selectedSort = signal('desc');
+  const searchTerm = signal('');
 
   const uniqueTags = computed(() => {
     const allTags = posts().flatMap(post => post.attributes.tags);
@@ -42,10 +43,19 @@
   const filteredPosts = computed(() => {
     const tag = selectedTag();
     const sort = selectedSort();
+    const search = searchTerm().toLowerCase();
     let posts = sort === 'asc' ? [...sortedPosts()].reverse() : sortedPosts();
 
     if (tag) {
       posts = posts.filter(post => post.attributes.tags.includes(tag));
+    }
+
+    if (search) {
+      posts = posts.filter(post => 
+        post.attributes.title.toLowerCase().includes(search) ||
+        post.attributes.description.toLowerCase().includes(search) ||
+        post.attributes.tags.some(t => t.toLowerCase().includes(search))
+      );
     }
     return posts;
   });
@@ -75,6 +85,22 @@
         <option value="desc">Newest first</option>
         <option value="asc">Oldest first</option>
       </select>
+
+      <label class="input bg-amber-100 text-amber-900">
+        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            fill="none"
+            stroke="currentColor"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </g>
+        </svg>
+        <input type="search" class="grow" placeholder="Search" [(ngModel)]="searchTerm" />
+      </label>
     </div>
 
     @for (post of filteredPosts(); track post.attributes.slug) {

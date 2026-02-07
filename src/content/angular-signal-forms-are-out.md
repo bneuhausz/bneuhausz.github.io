@@ -16,7 +16,7 @@ iconDescription: angular logo
 tags: [JavaScript, Angular, Node.js, Express]
 shadowColor: angular
 draft: false
-lastMod: 2025-12-08
+lastMod: 2026-02-07
 ---
 
 # Angular signal forms are out! (Experimentally)
@@ -26,6 +26,7 @@ lastMod: 2025-12-08
   > <b>2025-09-05:</b> Fixed some typos.<br>
   > <b>2025-09-06:</b> Added clarification about async issues at the bottom and added link to part 2 about server side validation after submitting.<br>
   > <b>2025-12-08:</b> This article has been upgraded to the released version of Angular 21.<br>
+  > <b>2026-02-07:</b> This article has been upgraded to Angular version 21.2.0-next.2, in which the Field directive has been renamed to FormField and the customError function has been removed.<br>
 > </sub>
 
 The day has come. Angular signal forms are out! It's in a highly experimental state, but so far, everything seems really promising. Let's take a look at it.
@@ -41,17 +42,17 @@ Either way, take a look at this! Even with the extra lines due to Material, this
 ```angular-ts
 @Component({
   selector: 'app-simple-form',
-  imports: [MatFormFieldModule, MatInputModule, Field],
+  imports: [MatFormFieldModule, MatInputModule, FormField],
   template: `
     <form>
       <mat-form-field>
         <mat-label>First Name</mat-label>
-        <input matInput [field]="f.firstName" />
+        <input matInput [formField]="f.firstName" />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Last Name</mat-label>
-        <input matInput [field]="f.lastName" />
+        <input matInput [formField]="f.lastName" />
       </mat-form-field>
     </form>
   `,
@@ -64,10 +65,10 @@ export default class SimpleForm {
 }
 ```
 
-Yes, this is all the code it takes to create a form with signal forms. Just feed a signal to the new ``form`` function and add the ``[field]`` directive to your input of choice and you are done. Just make sure to import everything from the correct module, which, in our case, looks like this:
+Yes, this is all the code it takes to create a form with signal forms. Just feed a signal to the new ``form`` function and add the ``[formField]`` directive to your input of choice and you are done. Just make sure to import everything from the correct module, which, in our case, looks like this:
 
 ```ts
-import { form, Field } from "@angular/forms/signals";
+import { form, FormField } from "@angular/forms/signals";
 ```
 
 Now let's add some basic validators.
@@ -78,7 +79,7 @@ The usual default validators supplied by Angular are available as functions impo
 <form>
   <mat-form-field>
     <mat-label>First Name</mat-label>
-    <input matInput [field]="f.firstName" />
+    <input matInput [formField]="f.firstName" />
     @if (f.firstName().invalid()) {
       <mat-error>{{ f.firstName().errors()[0].message }}</mat-error>
     }
@@ -86,7 +87,7 @@ The usual default validators supplied by Angular are available as functions impo
 
   <mat-form-field>
     <mat-label>Last Name</mat-label>
-    <input matInput [field]="f.lastName" />
+    <input matInput [formField]="f.lastName" />
     @if (f.lastName().invalid()) {
       <mat-error>{{ f.lastName().errors()[0].message }}</mat-error>
     }
@@ -112,7 +113,7 @@ This also adds the ``required`` attribute to our input in the end, just like all
 
 The second config parameter is optional, but it can be used to define your own error messages for example. We can also add conditions in our config object to make the validator only apply conditionally, which we will take a look at in a bit.
 
-Before we do that though, I want to mention the error handling in our HTML. Our form variable created by the ``form`` function exposes a signal for each of the properties in our input signal. On these exposed signals, also as signals, we have the usual ``valid``, ``invalid``, ``errors`` and so on available. This is also the functionality we used when we added the ``[field]`` directive to our inputs. Same thing with the form itself. We have access to ``f().invalid()`` for example.
+Before we do that though, I want to mention the error handling in our HTML. Our form variable created by the ``form`` function exposes a signal for each of the properties in our input signal. On these exposed signals, also as signals, we have the usual ``valid``, ``invalid``, ``errors`` and so on available. This is also the functionality we used when we added the ``[formField]`` directive to our inputs. Same thing with the form itself. We have access to ``f().invalid()`` for example.
 
 Dealing with ``FormGroups`` and ``FormControls`` will soon be behind us! Well, when signal forms exit the experimental stage anyway.
 
@@ -181,7 +182,7 @@ And here is our template:
 <form>
   <mat-form-field>
     <mat-label>First Name</mat-label>
-    <input matInput [field]="f.firstName" />
+    <input matInput [formField]="f.firstName" />
     @if (f.firstName().invalid()) {
       <mat-error>{{ f.firstName().errors()[0].message }}</mat-error>
     }
@@ -189,7 +190,7 @@ And here is our template:
 
   <mat-form-field>
     <mat-label>Last Name</mat-label>
-    <input matInput [field]="f.lastName" />
+    <input matInput [formField]="f.lastName" />
     @if (f.lastName().invalid()) {
       <mat-error>{{ f.lastName().errors()[0].message }}</mat-error>
     }
@@ -197,13 +198,13 @@ And here is our template:
 
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput [field]="f.email" />
+    <input matInput [formField]="f.email" />
     @if (f.email().invalid()) {
       <mat-error>{{ f.email().errors()[0].message }}</mat-error>
     }
   </mat-form-field>
 
-  <mat-checkbox [field]="f.canReceiveNewsletter">Send me newsletters!</mat-checkbox>
+  <mat-checkbox [formField]="f.canReceiveNewsletter">Send me newsletters!</mat-checkbox>
 
   <button mat-button type="button" [disabled]="f().invalid()">Submit</button>
 </form>
@@ -240,12 +241,12 @@ This example has been going around since we've got our first public demo a few w
 <form>
   <mat-form-field>
     <mat-label>Password</mat-label>
-    <input matInput [field]="f.password" />
+    <input matInput [formField]="f.password" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Confirm Password</mat-label>
-    <input matInput [field]="f.confirm" />
+    <input matInput [formField]="f.confirm" />
   </mat-form-field>
 
   @if (f().errors()[0]?.kind === 'passwordMismatch') {
@@ -263,14 +264,14 @@ f = form(signal({
   required(p.confirm, { message: 'Please confirm your password' });
   validate(p, ({ value }) => {
     if (value().password !== value().confirm) {
-      return customError({ kind: 'passwordMismatch', message: 'The password and the password confirmation do not match' });
+      return { kind: 'passwordMismatch', message: 'The password and the password confirmation do not match' };
     }
     return [];
   });
 });
 ```
 
-With everything we have discussed so far, this is fairly straightforward, but there are some things worth mentioning. One being the general ``validate`` function. So far, we've only looked at built in validators, but if you need custom logic, this is how you handle it. Notice, that this time, I opted for ``value`` instead of ``valueOf``, but the concept is basically the same. We have access to the values in our form through invoking ``value``. The last thing I want to mention here is to take note of the ``customError`` function, which serves to create the error messages for our custom validators.
+With everything we have discussed so far, this is fairly straightforward, but there are some things worth mentioning. One being the general ``validate`` function. So far, we've only looked at built in validators, but if you need custom logic, this is how you handle it. Notice, that this time, I opted for ``value`` instead of ``valueOf``, but the concept is basically the same. We have access to the values in our form through invoking ``value``. ~~The last thing I want to mention here is to take note of the ``customError`` function, which serves to create the error messages for our custom validators.~~
 
 ### Async validation
 
@@ -309,7 +310,7 @@ f = form(signal({
     request: ({ value }) => { return value() ? `http://localhost:3000/api/validate/first-name/${value()}` : undefined },
     onSuccess(res: any) {
       if (!res.valid) {
-        return [customError({ kind: 'notUnique', message: 'First name is not unique' })];
+        return [{ kind: 'notUnique', message: 'First name is not unique' }];
       }
       return null;
     },
@@ -331,7 +332,7 @@ f = form(signal({
     }),
     onSuccess(res: any) {
       if (!res.valid) {
-        return [customError({ kind: 'notUnique', message: 'Last name is not unique' })];
+        return [{ kind: 'notUnique', message: 'Last name is not unique' }];
       }
       return null;
     },
