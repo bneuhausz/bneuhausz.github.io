@@ -85,9 +85,9 @@
         <a href="https://github.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center">
           <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span>
         </a>
-        <a href="https://x.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center ml-3">
+        <!-- <a href="https://x.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center ml-3">
           <ng-icon name="faBrandSquareXTwitter" />
-        </a>
+        </a> -->
         <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
           <ng-icon name="heroEnvelopeSolid" />
         </a>
@@ -97,7 +97,7 @@
         <analog-markdown [content]="post.content" />
       </div>
       
-      <section class="flex flex-col md:flex-row gap-6 items-center">
+      <!-- <section class="flex flex-col md:flex-row gap-6 items-center">
         <div class="card w-full sm:w-96 h-60 bg-neutral text-amber-100 card-xl shadow-sm">
           <div class="card-body items-center">
             <h2 class="card-title">Follow me on <ng-icon name="faBrandSquareXTwitter" />!</h2>
@@ -117,7 +117,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </article>
   }
 </template>
