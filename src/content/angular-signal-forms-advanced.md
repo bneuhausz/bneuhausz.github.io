@@ -16,7 +16,7 @@ iconDescription: angular logo
 tags: [JavaScript, Angular]
 shadowColor: angular
 draft: false
-lastMod: 2025-12-08
+lastMod: 2026-02-07
 ---
 
 # Angular signal forms - Advanced features
@@ -24,6 +24,7 @@ lastMod: 2025-12-08
 > <sub>
   > <b>Changelog:</b><br>
   > <b>2025-12-08:</b> This article has been upgraded to the released version of Angular 21.<br>
+  > <b>2026-02-07:</b> This article has been upgraded to Angular version 21.2.0-next.2, in which the Field directive has been renamed to FormField.<br>
 > </sub>
 
 This time around, we'll take a look at more advanced features of the newly released, experimental signal forms. If you are not up to speed, make sure to take a look at the previous issues:
@@ -87,7 +88,7 @@ Using this is also really simple:
 @Component({
   template: `
     <form>
-      <app-custom-control [field]="f.color"></app-custom-control>
+      <app-custom-control [formField]="f.color"></app-custom-control>
     </form>
 
     <span>Form value: {{ f().value() | json }}</span>
@@ -165,7 +166,7 @@ The only thing we need to change in our template is that from now on, we can acc
 ```angular-html
 <mat-form-field>angular-signal-forms-advanced
   <mat-label>First Name</mat-label>
-  <input matInput [field]="f.name.firstName" />
+  <input matInput [formField]="f.name.firstName" />
   @if (f.name.firstName().invalid()) {
     <mat-error>{{ f.name.firstName().errors()[0].message }}</mat-error>
   }
@@ -189,7 +190,7 @@ type Person = {
 Our schema definitions remain the same and the only change we have to make to our template is adding a checkbox to our form:
 
 ```angular-html
-<mat-checkbox [field]="f.canReceiveNewspaper">Send me newspapers!</mat-checkbox>
+<mat-checkbox [formField]="f.canReceiveNewspaper">Send me newspapers!</mat-checkbox>
 ```
 
 The form definition largely remains the same, but this is where it gets interesting:
@@ -233,7 +234,7 @@ We add an "Add Address" button to our template and from now on, we iterate throu
 @for (address of f.addresses; track $index) {
   <mat-form-field>
     <mat-label>Street</mat-label>
-    <input matInput [field]="address.street" />
+    <input matInput [formField]="address.street" />
     @if (address.street().invalid()) {
       <mat-error>{{ address.street().errors()[0].message }}</mat-error>
     }
@@ -241,7 +242,7 @@ We add an "Add Address" button to our template and from now on, we iterate throu
 
   <mat-form-field>
     <mat-label>City</mat-label>
-    <input matInput [field]="address.city" />
+    <input matInput [formField]="address.city" />
     @if (address.city().invalid()) {
       <mat-error>{{ address.city().errors()[0].message }}</mat-error>
     }

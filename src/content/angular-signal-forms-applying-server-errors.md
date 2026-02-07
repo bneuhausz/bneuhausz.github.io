@@ -16,7 +16,7 @@ iconDescription: angular logo
 tags: [JavaScript, Angular]
 shadowColor: angular
 draft: false
-lastMod: 2025-12-08
+lastMod: 2026-02-07
 ---
 
 # Angular signal forms - Server side error handling
@@ -25,6 +25,7 @@ lastMod: 2025-12-08
   > <b>Changelog:</b><br>
   > <b>2025-09-09:</b> Added link to part 3 about more advanced topics.<br>
   > <b>2025-12-08:</b> This article has been upgraded to the released version of Angular 21.<br>
+  > <b>2026-02-07:</b> This article has been upgraded to Angular version 21.2.0-next.2, in which the Field directive has been renamed to FormField and the error object returned by the submit method should contain a fieldTree property instead of field.<br>
 > </sub>
 
 In our second, much shorter look at Angular signal forms, we'll take a look at the new ``submit`` function and how it enables us to apply server side validation errors to the affected inputs in a pretty neat way.
@@ -45,7 +46,7 @@ Let's take a look at our code and it will make more sense:
     <form>
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput [field]="f.name" />
+        <input matInput [formField]="f.name" />
         @if (f.name().invalid()) {
           <mat-error>{{ f.name().errors()[0].kind }}: {{ f.name().errors()[0].message }}</mat-error>
         }
@@ -71,7 +72,7 @@ export default class ValidatedForm {
       form().value().name === 'Bálint'
         ? undefined
         : [{
-          field: form.name,
+          fieldTree: form.name,
           kind: 'server',
           message: 'Name is not valid'
         }]
@@ -86,17 +87,19 @@ Then, we create our ``mockHttpRequest``, which accepts our ``FieldTree`` as a pa
 
 We are returning an array of errors. The ``kind`` and ``message`` are pretty straightforward and we looked at those in the [first post about the new signal forms.](https://bneuhausz.dev/blog/angular-signal-forms-are-out)
 
-The ``field`` property is new though. We pass the specific sub-field we want this error to be applied to. Again, we pass the field and subfield without invoking anything, so make sure it is ``form.name`` and not ``form.name()`` or anything like that. This will be used by ``submit`` in the background to identify which sub-field the error has to be applied to.
+The ``fieldTree`` property is new though. We pass the specific sub-field we want this error to be applied to. Again, we pass the field and subfield without invoking anything, so make sure it is ``form.name`` and not ``form.name()`` or anything like that. This will be used by ``submit`` in the background to identify which sub-field the error has to be applied to.
 
 Now all we have left to do is to call ``submit`` in our ``submitForm`` method and pass the form and our action. Assuming we've done everything right, after we click our button, if the validation criteria in ``mockHttpRequest`` does not pass, our validation kind and message will show up right under our input, inside ``mat-form-field``, which only shows up if specifically the ``name`` input is invalid, proving that this works as we intended.
 
 ## Documentation issue
 
-One thing I should point out, is that at the time of writing this article, the documentation is not consistent with the actual functionality.
+Disregard this, it has been fixed in recent versions.
+
+~~One thing I should point out, is that at the time of writing this article, the documentation is not consistent with the actual functionality.~~
 
 ![windows notification](/images/angular-signal-forms/signal_forms_doc_error.avif)
 
-Issues are expected, as signal forms are very much experimental still, but make sure to pay attention, because the example from the documentation above tells us to return the error in a different format that will not work, as the actual definition of the ValidationError interface is this:
+~~Issues are expected, as signal forms are very much experimental still, but make sure to pay attention, because the example from the documentation above tells us to return the error in a different format that will not work, as the actual definition of the ValidationError interface is this:~~
 
 ```ts
 /**
@@ -114,6 +117,6 @@ interface ValidationError {
 }
 ```
 
-I'm sure these little errors will be fixed fairly quickly, but even with these being around, the new Angular signal forms are a huge step in the right direction. I honestly can't wait to actually start using these features in production.
+~~I'm sure these little errors will be fixed fairly quickly, but even with these being around, the new Angular signal forms are a huge step in the right direction. I honestly can't wait to actually start using these features in production.~~
 
 [The next issue about more advanced usages of Angular signal forms is out!](https://bneuhausz.dev/blog/angular-signal-forms-advanced)
