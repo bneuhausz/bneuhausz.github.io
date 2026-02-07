@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Visualizing Angular's dependency injection - bneuhausz.dev</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="impact-site-verification" value="fadbe9c7-c2b6-4441-b7ef-92e28101384e">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script defer="" type="application/javascript" src="javascript/klaro/config.js"></script>
+    <!-- <script defer src="/javascript/klaro/klaro.js"></script> -->
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1479748760290806" crossorigin="anonymous">
+    </script>
+    <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1754906');
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-Ds1THEmd.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-guJYqCx_.css">
+  <style ng-app-id="ng">[_nghost-ng-c572653062]{display:inline-block;width:var(--ng-icon__size, 1em);height:var(--ng-icon__size, 1em);line-height:initial;vertical-align:initial;overflow:hidden}[_nghost-ng-c572653062]     svg{width:inherit;height:inherit;vertical-align:inherit}@layer ng-icon{[_nghost-ng-c572653062]{color:var(--ng-icon__color, currentColor)}}</style><meta name="description" content="Dependency Injection can be confusing. Let's visualize it!"><meta property="og:title" content="Visualizing Angular's dependency injection"><meta property="og:description" content="Dependency Injection can be confusing. Let's visualize it!"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Visualizing Angular's dependency injection"><meta name="twitter:description" content="Dependency Injection can be confusing. Let's visualize it!"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script type="application/ld+json" id="blogpost-ldjson">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Visualizing Angular's dependency injection","image":"/images/angular_gradient_thumbnail.avif","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2025-09-12T00:00:00.000Z","description":"Dependency Injection can be confusing. Let's visualize it!"}</script><link rel="canonical" href="https://yourdomain.com/blog/angular-visualizing-di"></head>
+  <body class="text-center h-screen w-screen overflow-x-hidden"><!--nghm-->
+    <app-root ng-version="19.2.9" class="flex flex-col h-screen" ngh="3" ng-server-context="ssr-analog"><appheader ngh="0"><nav class="navbar bg-neutral text-amber-100 gap-2 px-8"><a routerlink="/" href="/"><img src="/images/nb_logo_small.avif" alt="logo of the site"></a><a routerlink="/blog" class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog"> Blog </a><a routerlink="/about" class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/about"> About </a><span class="flex-1"></span><a href="https://github.com/bneuhausz" target="_blank" rel="noopener"><div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div></a><a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"><ng-icon role="img" name="heroEnvelopeSolid" _nghost-ng-c572653062="" aria-hidden="true" data-ng-icon-ssr="" style="--ng-icon__size: 1.5em;" ngh="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"></path><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"></path></svg></ng-icon></a></nav></appheader><main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100"><router-outlet></router-outlet><div slug="" ngh="2"><article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"><img sizes="(max-width: 1280px) 100vw, 1280px" class="w-full h-auto" srcset="/images/angular_wordmark_gradient_header_small.avif 480w, /images/angular_wordmark_gradient_header_medium.avif 800w, /images/angular_wordmark_gradient_header.avif 1280w" src="/images/angular_wordmark_gradient_header.avif" alt="angular gradient image"><p class="flex flex-row items-center my-4"><span>2025-09-12</span><a href="https://github.com/bneuhausz" target="_blank" rel="noopener" class="flex items-center"><span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span></a><a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"><ng-icon role="img" name="heroEnvelopeSolid" _nghost-ng-c572653062="" aria-hidden="true" data-ng-icon-ssr="" style="--ng-icon__size: 1.5em;" ngh="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"></path><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"></path></svg></ng-icon></a></p><div appcodecopybutton="" appexternallinks="" class="prose dark:prose-invert text-left mb-8"><analog-markdown ngh="1"><div class="analog-markdown"><h1 id="visualizing-angulars-dependency-injection">Visualizing Angular's dependency injection</h1>
+<p>Dependency injection (DI) is an incredibly powerful concept that is heavily relied on in the enterprise space, yet, it is often mentioned as a drawback to using Angular in general web development circles. Some people say it is convoluted or straight up overengineering.</p><p>Let's try to make it a bit more clear by visualizing it.</p><h2 id="what-is-di">What is DI?</h2>
+<p>Basically, dependency injection is a design pattern where a class receives its dependencies from an external source instead of creating them itself. An often used example to make it a bit more relatable is that of a cook working in a kitchen. Instead of having to go to the store and buying the ingredients himself, the chef just writes a list of what he needs for the day and it is the job of someone else to get the ingredients. In this example, a component can be the chef and Angular, the framework itself, is the one responsible to get what the component needs.</p><p>Using DI has great benefits when it comes to unit testing, so keep that in mind, but it is outside of the scope of this article, so we won't talk about it further.</p><h2 id="basic-example">Basic example</h2>
+<p>Before we get into the visualization, let's cover some theory and take a look at a very simple service definition:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Injectable</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  providedIn: </span><span style="color:#9ECBFF">'root'</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8"> { }</span></span></code></pre>
+<p>In this case, <code>GlobalService</code> is called "Global" for a very good reason. The <code>@Injectable()</code> decorator specifies that Angular can use this class in the DI system and ensures that the compiler will generate all the metadata the framework needs to create the class' dependencies when it gets injected. Since we added <code>providedIn: 'root'</code>, Angular will make this service available - or in other words, it will provide it - to our entire application. The framework will create an instance of this class the first time we inject it anywhere, and by default, it will share the same instance with anything that requests it.</p><h2 id="injecting-a-service">Injecting a service</h2>
+<p>The modern approach is to use the <code>inject</code> function like this:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>However, in older projects, you might see the old approach too, constructor based injection:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">private</span><span style="color:#FFAB70"> globalService</span><span style="color:#F97583">:</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8">) { }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Why does this matter? Well, it will start to make a lot more sense as your dependency hierarchy grows, but let's create an example. Let's say we have the same setup as above, but we we want to avoid DI and we create our dependencies manually. Since <code>GlobalService</code> is just a class in the end of the day, we can use the <code>new</code> keyword:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>It's not that bad, right? Well, yes, but what if <code>GlobalService</code> has dependencies of its own? With this approach, we need to be aware of all of those and supply them when creating our instance of it.</p><p>Let's say <code>GlobalService</code> looks like this:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    private</span><span style="color:#FFAB70"> logger</span><span style="color:#F97583">:</span><span style="color:#B392F0"> LoggerService</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    private</span><span style="color:#FFAB70"> userStore</span><span style="color:#F97583">:</span><span style="color:#B392F0"> UserStore</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    private</span><span style="color:#FFAB70"> preferencesStore</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PreferencesStore</span></span>
+<span class="line"><span style="color:#E1E4E8">  ) { }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Then, our component has to create all of the dependencies of <code>GlobalService</code> before it can create an instance of <code>GlobalService</code> itself.</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> LoggerService</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> UserStore</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> PreferencesStore</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>If we take this a step further, what if we have to send our logs to a third party service through the network for analytics purposes, so <code>LoggerService</code> has dependencies of its own? What if a dependency of <code>LoggerService</code> has dependencies too? Obviously, there are methods to prevent things to get out of control, but if we are using DI, then regardless of the complexity of the dependency tree, we just have to do this:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Yes, even if <code>GlobalService</code> has the same dependencies as above.</p><h2 id="providing-a-service-on-the-component-level">Providing a service on the component level</h2>
+<p>So we've discussed that by default, using <code>providedIn: 'root'</code> results in a single instance of our service being shared by the entire application. What if we need more finegrained control than that and we need a new instance of it in every component that requests one? That's what the <code>provicers</code> array in the <code>@Component()</code> decorator is for.</p><p>Let's say, on top of our <code>GlobalService</code> and <code>DummyComponent</code>, we also have a <code>DummyService</code>. This time, we do not provide it on the root level:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Injectable</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8"> { }</span></span></code></pre>
+<p>Then, in <code>DummyComponent</code>, we add it to providers:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [DummyService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DummyComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  dummyService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(DummyService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>This will result in <code>DummyComponent</code> sharing a single instance of <code>GlobalService</code> with everything else in our application, but every instance of <code>DummyComponent</code> will receive a new instance of <code>DummyService</code>. If <code>DummyComponent</code> has child components, those children will receive the same instance of <code>DummyService</code> their parent has, unless a child adds the service to its own providers. In the latter case, the child receives an entirely new instance too. If this sounds a bit confusing, don't worry, it will make a lot more sense in a bit, when we get to visualizing this.</p><p>One caveat here, is that you can combine the two approaches. Let's say we create a new component:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-dummy-component'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [GlobalService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">``</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> VeryDumbComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>We added <code>GlobalService</code> to the providers of <code>VeryDumbComponent</code>, which results in an entirely new instance of <code>GlobalService</code> being created specifically for an instance of <code>VeryDumbComponent</code> and its children.</p><p>Sometimes you may want that, but if that is the case, then you likely should refactor your code. If you start providing services, that are provided on the root level, on the component level too, it might lead to unexpected behavior, if someone takes a look at the service definition and sees that it is supposed to be a globally available instance.</p><p>I hope this explanation somewhat cleared up how this all works, but in case it didn't, let's visualize it.</p><h2 id="visualization">Visualization</h2>
+<h3 id="the-setup">The setup</h3>
+<p>We will take a look at several examples, but all of them will be based on these two services:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Injectable</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  providedIn: </span><span style="color:#9ECBFF">'root'</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> GlobalService</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  serviceName</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> signal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'GlobalService - '</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">36</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Injectable</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductService</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  serviceName</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> signal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'ProductService - '</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">36</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Both services will have a <code>serviceName</code> that gets randomly generated when an instance of the service is created. We have this because we will show these names on our screen, so we can easily determine if we see a single instance or multiple instances of the same service on our screen.</p><p><code>GlobalService</code> is provided on the root level, but we will provide <code>ProductService</code> depending on our needs at the given example. I named our service <code>Product</code> and later we will talk about <code>Parent</code> and <code>Details</code> components, but these names don't really mean anything, giving them a name just makes it easier to talk about them.</p><p><a href="https://github.com/bneuhausz/angular-services-demo">The source code of the example app used for this demonstration can be found here.</a></p><p><a href="https://bneuhausz.dev/angular-services-demo">The live demo application can also be seen here.</a></p><h3 id="single-instance-down-the-tree">Single instance down the tree</h3>
+<p>First, take a look at our main component for the example:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-single-service'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  imports: [ProductSingleServiceDetailsComponent, ProductSingleServiceParentComponent],</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Product - Single Service&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-single-service-details /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-single-service-parent /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 565px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 405px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductSingleServiceComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>So far, this is fairly straightforward based on the explanation above. At least I hope so. We inject both of our services in our component and show their generated names on our screen. Notice, that we added <code>ProductService</code> to the <code>providers</code> array. However, we have two more components embedded:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-single-service-details'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Details&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductSingleServiceDetailsComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-single-service-parent'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Parent&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductSingleServiceParentComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>In case of this specific example, the two components are exactly the same. What should be noted however, is that neither has a <code>providers</code> array of their own. This means, that both of these components will share the <code>ProductService</code> instance with the component that these are embedded in.</p><p>If you run the demo, your uniquely generated names should be different, but you should see something like this:</p><p><img src="/images/angular-di-visualization/single_service.png" alt="single service shared by all components"></p><p>As you can see, all three components share the same instances of both <code>GlobalService</code> and <code>ProductService</code>.</p><h3 id="unique-instance-for-all-components">Unique instance for all components</h3>
+<p>In this example, the embedding component is more or less the same:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-unique-service-for-each'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  imports: [ProductUniqueServiceForEachDetailsComponent, ProductUniqueServiceForEachParentComponent],</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Product - Unique Service&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-unique-service-for-each-details /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-unique-service-for-each-parent /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 565px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 405px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductUniqueServiceForEachComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>The embedded components however, have their own instance of <code>ProductService</code> provided to them:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-unique-service-for-each-details'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Details&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductUniqueServiceForEachDetailsComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-unique-service-for-each-parent'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Parent&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductUniqueServiceForEachParentComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Our application confirms this is the case, because, while every component shares a single <code>GlobalService</code> instance, all of them has a unique instance of our <code>ProductService</code>:</p><p><img src="/images/angular-di-visualization/unique_service.png" alt="unique service for all components"></p><p>Notice, that the name of the global service is the same as it was in the last example, assuming you didn't reload the application, confirming, that this instance is truly global.</p><h3 id="lets-mix-things-up">Let's mix things up</h3>
+<p>For our final example, we'll take a look at mixing things up. Our base component remains the same:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-mixed'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  imports: [ProductMixedDetailsComponent, ProductMixedParentComponent],</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Product - Mixed&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-mixed-details /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;app-product-mixed-parent /&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 565px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 405px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductMixedComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>ProductMixedDetailsComponent</code> does not have its own providers, so it will share <code>ProductService</code> with the base component and it will receive the <code>GlobalService</code> instance all of our application is using.</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-mixed-details'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Details&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductMixedDetailsComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>ProductMixedParentComponent</code> however, has both <code>ProductService</code> and <code>GlobalService</code> in its providers:</p><pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  selector: </span><span style="color:#9ECBFF">'app-product-mixed-parent'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  providers: [ProductService, GlobalService],</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;h1&gt;Parent&lt;/h1&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ globalService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">      &lt;p&gt;{{ productService.serviceName() }}&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &lt;/main&gt;</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  styles: </span><span style="color:#9ECBFF">`</span></span>
+<span class="line"><span style="color:#9ECBFF">    main {</span></span>
+<span class="line"><span style="color:#9ECBFF">      height: 200px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      width: 400px;</span></span>
+<span class="line"><span style="color:#9ECBFF">      border: 5px solid black;</span></span>
+<span class="line"><span style="color:#9ECBFF">      text-align: center;</span></span>
+<span class="line"><span style="color:#9ECBFF">    }</span></span>
+<span class="line"><span style="color:#9ECBFF">  `</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ProductMixedParentComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  globalService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(GlobalService);</span></span>
+<span class="line"><span style="color:#FFAB70">  productService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">(ProductService);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>This results in a mix of our previous approaches:</p><p><img src="/images/angular-di-visualization/mixed_service.png" alt="mixed approach"></p><p>As you can see, the base and the details component shares our services, but the parent component received a new instance of both <code>ProductService</code>, but more importantly, <code>GlobalService</code> too.</p></div><!----></analog-markdown></div></article><!----></div><!----></main><appfooter ngh="0"><footer class="footer-horizontal bg-neutral text-amber-100 p-4"><aside class="flex gap-8 justify-center"><a routerlink="/creative-commons" href="/creative-commons">© Creative Commons</a><a routerlink="/privacy" href="/privacy">Privacy Policy</a></aside></footer></appfooter></app-root>
+    
+  
+
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"c":{"0":[]}},{"t":{"0":"t5"},"c":{"0":[{"i":"t5","r":1}]}},{"c":{"2":[{"i":"c3636043166","r":1}]}}]}</script></body></html>
