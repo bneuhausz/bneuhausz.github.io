@@ -158,7 +158,7 @@ A bit more finegrained control can be achieved, but that's not really relevant f
 
 ## Styling components
 
-We will use the ``mat-toolbar`` and ``mat-button`` components as examples, because noth are staples in any kind of application. The toolbar seems like the more complex component, but as you will see, surprisingly, the button offers a lot more customizability.
+We will use the ``mat-toolbar`` and ``mat-button`` components as examples, because both are staples in any kind of application. The toolbar seems like the more complex component, but as you will see, surprisingly, the button offers a lot more customizability.
 
 By introducing system variables, override mixins and design tokens, Angular Material became a lot less opinionated, or at the very least, a lot more customizable. [A new tab labeled styling](https://material.angular.dev/components/toolbar/styling) showed up in the documentation of the components. This tab provides a list of mixins and design tokens avaialble for the given component. You can also find out here if a token is based on a system token.
 
