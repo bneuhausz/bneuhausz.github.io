@@ -1,14 +1,24 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
+    "strict": true,
+    "moduleResolution": "node",
+    "noEmit": false,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
     "types": []
   },
-  "files": ["src/main.ts", "src/main.server.ts"],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "allowJs": false
+  },
+  "files": [],
   "include": [
-    "src/**/*.d.ts",
-    "src/app/pages/**/*.page.ts",
-    "src/server/middleware/**/*.ts"
+    "src/components/angular/**/*.ts"
   ]
 }

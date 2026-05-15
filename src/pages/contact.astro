@@ -1,0 +1,42 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Contact - bneuhausz.dev" canonical="https://bneuhausz.dev/contact">
+  <div class="hero min-h-full bg-neutral-800 text-amber-100">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="text-center lg:text-left">
+        <h1 class="text-3xl font-bold">Contact me!</h1>
+        <p class="py-6">Feel free to send me a message about anything. I'll get back to you as soon as I can.</p>
+      </div>
+      <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-neutral text-amber-100">
+        <form
+          class="card-body"
+          onsubmit="event.preventDefault(); const form = new FormData(this); const name = String(form.get('name') ?? ''); const email = String(form.get('email') ?? ''); const message = String(form.get('message') ?? ''); const subject = encodeURIComponent(`Contact form submission from ${name}`); const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`); location.href = `mailto:bneuhauszdev@gmail.com?subject=${subject}&body=${body}`;"
+        >
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Name</span>
+            </label>
+            <input type="text" name="name" placeholder="name" class="input input-bordered bg-neutral-700 text-amber-100" required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Email</span>
+            </label>
+            <input type="email" name="email" placeholder="email" class="input input-bordered bg-neutral-700 text-amber-100" required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text text-amber-100">Message</span>
+            </label>
+            <textarea name="message" class="textarea textarea-bordered bg-neutral-700 text-amber-100" placeholder="message" required></textarea>
+          </div>
+          <div class="form-control mt-6">
+            <button type="submit" class="btn btn-ghost hover:bg-amber-100 hover:text-amber-900">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</SiteLayout>
