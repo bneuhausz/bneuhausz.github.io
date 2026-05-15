@@ -1,0 +1,128 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const canonical = `https://bneuhausz.dev/blog/${post.data.slug}`;
+const parsedDate = new Date(post.data.date);
+const publishedDate = Number.isNaN(parsedDate.getTime())
+  ? String(post.data.date)
+  : parsedDate.toISOString().slice(0, 10);
+
+const ldJson = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  image: post.data.thumbnail,
+  author: {
+    '@type': 'Person',
+    name: 'Bálint Neuhausz',
+    url: 'https://bneuhausz.dev',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'bneuhausz.dev',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://bneuhausz.dev/images/nb_logo_small.avif',
+    },
+  },
+  datePublished: publishedDate,
+  description: post.data.description,
+};
+---
+
+<SiteLayout
+  title={`${post.data.title} - bneuhausz.dev`}
+  description={post.data.description}
+  canonical={canonical}
+  ogImage={post.data.metaImage}
+  ogImageAlt={post.data.metaImageDescription}
+  ogType="article"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
+
+  <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8">
+    <img
+      srcset={`${post.data.coverImageSmall} 480w, ${post.data.coverImageMedium} 800w, ${post.data.coverImage} 1280w`}
+      sizes="(max-width: 1280px) 100vw, 1280px"
+      src={post.data.coverImage}
+      alt={post.data.coverImageDescription}
+      class="w-full h-auto"
+    />
+
+    <p class="flex flex-row items-center my-4">
+      <span>{publishedDate}</span>
+      <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" class="flex items-center">
+        <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span>
+      </a>
+      <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3">
+        <span class="text-lg">@</span>
+      </a>
+    </p>
+
+    <div data-blog-content class="prose dark:prose-invert text-left mb-8">
+      <Content />
+    </div>
+  </article>
+
+  <script is:inline>
+    const root = document.querySelector('[data-blog-content]');
+
+    if (root) {
+      const anchors = root.querySelectorAll('a[href]');
+      for (const anchor of anchors) {
+        const href = anchor.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('/')) {
+          continue;
+        }
+
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      const preElements = root.querySelectorAll('pre');
+      for (const pre of preElements) {
+        if (pre.querySelector('button[data-copy]')) {
+          continue;
+        }
+
+        pre.classList.add('relative', 'pt-8');
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.copy = 'true';
+        button.className = 'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10';
+        button.textContent = 'Copy';
+
+        button.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.textContent ?? '';
+          try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          } catch {
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          }
+        });
+
+        pre.appendChild(button);
+      }
+    }
+  </script>
+</SiteLayout>
