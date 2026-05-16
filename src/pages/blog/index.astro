@@ -4,21 +4,6 @@ import BlogCard from '../../components/BlogCard.astro';
 import { BlogFiltersComponent } from '../../components/angular/BlogFilters.component.ts';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
-type BlogPostSummary = {
-  slug: string;
-  title: string;
-  description: string;
-  icon: string;
-  iconDescription: string;
-  tags: string[];
-  date: string;
-};
-
-const BlogFilters = BlogFiltersComponent as unknown as (props: {
-  posts: BlogPostSummary[];
-  'data-analog-id'?: string;
-}) => unknown;
-
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 
 const formatDate = (dateValue: string | Date) => {
@@ -67,5 +52,5 @@ const postsForClient = sortedPosts.map((post) => ({
     ))}
   </section>
 
-  <BlogFilters client:visible posts={postsForClient} data-analog-id="blog-filters" />
+  <BlogFiltersComponent client:visible posts={postsForClient} data-analog-id="blog-filters" />
 </SiteLayout>
