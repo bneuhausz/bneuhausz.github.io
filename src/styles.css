@@ -91,3 +91,14 @@ body {
   -webkit-mask-image: url('/images/github/github-mark.svg');
   -webkit-mask-size: contain;
 }
+
+.linkedin-icon {
+  mask-image: url('/images/linkedin/linkedin-icon.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/images/linkedin/linkedin-icon.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
