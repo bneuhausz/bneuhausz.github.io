@@ -1,6 +1,7 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import { getCollection } from 'astro:content';
-import BlogCard from '../../components/BlogCard.astro';
 import { BlogFiltersComponent } from '../../components/angular/BlogFilters.component.ts';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
@@ -11,46 +12,47 @@ const formatDate = (dateValue: string | Date) => {
   return Number.isNaN(parsed.getTime()) ? String(dateValue) : parsed.toISOString().slice(0, 10);
 };
 
-const sortedPosts = [...posts].sort((a, b) => {
-  const dateA = new Date(a.data.date).getTime();
-  const dateB = new Date(b.data.date).getTime();
-  return dateB - dateA;
-});
+const ensureViewBox = (svg: string): string => {
+  if (/<svg[^>]*\sviewBox=/i.test(svg)) return svg;
+  const width = svg.match(/<svg[^>]*\swidth="([\d.]+)/i)?.[1];
+  const height = svg.match(/<svg[^>]*\sheight="([\d.]+)/i)?.[1];
+  if (!width || !height) return svg;
+  return svg.replace(/<svg/i, `<svg viewBox="0 0 ${width} ${height}"`);
+};
 
-const featuredPosts = sortedPosts.slice(0, 3);
+const readInlineSvg = (assetPath: string): string | null => {
+  if (!assetPath.toLowerCase().endsWith('.svg')) return null;
+  try {
+    return ensureViewBox(fs.readFileSync(path.join(process.cwd(), 'public', assetPath), 'utf-8'));
+  } catch {
+    return null;
+  }
+};
+
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 
 const postsForClient = sortedPosts.map((post) => ({
   slug: post.data.slug,
   title: post.data.title,
   description: post.data.description,
   icon: post.data.icon,
+  iconSvg: readInlineSvg(post.data.icon),
   iconDescription: post.data.iconDescription,
   tags: post.data.tags,
   date: formatDate(post.data.date),
+  shadowColor: post.data.shadowColor,
 }));
 ---
 
 <SiteLayout title="Blog - bneuhausz.dev" description="Technical notes and tutorials by Bálint Neuhausz" canonical="https://bneuhausz.dev/blog">
-  <h1>
+  <h1 class="text-center text-3xl font-bold tracking-tight sm:text-4xl">
     Some of my thoughts are documented here
   </h1>
-
-  <section class="grid gap-8 grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center py-5">
-    {featuredPosts.map((post) => (
-      <BlogCard
-        post={{
-          title: post.data.title,
-          slug: post.data.slug,
-          description: post.data.description,
-          thumbnail: post.data.thumbnail,
-          thumbnailDescription: post.data.thumbnailDescription,
-          tags: post.data.tags,
-          date: formatDate(post.data.date),
-          shadowColor: post.data.shadowColor,
-        }}
-      />
-    ))}
-  </section>
+  <p class="mt-3 text-center opacity-70">
+    Technical notes and tutorials on the things I build.
+  </p>
 
   <BlogFiltersComponent client:visible posts={postsForClient} data-analog-id="blog-filters" />
 </SiteLayout>
