@@ -59,6 +59,7 @@
   --color-default: var(--color-amber-100);
   --color-angular: #b52e31;
   --color-dotnet: #512bd4;
+  --color-aspire: #7455DD;
   --color-nodejs: #5FA04E;
   --color-github: #1F2328;
 
@@ -67,6 +68,7 @@
   --shadow-default: var(--blog-shadow-dimensions) var(--color-default);
   --shadow-angular: var(--blog-shadow-dimensions) var(--color-angular);
   --shadow-dotnet: var(--blog-shadow-dimensions) var(--color-dotnet);
+  --shadow-aspire: var(--blog-shadow-dimensions) var(--color-aspire);
   --shadow-nodejs: var(--blog-shadow-dimensions) var(--color-nodejs);
   --shadow-github: var(--blog-shadow-dimensions) var(--color-github);
 }
@@ -74,6 +76,7 @@
 @source inline("hover:shadow-default");
 @source inline("hover:shadow-angular");
 @source inline("hover:shadow-dotnet");
+@source inline("hover:shadow-aspire");
 @source inline("hover:shadow-nodejs");
 @source inline("hover:shadow-github");
 
