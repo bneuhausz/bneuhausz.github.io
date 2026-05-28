@@ -47,11 +47,11 @@
   }
 
   .prose a {
-    color: inherit;
+    color: var(--color-amber-100) !important;
     transition: color 0.2s;
   }
   .prose a:hover {
-    color: gray;
+    color: var(--color-amber-200) !important;
   }
 }
 
