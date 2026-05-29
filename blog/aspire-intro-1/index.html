@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Distributed apps with Aspire - The basics - bneuhausz.dev</title><meta name="description" content="Let's take a look at developing distributed applications with Aspire"><link rel="canonical" href="https://bneuhausz.dev/blog/aspire-intro-1"><meta property="og:type" content="article"><meta property="og:title" content="Distributed apps with Aspire - The basics - bneuhausz.dev"><meta property="og:description" content="Let's take a look at developing distributed applications with Aspire"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Distributed apps with Aspire - The basics - bneuhausz.dev"><meta name="twitter:description" content="Let's take a look at developing distributed applications with Aspire"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script>
+      (function (w, d, e, u, f, l, n) {
+        w[f] =
+          w[f] ||
+          function () {
+            (w[f].q = w[f].q || []).push(arguments);
+          };
+        l = d.createElement(e);
+        l.async = 1;
+        l.src = u;
+        n = d.getElementsByTagName(e)[0];
+        n.parentNode.insertBefore(l, n);
+      })(window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+      ml('account', '1754906');
+    </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Distributed apps with Aspire - The basics","image":"/images/aspire/aspire-icon-256.svg","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2026-05-29","description":"Let's take a look at developing distributed applications with Aspire"}</script><link rel="stylesheet" href="/_astro/about.D9Vvt9eY.css"></head> <body> <div class="flex flex-col h-screen"> <nav class="navbar bg-neutral text-amber-100 gap-2 px-8"> <a href="/"> <img src="/images/nb_logo_small.avif" alt="logo of the site"> </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog">
+Blog
+</a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/about">
+About
+</a> <span class="flex-1"></span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"> <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"> <div class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></div> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </nav> <main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100">   <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"> <img srcset="/images/aspire/aspire-logo-light-horizontal.svg 480w, /images/aspire/aspire-logo-light-horizontal.svg 800w, /images/aspire/aspire-logo-light-horizontal.svg 1280w" sizes="(max-width: 1280px) 100vw, 1280px" src="/images/aspire/aspire-logo-light-horizontal.svg" alt="aspire logo" class="w-full h-auto"> <p class="flex flex-row items-center my-4"> <span>2026-05-29</span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></span> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </p> <div data-blog-content class="prose dark:prose-invert text-left mb-8"> <h1 id="distributed-apps-with-aspire---the-basics">Distributed apps with Aspire - The basics</h1>
+<h2 id="the-why">The why</h2>
+<p>In the past, I’ve mostly worked on fairly basic applications. Meaning, a database and either a single app (be it desktop or web tech) or more recently, a (kinda) REST API and a client application running in browsers. Since these were fairly simple apps, at least architecturally, developing them locally was also pretty simple. Spin up a DB in Docker (or just connect to a dedicated dev server), hit Start in Visual Studio*, run <code>npm start</code> in a terminal and you’re up and running. Nowadays, however, this doesn’t really cut it.</p>
+<blockquote>
+<sub>
+<b>* We're doing all kinds of different things nowadays, but my group originated as a .NET focused team within the org. Also, most of our clients are deep into the Microsoft ecosystem, so you'll likely see me mentioning stuff like VS or IIS.</b><br>
+</sub>
+</blockquote>
+<p>Gone are the days of just enabling Windows Authentication on IIS and letting the browser (and some poor Active Directory admin) handle authentication, orgs want you to use their self-hosted Keycloak now. Your applications are expected to be part of a Kubernetes cluster, running in multiple instances, but with a shared cache, so you need something like Redis. Hell, your original API became several separate APIs now and those sit behind a reverse proxy like YARP. You’re expected to serve your logs in a specific format since the ELK stack, or at least Seq, has become a staple in everyone’s stack.</p>
+<p>Developing an app like this locally can lead to a lot of tinkering in Dockerfiles and let’s be honest, lots of devs absolutely hate that. That’s where <a href="https://aspire.dev/">Aspire</a>, formerly .NET Aspire, comes into the picture.</p>
+<h2 id="what-is-aspire">What is Aspire?</h2>
+<p>Aspire is a framework for developing distributed applications. Instead of managing a collection of Dockerfiles, docker-compose files and scattered environment variables, Aspire lets you wire up your entire application stack in code. It is up to you if you write it in C# or TypeScript, as both are supported. In these articles, I’ll stick to C# and the .NET ecosystem.</p>
+<p>At its core, Aspire has four main building blocks: the <strong>AppHost</strong>, <strong>ServiceDefaults</strong>, the <strong>Developer Dashboard</strong>, and <strong>Integrations</strong>. Let’s walk through each of these.</p>
+<h2 id="the-apphost">The AppHost</h2>
+<p>The <a href="https://aspire.dev/get-started/app-host/?lang=csharp">AppHost</a> is where you orchestrate everything. It’s just a regular .NET project (<a href="https://aspire.dev/app-host/typescript-apphost/">or TypeScript</a>) where you describe your entire stack in code: which services run, how they connect to each other, and which external resources (like databases, caches or message brokers) they depend on. When you hit Start, the AppHost spins everything up.</p>
+<p>The big win here is that service discovery and connection string management are handled for you. You define a PostgreSQL database resource, reference it from your API project, and Aspire injects the right connection string automatically. No more copying strings between appsettings files or maintaining a local .env that’s somehow always out of sync with everyone else’s.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> builder</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> DistributedApplication.</span><span style="color:#B392F0">CreateBuilder</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> postgres</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> builder.</span><span style="color:#B392F0">AddPostgres</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"db"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">WithDataVolume</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">WithPgWeb</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> appdataDb</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> postgres.</span><span style="color:#B392F0">AddDatabase</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"appdataDb"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> api</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> builder.</span><span style="color:#B392F0">AddProject</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Projects</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Api</span><span style="color:#E1E4E8">>(</span><span style="color:#9ECBFF">"api"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">WithReference</span><span style="color:#E1E4E8">(appdataDb)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">WaitFor</span><span style="color:#E1E4E8">(appdataDb);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">Build</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">Run</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>The example above is fairly minimalistic, yet more or less complete example of a development environment. We’ll cover what this actually does in later articles, but for now, I’d say this is enough to demonstrate how simple Aspire makes things.</p>
+<h2 id="servicedefaults">ServiceDefaults</h2>
+<p>The ServiceDefaults project is a shared class library that gets pulled into each of your services. It handles the boring but important stuff: OpenTelemetry for distributed tracing and metrics, health checks, service discovery configuration. These are things you’d wire up manually eventually anyway, Aspire just does it upfront so you’re not copy-pasting boilerplate across every microservice.</p>
+<h2 id="the-dashboard">The Dashboard</h2>
+<p>Honestly, the Developer Dashboard alone might make it worthwhile to use Aspire. When you run your AppHost, a dashboard spins up locally and gives you a live view of your whole application out of the box. Structured logs, distributed traces, metrics… all in one place. If a request hops through three services before failing, you can follow the trace through all of them without touching a log file. This is a genuine quality of life improvement if you ever had to mess with the log files of many different services to track what went wrong.</p>
+<h2 id="integrations">Integrations</h2>
+<p>Aspire comes with a growing library of integrations. Microsoft provides NuGet packages for common infrastructure like Redis, PostgreSQL, RabbitMQ, Azure Service Bus, Kafka, Keycloak (in preview as of the time of writing this) and a lot more, but there are integrations created by the community too (like Mailpit or LavinMQ for example) that are marked as part of the <strong>Community Toolkit</strong>.</p>
+<p><img src="/images/aspire/intro-1/community-toolkit.avif" alt="Community Toolkit"></p>
+<p>Integrations have two types. <strong>Hosting integrations</strong> go in the AppHost and tell Aspire how to provision and configure a resource (usually in a Docker container). <strong>Client integrations</strong> go in your individual services and set up the relevant client library with the correct configuration, automatically plumbed in from the AppHost. The two sides work together: you define a resource once, reference it from the services that need it, and the connection details flow through without any extra work.</p>
+<p>What that translates to in practice is that you do not have to mess with connection strings and networking. Aspire injects the necessary info when it spins up the containers.</p>
+<p>Connecting to the Postgres database in the AppHost example above only takes a single line (after installing the client integration package and creating the DbContext, more on that in later articles) in your application(s) <code>Program.cs</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">AddNpgsqlDbContext</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">AppdataDbContext</span><span style="color:#E1E4E8">>(</span><span style="color:#9ECBFF">"appdataDb"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="what-aspire-is-not">What Aspire is not</h2>
+<p>A couple of things worth clearing up before we dive deeper. Aspire is <strong>not</strong> a deployment platform or a Kubernetes replacement. It’s a local development and application integration framework. It makes local development much less painful and gives you a solid observability foundation from day one, but you still deploy to whatever infrastructure you were using before. Aspire does generate a deployment manifest that tools like the Azure Developer CLI can use, but that’s a topic for another time.</p>
+<p>It’s also <strong>not</strong> something you have to adopt all at once. You can introduce Aspire into an existing solution incrementally, starting with just the AppHost and wiring in integrations as you go.</p>
+<p>In the following articles, we’ll start developing a distributed application to explore what Aspire brings to the table.</p> </div> <div class="card w-full sm:w-96 bg-neutral text-amber-100 border border-amber-100/20 shadow-sm"> <div class="card-body items-center text-center"> <h2 class="card-title">Newsletter</h2> <p>Sign up for my maybe monthly (not likely) newsletter for updates on new posts and other content.</p> <div class="card-actions"> <button type="button" class="ml-onclick-form btn btn-ghost border border-amber-100/20 hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">
+Subscribe
+</button> </div> </div> </div> </article> <script>
+    const root = document.querySelector('[data-blog-content]');
+
+    if (root) {
+      const anchors = root.querySelectorAll('a[href]');
+      for (const anchor of anchors) {
+        const href = anchor.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('/')) {
+          continue;
+        }
+
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      const preElements = root.querySelectorAll('pre');
+      for (const pre of preElements) {
+        if (pre.querySelector('button[data-copy]')) {
+          continue;
+        }
+
+        pre.classList.add('relative', 'pt-8');
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.copy = 'true';
+        button.className = 'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10';
+        button.textContent = 'Copy';
+
+        button.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.textContent ?? '';
+          try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          } catch {
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          }
+        });
+
+        pre.appendChild(button);
+      }
+    }
+  </script>  </main> <footer class="footer-horizontal bg-neutral text-amber-100 p-4"> <aside class="flex gap-8 justify-center"> <a href="/creative-commons">© Creative Commons</a> <a href="/privacy">Privacy Policy</a> </aside> </footer> </div> </body></html>
