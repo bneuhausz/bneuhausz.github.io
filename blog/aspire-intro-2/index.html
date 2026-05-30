@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Distributed apps with Aspire - Creating a new Aspire app - bneuhausz.dev</title><meta name="description" content="In this article, we'll start developing our distributed app"><link rel="canonical" href="https://bneuhausz.dev/blog/aspire-intro-2"><meta property="og:type" content="article"><meta property="og:title" content="Distributed apps with Aspire - Creating a new Aspire app - bneuhausz.dev"><meta property="og:description" content="In this article, we'll start developing our distributed app"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Distributed apps with Aspire - Creating a new Aspire app - bneuhausz.dev"><meta name="twitter:description" content="In this article, we'll start developing our distributed app"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script>
+      (function (w, d, e, u, f, l, n) {
+        w[f] =
+          w[f] ||
+          function () {
+            (w[f].q = w[f].q || []).push(arguments);
+          };
+        l = d.createElement(e);
+        l.async = 1;
+        l.src = u;
+        n = d.getElementsByTagName(e)[0];
+        n.parentNode.insertBefore(l, n);
+      })(window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+      ml('account', '1754906');
+    </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Distributed apps with Aspire - Creating a new Aspire app","image":"/images/aspire/aspire-icon-256.svg","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2026-05-30","description":"In this article, we'll start developing our distributed app"}</script><link rel="stylesheet" href="/_astro/about.D9Vvt9eY.css"></head> <body> <div class="flex flex-col h-screen"> <nav class="navbar bg-neutral text-amber-100 gap-2 px-8"> <a href="/"> <img src="/images/nb_logo_small.avif" alt="logo of the site"> </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog">
+Blog
+</a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/about">
+About
+</a> <span class="flex-1"></span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"> <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"> <div class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></div> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </nav> <main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100">   <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"> <img srcset="/images/aspire/aspire-logo-light-horizontal.svg 480w, /images/aspire/aspire-logo-light-horizontal.svg 800w, /images/aspire/aspire-logo-light-horizontal.svg 1280w" sizes="(max-width: 1280px) 100vw, 1280px" src="/images/aspire/aspire-logo-light-horizontal.svg" alt="aspire logo" class="w-full h-auto"> <p class="flex flex-row items-center my-4"> <span>2026-05-30</span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></span> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </p> <div data-blog-content class="prose dark:prose-invert text-left mb-8"> <h1 id="distributed-apps-with-aspire---creating-a-new-aspire-app">Distributed apps with Aspire - Creating a new Aspire app</h1>
+<p>If you’re new here, make sure to check out the <a href="https://bneuhausz.dev/blog/aspire-intro-1/">previous article of this series.</a></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>There are a few things you’ll need to install before getting started with Aspire. The docs have a pretty good write-up of the <a href="https://aspire.dev/get-started/prerequisites/">prerequisites</a>, but we’ll quickly go over them here.</p>
+<h3 id="language">Language</h3>
+<p>First, you’ll need to decide between creating a C# or a TypeScript AppHost. In this series, we’ll stick with C#, so in our case, the <a href="https://dotnet.microsoft.com/download/dotnet/10.0">.NET 10 SDK</a> will be needed. Aspire is able to run applications targeting .NET 8 or later, but .NET 10 is a strict requirement for the C# AppHost itself.</p>
+<h3 id="container-runtime">Container runtime</h3>
+<p>Then, you have to install an <a href="https://opencontainers.org/">Open Container Initiative (OCI)</a> container runtime. The recommended default is Docker Desktop, but Podman is also officially supported, with Rancher Desktop having community support too.</p>
+<h3 id="ide">IDE</h3>
+<p>Now you have to choose an IDE to use. In case you chose to go with a TypeScript AppHost, Visual Studio Code is the recommended path to take. On the C# route however, Visual Studio and Rider are also great options.
+Since I’m a regular user of Visual Studio 2026, I’ll stick to it this time too, but feel free to explore the other options.</p>
+<h3 id="aspire-cli">Aspire CLI</h3>
+<p>In case you chose Visual Studio to develop, you can do most things in the IDE itself. However, the <a href="https://aspire.dev/get-started/install-cli/">Aspire CLI</a> is a great tool to have and it is a requirement for the VSC extension in case you picked that option, so make sure to install the CLI.</p>
+<p>In Bash, you can just run:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -sSL</span><span style="color:#9ECBFF"> https://aspire.dev/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span></code></pre>
+<p>or in PowerShell:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">irm https:</span><span style="color:#F97583">//</span><span style="color:#E1E4E8">aspire.dev</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">install.ps1 </span><span style="color:#F97583">|</span><span style="color:#E1E4E8"> iex</span></span></code></pre>
+<p>If you decided to go that route, installing the CLI can also be done via the <a href="https://aspire.dev/get-started/aspire-vscode-extension/">VSC Aspire extension</a> itself with <code>Aspire: New Aspire project</code> from the Command Palette. In this case, it is also recommended to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">official C# extension</a> for language support.</p>
+<p>You can validate the installation by running:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">aspire</span><span style="color:#79B8FF"> --version</span></span></code></pre>
+<p><img src="/images/aspire/intro-2/aspire-version.avif" alt="Aspire CLI version"></p>
+<p>At the time of writing this article, I use version 13.3.5.</p>
+<h2 id="creating-a-project">Creating a project</h2>
+<p>Since I decided to go with Visual Studio, I’ll just use that to create a project, but you can do the same thing with the CLI by running the <code>aspire new</code> command or using the <code>Aspire: New Aspire project</code> command provided by the VSC extension.</p>
+<p>Either way, in Visual Studio, just create a new project, filter for Aspire and there will be several types of templates you can choose from. We’ll choose the empty app now and we’ll build on it ourselves.</p>
+<p><img src="/images/aspire/intro-2/aspire-projects.avif" alt="Aspire templates in Visual Studio 2026"></p>
+<p>In the next window, give a name to your solution and select a location. I picked the name <code>AspireIntro</code> here.</p>
+<p><img src="/images/aspire/intro-2/aspire-create-1.avif" alt="Next step"></p>
+<p>In the last step, we’ll leave the .NET version on 10 and the Aspire version on 13, but I’ll unclick the <code>Configure for HTTPS</code> option for several reasons. For one, we’ll likely put our services behind a reverse proxy later, and two, HTTPS is not in the scope of this walkthrough anyway.</p>
+<p><img src="/images/aspire/intro-2/aspire-create-2.avif" alt="Last step"></p>
+<p>If you followed what I’ve been doing, then your new solution probably looks like this now:</p>
+<p><img src="/images/aspire/intro-2/aspire-solution.avif" alt="Created solution"></p>
+<h2 id="a-bit-of-housekeeping">A bit of housekeeping</h2>
+<p>As you can see, the <strong>ServiceDefaults</strong> project has some warnings, so first we’ll take care of those. It’s due to some of the default OpenTelemetry packages having vulnerabilities at the time of creating the project, but those are patched already, so you can just right-click the <strong>ServiceDefaults</strong> project, click <strong>Manage NuGet Packages</strong>, go to the <strong>Updates</strong> tab and update all of the packages that have a new version.</p>
+<p><img src="/images/aspire/intro-2/aspire-warnings.avif" alt="Updating the OpenTelemetry packages"></p>
+<p>I also just noticed, that Visual Studio created the project with the 13.0.2 version of the Aspire packages. Likely a missing update on my part. You can’t fix it with a single click in Visual Studio, but as I said earlier, the CLI can come in clutch. You can just run the update command to fix it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">aspire update</span></span></code></pre>
+<p>When prompted if you want to perform the updates to 13.3.5, press <code>y</code> and you should see something like this:</p>
+<p><img src="/images/aspire/intro-2/aspire-update.avif" alt="Updating Aspire packages"></p>
+<p>One last thing we have to do since we decided not to deal with HTTPS, is to set <code>ASPIRE_ALLOW_UNSECURED_TRANSPORT</code> to <code>true</code> in the <strong>AppHost</strong> project’s <strong>launchSettings.json</strong> file, so it should look something like this.</p>
+<p><img src="/images/aspire/intro-2/aspire-launchSettings.avif" alt="launchSettings.json"></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "$schema"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://json.schemastore.org/launchsettings.json"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "profiles"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "http"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "commandName"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "dotnetRunMessages"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "launchBrowser"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "applicationUrl"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://localhost:15163"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "environmentVariables"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        "ASPNETCORE_ENVIRONMENT"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Development"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        "DOTNET_ENVIRONMENT"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Development"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        "ASPIRE_DASHBOARD_OTLP_ENDPOINT_URL"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://localhost:19205"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        "ASPIRE_DASHBOARD_MCP_ENDPOINT_URL"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://localhost:18031"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        "ASPIRE_RESOURCE_SERVICE_ENDPOINT_URL"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://localhost:20131"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">        "ASPIRE_ALLOW_UNSECURED_TRANSPORT"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>With everything done, after starting the project, the Aspire Dashboard should be opened:</p>
+<p><img src="/images/aspire/intro-2/aspire-empty-dashboard.avif" alt="Aspire Dashboard"></p>
+<h2 id="next-steps">Next steps</h2>
+<p>This is where we stop for now, but in the next article, we’ll take a look at what’s in our newly created Aspire application, adding an API to our <strong>AppHost</strong> and the dashboard itself, so make sure to tune in next time.</p>
+<p>The GitHub repo with the code for this project can be found <a href="https://github.com/bneuhausz/aspire-intro">here.</a></p> </div> <div class="card w-full sm:w-96 bg-neutral text-amber-100 border border-amber-100/20 shadow-sm"> <div class="card-body items-center text-center"> <h2 class="card-title">Newsletter</h2> <p>Sign up for my maybe monthly (not likely) newsletter for updates on new posts and other content.</p> <div class="card-actions"> <button type="button" class="ml-onclick-form btn btn-ghost border border-amber-100/20 hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">
+Subscribe
+</button> </div> </div> </div> </article> <script>
+    const root = document.querySelector('[data-blog-content]');
+
+    if (root) {
+      const anchors = root.querySelectorAll('a[href]');
+      for (const anchor of anchors) {
+        const href = anchor.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('/')) {
+          continue;
+        }
+
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      const preElements = root.querySelectorAll('pre');
+      for (const pre of preElements) {
+        if (pre.querySelector('button[data-copy]')) {
+          continue;
+        }
+
+        pre.classList.add('relative', 'pt-8');
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.copy = 'true';
+        button.className = 'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10';
+        button.textContent = 'Copy';
+
+        button.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.textContent ?? '';
+          try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          } catch {
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          }
+        });
+
+        pre.appendChild(button);
+      }
+    }
+  </script>  </main> <footer class="footer-horizontal bg-neutral text-amber-100 p-4"> <aside class="flex gap-8 justify-center"> <a href="/creative-commons">© Creative Commons</a> <a href="/privacy">Privacy Policy</a> </aside> </footer> </div> </body></html>
