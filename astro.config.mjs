@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      langs: ['bash', 'dotenv', 'yaml', 'csharp'],
+      langs: ['bash', 'dotenv', 'yaml', 'csharp', 'powershell', 'json'],
     },
   },
   vite: {

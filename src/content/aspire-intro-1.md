@@ -16,6 +16,7 @@ iconDescription: aspire logo
 tags: [Aspire]
 shadowColor: aspire
 draft: false
+lastMod: 2026-05-30
 ---
 
 # Distributed apps with Aspire - The basics
@@ -93,3 +94,5 @@ A couple of things worth clearing up before we dive deeper. Aspire is **not** a 
 It's also **not** something you have to adopt all at once. You can introduce Aspire into an existing solution incrementally, starting with just the AppHost and wiring in integrations as you go. 
 
 In the following articles, we'll start developing a distributed application to explore what Aspire brings to the table.
+
+[Read Distributed apps with Aspire - Creating a new Aspire app here.](https://bneuhausz.dev/blog/aspire-intro-2/)
