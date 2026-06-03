@@ -13,9 +13,10 @@ thumbnail: /images/aspire/aspire-icon-256.svg
 thumbnailDescription: aspire logo
 icon: /images/aspire/aspire-icon-32.svg
 iconDescription: aspire logo
-tags: [Aspire]
+tags: [Aspire, dotnet]
 shadowColor: aspire
 draft: false
+lastMod: 2026-06-03
 ---
 
 # Distributed apps with Aspire - Creating a new Aspire app
@@ -138,3 +139,5 @@ With everything done, after starting the project, the Aspire Dashboard should be
 This is where we stop for now, but in the next article, we'll take a look at what's in our newly created Aspire application, adding an API to our **AppHost** and the dashboard itself, so make sure to tune in next time.
 
 The GitHub repo with the code for this project can be found [here.](https://github.com/bneuhausz/aspire-intro)
+
+[Read Distributed apps with Aspire - Adding our first service here.](https://bneuhausz.dev/blog/aspire-intro-3/)
