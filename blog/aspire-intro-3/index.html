@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Distributed apps with Aspire - Adding our first service - bneuhausz.dev</title><meta name="description" content="This time we'll take a look at adding a service to our Aspire app"><link rel="canonical" href="https://bneuhausz.dev/blog/aspire-intro-3"><meta property="og:type" content="article"><meta property="og:title" content="Distributed apps with Aspire - Adding our first service - bneuhausz.dev"><meta property="og:description" content="This time we'll take a look at adding a service to our Aspire app"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Distributed apps with Aspire - Adding our first service - bneuhausz.dev"><meta name="twitter:description" content="This time we'll take a look at adding a service to our Aspire app"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script>
+      (function (w, d, e, u, f, l, n) {
+        w[f] =
+          w[f] ||
+          function () {
+            (w[f].q = w[f].q || []).push(arguments);
+          };
+        l = d.createElement(e);
+        l.async = 1;
+        l.src = u;
+        n = d.getElementsByTagName(e)[0];
+        n.parentNode.insertBefore(l, n);
+      })(window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+      ml('account', '1754906');
+    </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Distributed apps with Aspire - Adding our first service","image":"/images/aspire/aspire-icon-256.svg","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2026-06-03","description":"This time we'll take a look at adding a service to our Aspire app"}</script><link rel="stylesheet" href="/_astro/about.DlV1iO5f.css"></head> <body> <div class="flex flex-col h-screen"> <nav class="navbar bg-neutral text-amber-100 gap-2 px-8"> <a href="/"> <img src="/images/nb_logo_small.avif" alt="logo of the site"> </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog">
+Blog
+</a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/about">
+About
+</a> <span class="flex-1"></span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"> <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"> <div class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></div> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </nav> <main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100">   <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"> <img srcset="/images/aspire/aspire-logo-light-horizontal.svg 480w, /images/aspire/aspire-logo-light-horizontal.svg 800w, /images/aspire/aspire-logo-light-horizontal.svg 1280w" sizes="(max-width: 1280px) 100vw, 1280px" src="/images/aspire/aspire-logo-light-horizontal.svg" alt="aspire logo" class="w-full h-auto"> <p class="flex flex-row items-center my-4"> <span>2026-06-03</span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></span> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </p> <div data-blog-content class="prose dark:prose-invert text-left mb-8"> <h1 id="distributed-apps-with-aspire---adding-our-first-service">Distributed apps with Aspire - Adding our first service</h1>
+<p>If you’re new here, make sure to check out the <a href="https://bneuhausz.dev/blog/aspire-intro-2/">previous article of this series.</a></p>
+<h2 id="the-aspire-structure">The Aspire structure</h2>
+<p>Last time we’ve got our Aspire app up and running. Before we continue building, let’s take a look at our starting point. Since we’ve cleaned up the errors the last time, our solution should look like this:</p>
+<p><img src="/images/aspire/intro-3/aspire-solution.avif" alt="Aspire solution"></p>
+<h3 id="the-apphost-project">The AppHost project</h3>
+<p>The <strong>AppHost</strong> is the orchestrator and the entry point of the whole thing. It’s the project you actually run, and starting it is what spins up the Aspire Dashboard along with everything else in your stack. It’s just a regular .NET project where you describe your services and their dependencies in code, and we’ve already poked at it in the previous article when we set <code>ASPIRE_ALLOW_UNSECURED_TRANSPORT</code> in its <strong>launchSettings.json</strong>.</p>
+<p>Right now, it’s basically empty. If you open the <code>AppHost.cs</code> file, all you’ll find is the default scaffolding that creates the builder and runs the application, without any resources wired up yet.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> builder</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> DistributedApplication.</span><span style="color:#B392F0">CreateBuilder</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">Build</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">Run</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>We’ll start working on it in just a moment, but first, we have to talk about the other project in our starter app.</p>
+<h3 id="the-servicedefaults-project">The ServiceDefaults project</h3>
+<p>The <strong>ServiceDefaults</strong> project is a shared class library that gets referenced by some of the services. Its job is to wire up the cross-cutting concerns you’d want in most of them, like OpenTelemetry for traces and metrics, health checks and service discovery. Instead of copy-pasting that boilerplate into every project, you just call a single extension method in your service’s <code>Program.cs</code> and you’re set up with sensible defaults out of the box.</p>
+<p>This is also the project we did a bit of housekeeping on in the previous article, when we updated its OpenTelemetry NuGet packages to clear up the vulnerability warnings. We won’t touch it much for now, but it’s good to know it’s there and what it does, since several services we add to the project will lean on it.</p>
+<h2 id="adding-a-service">Adding a service</h2>
+<p>Since we’re using Visual Studio, adding a service to the Aspire project is really simple. Just right click the solution itself, and click <strong>Add</strong> -> <strong>New Project…</strong></p>
+<p><img src="/images/aspire/intro-3/aspire-add-project-1.avif" alt="Add project menu 1"></p>
+<p>From the list of project templates, select the <strong>ASP.NET Core Web API</strong> with <strong>C#</strong> option.</p>
+<p><img src="/images/aspire/intro-3/aspire-add-project-2.avif" alt="Add project menu 2"></p>
+<p>Pick a name to your service. In my case, I chose <strong>AspireIntro.Blog</strong> but you can choose whatever you want.</p>
+<p><img src="/images/aspire/intro-3/aspire-add-project-3.avif" alt="Add project menu 3"></p>
+<p>In the last step, we only change a single thing. That being, deselecting <strong>Configure for HTTPS</strong> because we hate HTTPS here. Well, no, we don’t, but for our demo purposes, we don’t really want to think about it.</p>
+<p>With that said, make sure to pay attention to the <strong>Enlist for Aspire orchestration</strong> option being checked. This way, Visual Studio wires our service into Aspire out of the box. We’ll take a look at what this did in a moment, just to get familiar with it, but this option is there to make your life easier, so take it.</p>
+<p><img src="/images/aspire/intro-3/aspire-add-project-4.avif" alt="Add project menu 4"></p>
+<p>At this point, our solution should have our new project and look like this:</p>
+<p><img src="/images/aspire/intro-3/aspire-solution-2.avif" alt="Aspire solution after adding the service"></p>
+<h2 id="what-weve-just-done">What we’ve just done</h2>
+<p>So Visual Studio did some magic, but let’s demistify it.</p>
+<h3 id="the-blog-service">The Blog service</h3>
+<p>The newly created <strong>AspireIntro.Blog</strong> project is just a regular ASP.NET Core web API. Here’s the <code>Program.cs</code> file, which we won’t really touch for a while:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> builder</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> WebApplication.</span><span style="color:#B392F0">CreateBuilder</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">AddServiceDefaults</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Add services to the container.</span></span>
+<span class="line"><span style="color:#6A737D">// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi</span></span>
+<span class="line"><span style="color:#E1E4E8">builder.Services.</span><span style="color:#B392F0">AddOpenApi</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> app</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> builder.</span><span style="color:#B392F0">Build</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">MapDefaultEndpoints</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Configure the HTTP request pipeline.</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (app.Environment.</span><span style="color:#B392F0">IsDevelopment</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.</span><span style="color:#B392F0">MapOpenApi</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> summaries</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8">[]</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "Freezing"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Bracing"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Chilly"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Cool"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Mild"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Warm"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Balmy"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Hot"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Sweltering"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Scorching"</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">MapGet</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"/weatherforecast"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#B392F0"> forecast</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8">  Enumerable.</span><span style="color:#B392F0">Range</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">Select</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">index</span><span style="color:#F97583"> =></span></span>
+<span class="line"><span style="color:#F97583">        new</span><span style="color:#B392F0"> WeatherForecast</span></span>
+<span class="line"><span style="color:#E1E4E8">        (</span></span>
+<span class="line"><span style="color:#E1E4E8">            DateOnly.</span><span style="color:#B392F0">FromDateTime</span><span style="color:#E1E4E8">(DateTime.Now.</span><span style="color:#B392F0">AddDays</span><span style="color:#E1E4E8">(index)),</span></span>
+<span class="line"><span style="color:#E1E4E8">            Random.Shared.</span><span style="color:#B392F0">Next</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">-</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">55</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">            summaries[Random.Shared.</span><span style="color:#B392F0">Next</span><span style="color:#E1E4E8">(summaries.Length)]</span></span>
+<span class="line"><span style="color:#E1E4E8">        ))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">ToArray</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> forecast;</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#E1E4E8">.</span><span style="color:#B392F0">WithName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"GetWeatherForecast"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">Run</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">record</span><span style="color:#B392F0"> WeatherForecast</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">DateOnly</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#B392F0"> TemperatureC</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">string</span><span style="color:#E1E4E8">? </span><span style="color:#B392F0">Summary</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> TemperatureF</span><span style="color:#F97583"> =></span><span style="color:#79B8FF"> 32</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">int</span><span style="color:#E1E4E8">)(TemperatureC </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 0.5556</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>For our demo, having the single <code>/weatherforecast</code> endpoint is fine, at least for now. The only thing that is not standard is the second line of code in the file, specifically <code>builder.AddServiceDefaults();</code>. What happened here, is that VS automatically added the <strong>AspireIntro.ServiceDefaults</strong> project to the dependencies of our new service and called the <code>AddServiceDefaults</code> extension method defined in the <code>Extensions.cs</code> file.</p>
+<p><img src="/images/aspire/intro-3/aspire-auto-enlist-1.avif" alt="Service dependencies"></p>
+<h3 id="the-apphost-project-1">The AppHost project</h3>
+<p>The second thing VS took care of for us, is adding the new <strong>AspireIntro.Blog</strong> project to the dependencies of the <strong>AspireIntro.AppHost</strong> project.</p>
+<p><img src="/images/aspire/intro-3/aspire-auto-enlist-2.avif" alt="AppHost dependencies"></p>
+<p>If you’ve paid attention to this last picture or your solution explorer, you can also see that git flagged the <code>AppHost.cs</code> file as changed too. Here’s what’s inside now:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> builder</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> DistributedApplication.</span><span style="color:#B392F0">CreateBuilder</span><span style="color:#E1E4E8">(args);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">AddProject</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Projects</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">AspireIntro_Blog</span><span style="color:#E1E4E8">>(</span><span style="color:#9ECBFF">"aspireintro-blog"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">builder.</span><span style="color:#B392F0">Build</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">Run</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>Now the <code>AddProject</code> extension method has been called on our builder. The <code>Projects.AspireIntro_Blog</code> is automatically generated metadata that Aspire takes care of for you, based on the dependencies of the <strong>AppHost</strong>.</p>
+<p>Also notice, that <code>aspireintro-blog</code> has been passed to the <code>name</code> parameter of <code>AddProject</code>. The name you pass to your projects like this will be used by aspire for service discovery. This is one of the biggest things Aspire does for you when locally developing a distribuated application, but more about that in a later article.</p>
+<h2 id="the-dashboard">The Dashboard</h2>
+<h3 id="resources">Resources</h3>
+<p>With everything set up, if you start your <strong>AppHost</strong>, the new <code>aspire-blog</code> resource should be enlisted on the dashboard.</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-1.avif" alt="Dashboard: Resources tab"></p>
+<p>As you can see in the URLs column, the <strong>Blog</strong> service has been started on port 5113 for me, but probably on an entirely different port in your case. If you are not familiar with ASP.NET Core, that port has been assigned on project creation and you can change it to the port of your liking by altering the <code>applicationUrl</code> property in the <strong>Blog</strong> project’s <code>launchSettings.json</code> file. In my case, I’ll alter it to <strong>7001</strong>.</p>
+<p><img src="/images/aspire/intro-3/aspire-service-launchSettings.avif" alt="launchSettings.json"></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">  "$schema"</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> "https://json.schemastore.org/launchsettings.json"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  "profiles"</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    "http"</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">      "commandName"</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> "Project"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      "dotnetRunMessages"</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      "launchBrowser"</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      "applicationUrl"</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> "http://localhost:7001"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      "environmentVariables"</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">        "ASPNETCORE_ENVIRONMENT"</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> "Development"</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>With that change, after restarting the <strong>AppHost</strong>, the blog servie should be running on port 7001:</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-2.avif" alt="Dashboard: Resources after port change"></p>
+<p>Now, you can make a GET HTTP request to <a href="http://localhost:7001/weatherforecast">http://localhost:7001/weatherforecast</a> however you want to and the automatically generated dummy endpoint should return back some randomly generated data, proving that our API works. I’ll use postman for this, but you can just open the URL in your browser if you wish.</p>
+<p><img src="/images/aspire/intro-3/aspire-postman-1.avif" alt="/weatherforecast endpoint"></p>
+<p>Also, a quick sidenote, referencing back to <strong>ServiceDefaults</strong>. Since VS added the <code>AddServiceDefaults()</code> call to our service’s <code>Program.cs</code>, effectively registering health hecks, the <code>/alive</code> and <code>/health</code> endpoints also should automatically work now.</p>
+<p><img src="/images/aspire/intro-3/aspire-postman-2.avif" alt="/health endpoint"></p>
+<p><img src="/images/aspire/intro-3/aspire-postman-3.avif" alt="/alive endpoint"></p>
+<h3 id="console">Console</h3>
+<p>The <strong>Console</strong> tab of the dashboard gives you access to the standard output logs of your services. In our case, the only resource enlisted is <code>aspireintro-blog</code>, but if there were mroe, you could switch between resources in the top left corner.</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-3.avif" alt="Dashboard: Console tab"></p>
+<p>Notice, that the console logs contain an entirely different port. That’s because Aspire exposes our service on port 7001, as we configured it before, but internally, the app runs on a different port. Aspire takes care of the networking for you, so don’t worry about it, but you can check out those settings by clicking on the <code>aspireintro-blog</code> resource back on the <strong>Resources</strong> tab.</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-4.avif" alt="Dashboard: Resource settings"></p>
+<h3 id="structured">Structured</h3>
+<p>The <strong>Structured</strong> tab gives you access to your structured logs. We don’t have much here so far, but it will be interesting later, so just keep this in mind for now.</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-5.avif" alt="Dashboard: Structured tab"></p>
+<h3 id="traces--metrics">Traces &#x26;&#x26; Metrics</h3>
+<p>We will take some time to talk a bit about these later, as there is not much going on here so far neither, but make sure to note to yourself that Aspire gives these to you out of the box and that is a big win.</p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-6.avif" alt="Dashboard: Traces tab"></p>
+<p><img src="/images/aspire/intro-3/aspire-dashboard-7.avif" alt="Dashboard: Metrics tab"></p>
+<h2 id="next-steps">Next steps</h2>
+<p>Next time we’ll take care of adding a database to our Aspire application.</p>
+<p>As always, the GitHub repo with the code for this project can be found <a href="https://github.com/bneuhausz/aspire-intro">here.</a></p> </div> <div class="card w-full sm:w-96 bg-neutral text-amber-100 border border-amber-100/20 shadow-sm"> <div class="card-body items-center text-center"> <h2 class="card-title">Newsletter</h2> <p>Sign up for my maybe monthly (not likely) newsletter for updates on new posts and other content.</p> <div class="card-actions"> <button type="button" class="ml-onclick-form btn btn-ghost border border-amber-100/20 hover:bg-amber-100 hover:text-amber-900" onclick="ml('show', 'QIrGIF', true)">
+Subscribe
+</button> </div> </div> </div> </article> <script>
+    const root = document.querySelector('[data-blog-content]');
+
+    if (root) {
+      const anchors = root.querySelectorAll('a[href]');
+      for (const anchor of anchors) {
+        const href = anchor.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('/')) {
+          continue;
+        }
+
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener noreferrer');
+      }
+
+      const preElements = root.querySelectorAll('pre');
+      for (const pre of preElements) {
+        if (pre.querySelector('button[data-copy]')) {
+          continue;
+        }
+
+        pre.classList.add('relative', 'pt-8');
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.copy = 'true';
+        button.className = 'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10';
+        button.textContent = 'Copy';
+
+        button.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.textContent ?? '';
+          try {
+            await navigator.clipboard.writeText(code);
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          } catch {
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          }
+        });
+
+        pre.appendChild(button);
+      }
+    }
+  </script>  </main> <footer class="footer-horizontal bg-neutral text-amber-100 p-4"> <aside class="flex gap-8 justify-center"> <a href="/creative-commons">© Creative Commons</a> <a href="/privacy">Privacy Policy</a> </aside> </footer> </div> </body></html>
