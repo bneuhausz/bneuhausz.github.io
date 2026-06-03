@@ -13,7 +13,7 @@ thumbnail: /images/aspire/aspire-icon-256.svg
 thumbnailDescription: aspire logo
 icon: /images/aspire/aspire-icon-32.svg
 iconDescription: aspire logo
-tags: [Aspire]
+tags: [Aspire, dotnet]
 shadowColor: aspire
 draft: false
 lastMod: 2026-05-30
