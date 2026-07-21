@@ -1,0 +1,58 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const apps = [
+  {
+    title: 'Lift Recorder',
+    description:
+      'Record your lifts on Android without pausing your music. Video-only, fully on-device, no account.',
+    href: '/apps/lift-recorder',
+    status: 'Coming soon',
+    logo: '/images/lift-recorder-logo.png',
+  },
+];
+---
+
+<SiteLayout
+  title="Apps - bneuhausz.dev"
+  description="Small apps I build on the side."
+  canonical="https://bneuhausz.dev/apps"
+>
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-3 text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">Apps</p>
+      <h1 class="text-4xl font-semibold sm:text-5xl">Things I build on the side</h1>
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        Small, focused apps. Each one has its own page with its privacy policy and terms.
+      </p>
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {apps.map((app) => (
+        <a
+          href={app.href}
+          class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm transition-shadow duration-500 hover:border-amber-100/60 hover:shadow-default"
+        >
+          <div class="flex items-center gap-4">
+            <img
+              src={app.logo}
+              alt={`${app.title} icon`}
+              width="56"
+              height="56"
+              class="h-14 w-14 rounded-2xl border border-amber-100/20"
+            />
+            <div>
+              <h2 class="text-2xl font-semibold text-amber-100">{app.title}</h2>
+              <span class="text-sm text-amber-200/70">{app.status}</span>
+            </div>
+          </div>
+          <p class="mt-4 flex-grow text-amber-50/80">{app.description}</p>
+          <span class="mt-5 inline-flex items-center gap-1 text-amber-200">
+            View app
+            <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      ))}
+    </section>
+  </div>
+</SiteLayout>
