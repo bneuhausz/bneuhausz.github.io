@@ -1,0 +1,88 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+// TODO(bneuhausz): Fill in the real values below before going live.
+// These are legally required by the Hungarian Ekertv. for a business website.
+// Leave a field out only if it genuinely does not apply to you.
+const provider = {
+  name: 'Bálint Neuhausz',
+  form: 'egyéni vállalkozó (sole trader)',
+  registrationNumber: '55278809',
+  taxNumber: '56612343-1-22',
+  euVatNumber: 'HU56612343',
+  seat: 'Enyezd út 22 9/35, 7632, Pécs, Hungary',
+  email: 'bneuhauszdev@gmail.com',
+};
+---
+
+<SiteLayout
+  title="Imprint - bneuhausz.dev"
+  description="Legal notice and business details for bneuhausz.dev."
+  canonical="https://bneuhausz.dev/imprint"
+>
+  <section class="prose dark:prose-invert text-left max-w-screen-md mx-auto px-8 pb-16">
+    <h1 class="text-3xl">Imprint</h1>
+    <p class="text-sm text-amber-200/70">
+      Legal notice (impresszum) under the Hungarian Act CVIII of 2001 on electronic commerce
+      (Ekertv.).
+    </p>
+
+    <h2 class="text-2xl">Service provider</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Name</strong></td>
+          <td>{provider.name}</td>
+        </tr>
+        <tr>
+          <td><strong>Business form</strong></td>
+          <td>{provider.form}</td>
+        </tr>
+        <tr>
+          <td><strong>Registration number</strong> (nyilvántartási szám)</td>
+          <td>{provider.registrationNumber}</td>
+        </tr>
+        <tr>
+          <td><strong>Tax number</strong> (adószám)</td>
+          <td>{provider.taxNumber}</td>
+        </tr>
+        <tr>
+          <td><strong>EU VAT number</strong> (közösségi adószám)</td>
+          <td>{provider.euVatNumber}</td>
+        </tr>
+        <tr>
+          <td><strong>Registered seat</strong> (székhely)</td>
+          <td>{provider.seat}</td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><a href={`mailto:${provider.email}`}>{provider.email}</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="text-2xl">Hosting provider</h2>
+    <p>
+      This website is hosted on GitHub Pages by:
+    </p>
+    <p>
+      GitHub, Inc.<br />
+      88 Colin P. Kelly Jr. Street<br />
+      San Francisco, CA 94107, United States<br />
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>
+    </p>
+
+    <h2 class="text-2xl">Apps</h2>
+    <p>
+      Legal documents for individual apps are on each app's page — for example, the
+      <a href="/apps/lift-recorder/privacy">Lift Recorder Privacy Policy</a> and
+      <a href="/apps/lift-recorder/terms">Terms of Use</a>.
+    </p>
+
+    <h2 class="text-2xl">Site privacy</h2>
+    <p>
+      For how this website (as opposed to the apps) handles data, see the
+      <a href="/privacy">site Privacy Policy</a>.
+    </p>
+  </section>
+</SiteLayout>

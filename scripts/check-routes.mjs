@@ -7,7 +7,19 @@ const distDir = path.join(repoRoot, 'dist');
 const distBlogDir = path.join(distDir, 'blog');
 const sitemapPath = path.join(distDir, 'sitemap-0.xml');
 
-const staticRoutes = ['/', '/about/', '/blog/', '/contact/', '/creative-commons/', '/privacy/'];
+const staticRoutes = [
+  '/',
+  '/about/',
+  '/blog/',
+  '/contact/',
+  '/creative-commons/',
+  '/privacy/',
+  '/imprint/',
+  '/apps/',
+  '/apps/lift-recorder/',
+  '/apps/lift-recorder/privacy/',
+  '/apps/lift-recorder/terms/',
+];
 const siteUrl = 'https://bneuhausz.dev';
 
 function normalizeFrontmatterValue(value) {

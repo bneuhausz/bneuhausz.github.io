@@ -1,7 +1,18 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 
-const techStack = ['Angular', 'ASP.NET Core', 'Node.js', 'PostgreSQL', 'Docker'];
+const techStack = [
+  { name: 'Angular' },
+  { name: 'ASP.NET Core' },
+  { name: 'Node.js' },
+  { name: 'PostgreSQL' },
+  { name: 'SQL Server' },
+  { name: 'Flutter', secondary: true },
+  { name: 'Redis', secondary: true },
+  { name: 'OPC UA', secondary: true },
+  { name: 'SAP', secondary: true },
+  { name: 'AMQP', secondary: true },
+];
 
 const cards = [
   {
@@ -16,6 +27,13 @@ const cards = [
     description: 'Background, experience, and the stack I work with.',
     href: '/about',
     cta: 'Learn more',
+    external: false,
+  },
+  {
+    title: 'Apps',
+    description: 'Small Android apps I build on the side.',
+    href: '/apps',
+    cta: 'Browse apps',
     external: false,
   },
   {
@@ -81,8 +99,8 @@ const cards = [
 
       <div class="mt-2 flex flex-wrap justify-center gap-2">
         {techStack.map((tech) => (
-          <span class="rounded-full border border-amber-100/20 bg-amber-100/10 px-3 py-1 text-sm text-amber-100">
-            {tech}
+          <span class={`rounded-full border border-amber-100/20 bg-amber-100/10 px-3 py-1 text-sm text-amber-100${tech.secondary ? ' opacity-70' : ''}`}>
+            {tech.name}
           </span>
         ))}
       </div>
