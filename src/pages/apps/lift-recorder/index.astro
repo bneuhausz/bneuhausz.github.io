@@ -1,31 +1,147 @@
 ---
-import SiteLayout from '../../../layouts/SiteLayout.astro';
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/lift-recorder";
+const logoUrl = "https://bneuhausz.dev/images/lift-recorder-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/lift-recorder-og.png";
+const description =
+  "A free Android app for lifters: film your sets for form checks and your coach while Spotify or YouTube Music keeps playing. Video-only, on-device, no account.";
 
 const features = [
   {
-    title: 'Your music keeps playing',
-    body: 'Spotify, YouTube Music, whatever you train to — it never pauses. The app records video only and never touches the microphone, so Android has no reason to stop your playlist.',
+    title: "Your music keeps playing",
+    body: "Spotify, YouTube Music, whatever you train to — it never pauses. The app records video only and never touches the microphone, so Android has no reason to stop your playlist.",
   },
   {
-    title: 'Everything stays on your device',
-    body: 'Clips are recorded and saved locally. Nothing is uploaded, there is no cloud, and no server ever sees your videos.',
+    title: "Everything stays on your device",
+    body: "Clips are recorded and saved locally. Nothing is uploaded, there is no cloud, and no server ever sees your videos.",
   },
   {
-    title: 'Saved straight to your gallery',
-    body: 'Every recording lands in your normal device gallery, ready to review, trim, or send to your coach with the tools you already use.',
+    title: "Saved straight to your gallery",
+    body: "Every recording lands in your normal device gallery, ready to review or send to your coach with the tools you already use.",
   },
   {
-    title: 'No account, no sign-up',
-    body: 'Open it and record. There is no login, no profile, and no personal data to hand over just to film a set.',
+    title: "Trim clips right in the app",
+    body: "Drag two handles to pick where a clip starts and ends — the preview jumps to that exact frame as you go. Saving keeps the original and writes the trimmed cut to your gallery as a new clip, all on-device with your music still playing.",
+  },
+  {
+    title: "No account, no sign-up",
+    body: "Open it and record. There is no login, no profile, and no personal data to hand over just to film a set.",
   },
 ];
+
+const faqs = [
+  {
+    question: "Does Lift Recorder pause my music while I record?",
+    answer:
+      "No. It records video only and never opens the microphone, so Android keeps Spotify, YouTube Music, or any other app playing while you film your set.",
+  },
+  {
+    question: "Does it record sound?",
+    answer:
+      "No. Recordings are video-only with no audio track. That also means no copyrighted gym music gets baked into a clip you might share with your coach.",
+  },
+  {
+    question: "Are my videos uploaded anywhere?",
+    answer:
+      "No. Every clip is recorded and stored locally on your phone. There is no cloud and no server ever receives your videos.",
+  },
+  {
+    question: "Where are my recordings saved?",
+    answer:
+      "Straight to your normal device gallery, so you can review or send them to your coach with the tools you already use.",
+  },
+  {
+    question: "Can I trim my clips in the app?",
+    answer:
+      "Yes. Open a clip, drag the two handles to choose the part you want to keep, and save. The original stays untouched and the trimmed version is saved to your gallery as a new clip. Trimming runs on your device — nothing is uploaded — and your music keeps playing while you preview the cut.",
+  },
+  {
+    question: "Do I need an account to use it?",
+    answer:
+      "No. There is no sign-up, login, or profile. Open the app and start recording — there is no personal data to hand over just to film a set.",
+  },
+  {
+    question: "Is Lift Recorder free?",
+    answer:
+      "Yes. The app is free and shows a small AdMob banner ad. A one-time in-app purchase removes ads permanently, and once it is active the ads code is not even loaded.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Lift Recorder",
+      operatingSystem: "Android",
+      applicationCategory: "HealthApplication",
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Lift Recorder",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
 ---
 
 <SiteLayout
-  title="Lift Recorder - bneuhausz.dev"
-  description="Record your lifts on Android without pausing your music. Video-only, fully on-device, no account."
-  canonical="https://bneuhausz.dev/apps/lift-recorder"
+  title="Lift Recorder - Record Lifts Without Pausing Your Music"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Lift Recorder — record your lifts without pausing your music"
 >
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
   <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
     <section class="flex flex-col items-center gap-6 text-center">
       <img
@@ -37,7 +153,9 @@ const features = [
       />
 
       <div class="flex flex-col gap-2">
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">Android app</p>
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
         <h1 class="text-4xl font-semibold sm:text-5xl">Lift Recorder</h1>
         <p class="text-lg text-amber-200/80">
           Film your sets without pausing your music.
@@ -45,40 +163,53 @@ const features = [
       </div>
 
       <p class="max-w-2xl text-base leading-7 text-amber-50/90">
-        A tiny Android app for athletes who record their lifts for a coach while their
-        playlist keeps running. It records <strong>video only</strong>, saves straight to
-        your gallery, and keeps everything on your phone — no account, no uploads.
+        A tiny Android app for athletes who record their lifts for a coach while
+        their playlist keeps running. It records <strong>video only</strong>,
+        saves straight to your gallery, lets you trim clips right in the app, and
+        keeps everything on your phone — no account, no uploads.
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3">
         <span
           class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
         >
-          <span class="inline-block h-2 w-2 rounded-full bg-amber-200" aria-hidden="true"></span>
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
           Coming soon to Google Play
         </span>
       </div>
 
-      <div class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200">
-        <a href="/apps/lift-recorder/privacy" class="underline-offset-4 hover:underline">
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="/apps/lift-recorder/privacy"
+          class="underline-offset-4 hover:underline"
+        >
           Privacy Policy
         </a>
         <span aria-hidden="true" class="text-amber-100/30">•</span>
-        <a href="/apps/lift-recorder/terms" class="underline-offset-4 hover:underline">
+        <a
+          href="/apps/lift-recorder/terms"
+          class="underline-offset-4 hover:underline"
+        >
           Terms of Use
         </a>
       </div>
     </section>
 
     <section class="mt-14 grid gap-6 sm:grid-cols-2">
-      {features.map((feature) => (
-        <article
-          class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm"
-        >
-          <h2 class="text-xl font-semibold text-amber-100">{feature.title}</h2>
-          <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
-        </article>
-      ))}
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
     </section>
 
     <section
@@ -86,27 +217,54 @@ const features = [
     >
       <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
-        On Android, most camera apps request <em>audio focus</em> the moment they open the
-        microphone — and that is what pauses whatever you were listening to. Lift Recorder
-        sidesteps the whole problem by recording video without an audio track. Your coach
-        cares about your movement and form, not gym noise, so the trade is an easy one: the
-        music never stops, and no copyrighted audio ends up baked into a clip you might share.
+        On Android, most camera apps request <em>audio focus</em> the moment they
+        open the microphone — and that is what pauses whatever you were listening
+        to. Lift Recorder sidesteps the whole problem by recording video without an
+        audio track. Your coach cares about your movement and form, not gym noise,
+        so the trade is an easy one: the music never stops, and no copyrighted audio
+        ends up baked into a clip you might share.
       </p>
     </section>
 
     <section
       class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
     >
-      <h2 class="text-2xl font-semibold text-amber-100">Free, with an optional upgrade</h2>
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with an optional upgrade
+      </h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
-        The app is free and shows a small banner ad served by Google AdMob. A one-time
-        in-app purchase removes ads permanently — once it is active, the ads code is not even
-        loaded. Full details of what is and isn't collected live in the
+        The app is free and shows a small banner ad served by Google AdMob. A
+        one-time in-app purchase removes ads permanently — once it is active,
+        the ads code is not even loaded. Full details of what is and isn't
+        collected live in the
         <a
           href="/apps/lift-recorder/privacy"
           class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
-        >Privacy Policy</a>.
+          >Privacy Policy</a
+        >.
       </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
     </section>
   </div>
 </SiteLayout>
