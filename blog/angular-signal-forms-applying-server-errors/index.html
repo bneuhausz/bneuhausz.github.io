@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Angular signal forms - Server side error handling - bneuhausz.dev</title><meta name="description" content="This time, we take a look at applying server side errors after submitting our form"><link rel="canonical" href="https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors"><meta property="og:type" content="article"><meta property="og:title" content="Angular signal forms - Server side error handling - bneuhausz.dev"><meta property="og:description" content="This time, we take a look at applying server side errors after submitting our form"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Angular signal forms - Server side error handling - bneuhausz.dev"><meta name="twitter:description" content="This time, we take a look at applying server side errors after submitting our form"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Angular signal forms - Server side error handling","image":"/images/angular_gradient_thumbnail.avif","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2025-09-06","description":"This time, we take a look at applying server side errors after submitting our form"}</script><link rel="stylesheet" href="/_astro/about.FgT7YrlU.css"></head> <body> <div class="flex flex-col h-screen"> <nav class="navbar bg-neutral text-amber-100 gap-2 px-8"> <a href="/"> <img src="/images/nb_logo_small.avif" alt="logo of the site"> </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.18.1"><title>Angular signal forms - Server side error handling - bneuhausz.dev</title><meta name="description" content="This time, we take a look at applying server side errors after submitting our form"><link rel="canonical" href="https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors"><meta property="og:type" content="article"><meta property="og:title" content="Angular signal forms - Server side error handling - bneuhausz.dev"><meta property="og:description" content="This time, we take a look at applying server side errors after submitting our form"><meta property="og:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta property="og:image:alt" content="bneuhausz.dev site logo"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Angular signal forms - Server side error handling - bneuhausz.dev"><meta name="twitter:description" content="This time, we take a look at applying server side errors after submitting our form"><meta name="twitter:image" content="https://bneuhausz.dev/images/bneuhausz_dev_twitter.png"><meta name="twitter:image:alt" content="bneuhausz.dev site logo"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Angular signal forms - Server side error handling","image":"/images/angular_gradient_thumbnail.avif","author":{"@type":"Person","name":"Bálint Neuhausz","url":"https://bneuhausz.dev"},"publisher":{"@type":"Organization","name":"bneuhausz.dev","logo":{"@type":"ImageObject","url":"https://bneuhausz.dev/images/nb_logo_small.avif"}},"datePublished":"2025-09-06","description":"This time, we take a look at applying server side errors after submitting our form"}</script><link rel="stylesheet" href="/_astro/about.jHVR1rd9.css"></head> <body> <div class="flex flex-col h-screen"> <nav class="navbar bg-neutral text-amber-100 gap-2 px-8"> <a href="/"> <img src="/images/nb_logo_small.avif" alt="logo of the site"> </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/blog">
 Blog
 </a> <a class="btn btn-square btn-ghost hover:bg-amber-100 hover:text-amber-900 px-8" href="/about">
 About
@@ -8,7 +8,7 @@ Apps
 All apps
 </a> </li> <li> <a href="/apps/lift-recorder" class="text-amber-100 hover:bg-amber-100 hover:text-amber-900">
 Lift Recorder
-</a> </li> </ul> </div> <span class="flex-1"></span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"> <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"> <div class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></div> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </nav> <main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100">   <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"> <img srcset="/images/angular_wordmark_gradient_header_small.avif 480w, /images/angular_wordmark_gradient_header_medium.avif 800w, /images/angular_wordmark_gradient_header.avif 1280w" sizes="(max-width: 1280px) 100vw, 1280px" src="/images/angular_wordmark_gradient_header.avif" alt="angular gradient image" class="w-full h-auto"> <p class="flex flex-row items-center my-4"> <span>2025-09-06</span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></span> </a> <a href="mailto:bneuhauszdev@gmail.com" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </p> <div data-blog-content class="prose dark:prose-invert text-left mb-8"> <h1 id="angular-signal-forms---server-side-error-handling">Angular signal forms - Server side error handling</h1>
+</a> </li> </ul> </div> <span class="flex-1"></span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"> <div class="w-5 h-5 ml-3 bg-amber-100 github-icon"></div> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"> <div class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></div> </a> <a href="mailto:contact@bneuhausz.dev" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </nav> <main class="flex-1 py-4 md:px-4 bg-neutral-800 text-amber-100">   <article class="flex flex-col items-center *:max-w-screen-xl *:mx-8 md:*:mx-32 pb-8"> <img srcset="/images/angular_wordmark_gradient_header_small.avif 480w, /images/angular_wordmark_gradient_header_medium.avif 800w, /images/angular_wordmark_gradient_header.avif 1280w" sizes="(max-width: 1280px) 100vw, 1280px" src="/images/angular_wordmark_gradient_header.avif" alt="angular gradient image" class="w-full h-auto"> <p class="flex flex-row items-center my-4"> <span>2025-09-06</span> <a href="https://github.com/bneuhausz" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 github-icon"></span> </a> <a href="https://www.linkedin.com/in/b%C3%A1lint-neuhausz-61a4a4136" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="flex items-center"> <span class="w-5 h-5 ml-3 bg-amber-100 linkedin-icon"></span> </a> <a href="mailto:contact@bneuhausz.dev" class="flex items-center ml-3"> <span class="text-lg">@</span> </a> </p> <div data-blog-content class="prose dark:prose-invert text-left mb-8"> <h1 id="angular-signal-forms---server-side-error-handling">Angular signal forms - Server side error handling</h1>
 <blockquote>
 <sub>
 <b>Changelog:</b><br>
@@ -87,46 +87,47 @@ Lift Recorder
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 <p><del>I’m sure these little errors will be fixed fairly quickly, but even with these being around, the new Angular signal forms are a huge step in the right direction. I honestly can’t wait to actually start using these features in production.</del></p>
 <p><a href="https://bneuhausz.dev/blog/angular-signal-forms-advanced">The next issue about more advanced usages of Angular signal forms is out!</a></p> </div> </article> <script>
-    const root = document.querySelector('[data-blog-content]');
+    const root = document.querySelector("[data-blog-content]");
 
     if (root) {
-      const anchors = root.querySelectorAll('a[href]');
+      const anchors = root.querySelectorAll("a[href]");
       for (const anchor of anchors) {
-        const href = anchor.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('/')) {
+        const href = anchor.getAttribute("href");
+        if (!href || href.startsWith("#") || href.startsWith("/")) {
           continue;
         }
 
-        anchor.setAttribute('target', '_blank');
-        anchor.setAttribute('rel', 'noopener noreferrer');
+        anchor.setAttribute("target", "_blank");
+        anchor.setAttribute("rel", "noopener noreferrer");
       }
 
-      const preElements = root.querySelectorAll('pre');
+      const preElements = root.querySelectorAll("pre");
       for (const pre of preElements) {
-        if (pre.querySelector('button[data-copy]')) {
+        if (pre.querySelector("button[data-copy]")) {
           continue;
         }
 
-        pre.classList.add('relative', 'pt-8');
+        pre.classList.add("relative", "pt-8");
 
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.dataset.copy = 'true';
-        button.className = 'btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10';
-        button.textContent = 'Copy';
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.copy = "true";
+        button.className =
+          "btn btn-xs btn-ghost text-amber-100 hover:bg-amber-100 hover:text-amber-900 absolute top-1 right-2 z-10";
+        button.textContent = "Copy";
 
-        button.addEventListener('click', async () => {
-          const code = pre.querySelector('code')?.textContent ?? '';
+        button.addEventListener("click", async () => {
+          const code = pre.querySelector("code")?.textContent ?? "";
           try {
             await navigator.clipboard.writeText(code);
-            button.textContent = 'Copied!';
+            button.textContent = "Copied!";
             setTimeout(() => {
-              button.textContent = 'Copy';
+              button.textContent = "Copy";
             }, 2000);
           } catch {
-            button.textContent = 'Failed';
+            button.textContent = "Failed";
             setTimeout(() => {
-              button.textContent = 'Copy';
+              button.textContent = "Copy";
             }, 2000);
           }
         });
