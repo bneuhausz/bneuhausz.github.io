@@ -1,18 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-
-const techStack = [
-  { name: 'Angular' },
-  { name: 'ASP.NET Core' },
-  { name: 'Node.js' },
-  { name: 'PostgreSQL' },
-  { name: 'SQL Server' },
-  { name: 'Flutter', secondary: true },
-  { name: 'Redis', secondary: true },
-  { name: 'OPC UA', secondary: true },
-  { name: 'SAP', secondary: true },
-  { name: 'AMQP', secondary: true },
-];
+import { techStack } from '../data/tech-stack';
 
 const cards = [
   {
@@ -52,6 +40,8 @@ const cards = [
       <img
         src="/images/nb_face.jpg"
         alt="Bálint Neuhausz"
+        width="112"
+        height="112"
         class="h-28 w-28 rounded-full border-4 border-amber-100/20 object-cover shadow-sm"
       />
 
