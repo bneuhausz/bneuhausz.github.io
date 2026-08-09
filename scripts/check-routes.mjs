@@ -19,6 +19,9 @@ const staticRoutes = [
   '/apps/lift-recorder/',
   '/apps/lift-recorder/privacy/',
   '/apps/lift-recorder/terms/',
+  '/apps/szokincs/',
+  '/apps/szokincs/privacy/',
+  '/apps/szokincs/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 
