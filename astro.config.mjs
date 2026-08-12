@@ -10,7 +10,14 @@ export default defineConfig({
     sitemap(),
     angular({
       vite: {
-        transformFilter: (_code, id) => id.includes('src/components/angular'),
+        // Skip Vite virtual modules (`\0`-prefixed). Astro's production client build
+        // wraps each island entry in a `\0astro-entry:<path>` module that just
+        // re-exports the component. That id still ends in `.ts`, so the Angular
+        // plugin would try to emit it, find no matching source file, and replace it
+        // with an empty string - leaving an empty entry chunk and an undefined
+        // component at hydration time.
+        transformFilter: (_code, id) =>
+          !id.startsWith('\0') && id.includes('src/components/angular'),
       },
     }),
   ],
