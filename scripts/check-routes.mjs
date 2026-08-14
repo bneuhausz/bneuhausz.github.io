@@ -22,6 +22,9 @@ const staticRoutes = [
   '/apps/szokincs/',
   '/apps/szokincs/privacy/',
   '/apps/szokincs/terms/',
+  '/apps/magyar-kartya/',
+  '/apps/magyar-kartya/privacy/',
+  '/apps/magyar-kartya/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 
