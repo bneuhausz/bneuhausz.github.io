@@ -1,0 +1,11 @@
+# app-ads.txt (IAB Tech Lab) — authorises who may sell ad inventory for the
+# apps published under this domain. Served from public/ at the site root, so
+# crawlers find it at https://bneuhausz.dev/app-ads.txt
+#
+# One line covers every app: lift_recorder, szo_kincs and magyar_kartya all
+# sit under the same AdMob publisher account. A new app needs no change here,
+# only its Play listing pointing its Website field at bneuhausz.dev.
+#
+# f08c47fec0942fa0 is Google's TAG certification authority id — a constant,
+# the same in every publisher's file.
+google.com, pub-8125139956200366, DIRECT, f08c47fec0942fa0
