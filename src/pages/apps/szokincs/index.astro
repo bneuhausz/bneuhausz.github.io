@@ -122,6 +122,42 @@ const ldJson = {
     },
   ],
 };
+
+const featureGraphic = {
+  src: "/images/szokincs/feature-graphic.png",
+  alt: "SzóKincs feature graphic — the title spelled as word-search tiles",
+};
+
+const screenshots = [
+  {
+    src: "/images/szokincs/screenshot-1.png",
+    alt: "SzóKincs home screen",
+    caption: "Home",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/szokincs/screenshot-2.png",
+    alt: "The themed campaigns",
+    caption: "Témák — themed campaigns",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/szokincs/screenshot-3.png",
+    alt: "A word-search puzzle in play",
+    caption: "A puzzle in play",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/szokincs/screenshot-4.png",
+    alt: "Statistics screen",
+    caption: "Eredmények — statistics",
+    width: 540,
+    height: 1212,
+  },
+];
 ---
 
 <SiteLayout
@@ -196,6 +232,17 @@ const ldJson = {
       </div>
     </section>
 
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
     <section class="mt-14 grid gap-6 sm:grid-cols-2">
       {
         features.map((feature) => (
@@ -207,6 +254,33 @@ const ldJson = {
           </article>
         ))
       }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
     </section>
 
     <section

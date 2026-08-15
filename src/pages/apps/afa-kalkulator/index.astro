@@ -136,6 +136,42 @@ const ldJson = {
     },
   ],
 };
+
+const featureGraphic = {
+  src: "/images/afa-kalkulator/feature-graphic.png",
+  alt: "ÁFA kalkulátor feature graphic — the % mark, the app name and the 27/18/5/0 % rate chips",
+};
+
+const screenshots = [
+  {
+    src: "/images/afa-kalkulator/screenshot-1.png",
+    alt: "The calculator: 125 000 Ft nettó at 27 %",
+    caption: "Nettó → bruttó at 27 %",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/afa-kalkulator/screenshot-2.png",
+    alt: "The home-screen widget, unlocked with Pro",
+    caption: "The Pro home-screen widget",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/afa-kalkulator/screenshot-3.png",
+    alt: "Bruttó → nettó at 5 %",
+    caption: "Bruttó → nettó — back-computing a receipt",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/afa-kalkulator/screenshot-4.png",
+    alt: "The VAT-rate guide",
+    caption: "The kulcs guide",
+    width: 540,
+    height: 960,
+  },
+];
 ---
 
 <SiteLayout
@@ -210,6 +246,17 @@ const ldJson = {
       </div>
     </section>
 
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
     <section class="mt-14 grid gap-6 sm:grid-cols-2">
       {
         features.map((feature) => (
@@ -221,6 +268,33 @@ const ldJson = {
           </article>
         ))
       }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
     </section>
 
     <section
