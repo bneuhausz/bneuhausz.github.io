@@ -1,0 +1,336 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/afa-kalkulator";
+const logoUrl = "https://bneuhausz.dev/images/afa-kalkulator-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/afa-kalkulator-og.png";
+const description =
+  "A free Hungarian VAT (ÁFA) calculator for Android: nettó ↔ bruttó at 27, 18, 5 and 0 % or a custom rate, VAT content, forint rounding, copy and share, history, a dated rate guide — and a home-screen widget for Pro. No account, everything on-device.";
+
+const features = [
+  {
+    title: "Nettó ↔ bruttó, both ways",
+    body: "Type a net amount and read the gross, or type the gross from a receipt and back-compute the net — one tap flips the direction. Nettó, ÁFA and bruttó are always shown together, and they always add up.",
+  },
+  {
+    title: "The Hungarian rates, one row",
+    body: "27 %, 18 %, 5 % and 0 % as chips, plus an egyéni (custom) rate for anything else. The result card also shows the ÁFA-tartalom — 21,26 %, 15,25 %, 4,76 % — the figure printed on Hungarian receipts.",
+  },
+  {
+    title: "Thinks in forints",
+    body: "A 000 key, thousands grouping, rounding to whole forints by default — or fillér precision when you need two decimals. Copy or share the whole result as one line: „Nettó 10 000 Ft + ÁFA (27%) 2 700 Ft = Bruttó 12 700 Ft”.",
+  },
+  {
+    title: "History and a rate guide",
+    body: "The last twenty calculations, one tap to bring any of them back. A short, dated guide of what falls under 27, 18, 5 and 0 % — informational, with its sources named, so you can check it against the law.",
+  },
+  {
+    title: "A widget for Pro",
+    body: "The one-time Pro purchase removes the banner ads and unlocks a home-screen widget: a small calculator with its own keypad and rate chips, so a quick check never needs the app opened at all.",
+  },
+  {
+    title: "Offline, with no account",
+    body: "No registration, no login, no cloud. What you type, your history and your settings stay on your phone; the app works in airplane mode, and the only network traffic is ads and crash reports.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What does ÁFA kalkulátor do?",
+    answer:
+      "It converts between net and gross amounts at the Hungarian VAT rates — 27 %, 18 %, 5 %, 0 %, or a custom rate — shows the VAT amount and the VAT content, keeps a history, and explains in a short guide which goods and services fall under which rate. It is Hungarian-only by design.",
+  },
+  {
+    question: "Is it free?",
+    answer:
+      "Yes. The app is free and shows a banner ad at the bottom of the screen; there are no full-screen ads. A single one-time purchase, ÁFA kalkulátor Pro, removes the ads and unlocks the home-screen widget. There is no subscription and nothing else for sale.",
+  },
+  {
+    question: "What is the home-screen widget?",
+    answer:
+      "A small VAT calculator that lives on your Android home screen: a keypad, the rate chips and the nettó / ÁFA / bruttó result, usable without opening the app. It follows the app's light or dark theme and its precision setting. It is part of Pro; the free app shows a locked preview.",
+  },
+  {
+    question: "Does it round to whole forints?",
+    answer:
+      "By default, yes — amounts round half-up to whole forints, which is what Hungarian invoices and receipts do. A setting switches to fillér precision (two decimals). Either way the three figures are computed at the precision you see, so nettó + ÁFA always equals bruttó on screen.",
+  },
+  {
+    question: "Is the rate guide tax advice?",
+    answer:
+      "No. The guide is an informational summary with its sources named (the Hungarian VAT Act and NAV) and a validity date, so you can tell how fresh it is. Rates and categories change; for an invoice or a return, the tax authority, the current law or your accountant is authoritative.",
+  },
+  {
+    question: "Do I need an internet connection?",
+    answer:
+      "No. Calculating, the history, the guide and the widget all work offline. A connection is only used to serve ads (in the free version), to send crash reports, and by Google Play for the Pro purchase.",
+  },
+  {
+    question: "What data does the app collect?",
+    answer:
+      "The app itself collects none — no account, no analytics, nothing uploaded. Two things leave your device: crash reports, and the data Google needs to serve ads (with a consent prompt in the EEA). The privacy policy has the full details.",
+  },
+  {
+    question: "What platforms is it on?",
+    answer:
+      "ÁFA kalkulátor is an Android app, coming soon to Google Play. Other platforms may follow later.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "ÁFA kalkulátor",
+      operatingSystem: "Android",
+      applicationCategory: "FinanceApplication",
+      inLanguage: "hu",
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "ÁFA kalkulátor",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<SiteLayout
+  title="ÁFA kalkulátor - Hungarian VAT Calculator for Android"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="ÁFA kalkulátor — nettó ↔ bruttó at the Hungarian VAT rates"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/afa-kalkulator-logo.png"
+        alt="ÁFA kalkulátor app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">ÁFA kalkulátor</h1>
+        <p class="text-lg text-amber-200/80">
+          Nettó ↔ bruttó at the Hungarian VAT rates — with a widget.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        A Hungarian-native VAT calculator: <strong>27 / 18 / 5 / 0 %</strong> or
+        a custom rate, both directions, the ÁFA-tartalom a receipt prints,
+        forint rounding, one-line copy and share, history and a dated rate guide
+        — with <strong>no account</strong> and nothing uploaded. Pro removes the
+        ads and adds a home-screen widget.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="/apps/afa-kalkulator/privacy"
+          class="underline-offset-4 hover:underline"
+        >
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="/apps/afa-kalkulator/terms"
+          class="underline-offset-4 hover:underline"
+        >
+          Terms of Use
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">The four rates</h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        <div>
+          <h3 class="text-lg font-semibold text-amber-100">27 % — általános</h3>
+          <p class="mt-2 text-base leading-7 text-amber-50/90">
+            The general rate, and the highest standard VAT rate in the EU: most
+            goods and services, clothing, electronics, fuel, most food. VAT
+            content 21,26 % — in a 12 700 Ft gross price, 2 700 Ft is VAT.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-amber-100">18 % — kedvezményes</h3>
+          <p class="mt-2 text-base leading-7 text-amber-50/90">
+            Certain dairy products, goods made from cereals, flour or starch
+            (bread, pasta), and admission to open-air music and dance events.
+            VAT content 15,25 %.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-amber-100">5 % — kedvezményes</h3>
+          <p class="mt-2 text-base leading-7 text-amber-50/90">
+            Basic foods such as pork, poultry, beef, fish, eggs and fresh milk;
+            medicines; books, e-books and daily papers; restaurant meals;
+            hotel accommodation; internet access; district heating; new homes
+            under conditions. VAT content 4,76 %.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-amber-100">0 % / mentes</h3>
+          <p class="mt-2 text-base leading-7 text-amber-50/90">
+            Small-business exemption (alanyi adómentesség), where net equals
+            gross; exempt activities such as education, healthcare and parts of
+            financial services; reverse charge; intra-Community supply and
+            export.
+          </p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-3xl text-sm leading-6 text-amber-200/70">
+        A summary, not advice — the app's own guide names its sources and its
+        validity date, and the terms say the same thing in more words.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Generic VAT calculators exist by the dozen, and every one of them makes
+        the Hungarian case a special case: the rate has to be typed, the
+        rounding is to cents, and the number a Hungarian receipt actually prints
+        — the ÁFA-tartalom — is nowhere. This one starts from the Hungarian
+        rates, rounds to whole forints, and speaks the language a freelancer,
+        a bookkeeper or a shop owner already uses: nettó, bruttó, kulcs.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The widget follows from the same idea. Most VAT checks are ten seconds
+        long — a price on a quote, a line on a receipt — and ten seconds is too
+        short to be worth opening an app. So for Pro the calculator lives on the
+        home screen, keypad and all.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with one optional upgrade
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The app is free and shows a banner ad served by Google AdMob at the
+        bottom of the screen — never a full-screen one — with a consent prompt
+        where the GDPR requires it. A single one-time purchase, <strong
+          >ÁFA kalkulátor Pro</strong
+        >, removes the ads permanently and unlocks the home-screen widget. No
+        subscription, no other products. Everything the app does and doesn't
+        collect is spelled out in the
+        <a
+          href="/apps/afa-kalkulator/privacy"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</SiteLayout>

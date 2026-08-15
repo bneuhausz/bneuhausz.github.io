@@ -25,6 +25,9 @@ const staticRoutes = [
   '/apps/magyar-kartya/',
   '/apps/magyar-kartya/privacy/',
   '/apps/magyar-kartya/terms/',
+  '/apps/afa-kalkulator/',
+  '/apps/afa-kalkulator/privacy/',
+  '/apps/afa-kalkulator/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 
