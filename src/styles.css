@@ -82,8 +82,8 @@
 @source inline("hover:shadow-github");
 
 body {
-  color: #213547;
-  background-color: #ffffff;
+  color: var(--color-amber-100);
+  background-color: var(--color-neutral-800);
 }
 
 .github-icon {
