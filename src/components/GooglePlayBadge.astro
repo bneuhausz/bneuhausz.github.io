@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  class="inline-block transition-opacity duration-300 hover:opacity-80"
+>
+  <img
+    src="/images/google-play-badge.png"
+    alt="Get it on Google Play"
+    width="646"
+    height="250"
+    class="h-auto w-52"
+  />
+</a>

@@ -2,7 +2,7 @@
 title: Lift Recorder is out on Google Play!
 slug: lift-recorder-is-out
 description: A free Android app that records your lifts without pausing Spotify or YouTube Music — video-only, saved to your gallery, no account needed.
-date: 2026-07-24
+date: 2026-08-18
 coverImage: /images/lift-recorder-og.png
 coverImageMedium: /images/lift-recorder-og.png
 coverImageSmall: /images/lift-recorder-og.png
@@ -15,16 +15,14 @@ icon: /images/lift-recorder-logo.png
 iconDescription: Lift Recorder app icon
 tags: [Android, Lift Recorder]
 shadowColor: default
-draft: true
+draft: false
 ---
 
 # Lift Recorder is out on Google Play!
 
 For a while now, I've been building a small Android app on the side, and the day has come: it's live on Google Play! It's called Lift Recorder, and it does exactly one thing well: it films your sets at the gym without pausing your music.
 
-<!-- TODO before publishing: replace the placeholder Play Store URL below with the real listing URL and update the date in the frontmatter. -->
-
-You can [get it on Google Play](https://play.google.com/store/apps/details?id=TODO_REPLACE_BEFORE_PUBLISHING), or take a look at the [Lift Recorder page](/apps/lift-recorder) for the full rundown.
+You can [get it on Google Play](https://play.google.com/store/apps/details?id=dev.bneuhausz.liftrecorder), or take a look at the [Lift Recorder page](/apps/lift-recorder) for the full rundown.
 
 ## Why recording video pauses your music on Android
 
@@ -56,6 +54,6 @@ Lift Recorder is free and shows a small banner ad served by Google AdMob. If the
 
 ## Try it
 
-If you film your sets and you're tired of your camera app fighting your playlist, [give Lift Recorder a try](https://play.google.com/store/apps/details?id=TODO_REPLACE_BEFORE_PUBLISHING). It's free, it's tiny, and it does what it says.
+If you film your sets and you're tired of your camera app fighting your playlist, [give Lift Recorder a try](https://play.google.com/store/apps/details?id=dev.bneuhausz.liftrecorder). It's free, it's tiny, and it does what it says.
 
 If you run into a bug or have an idea that would make it better, [send me a message](/contact) — I'd love to hear how it holds up in your gym.
