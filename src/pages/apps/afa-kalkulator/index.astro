@@ -1,7 +1,10 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
+import GooglePlayBadge from "../../../components/GooglePlayBadge.astro";
 
 const pageUrl = "https://bneuhausz.dev/apps/afa-kalkulator";
+const playStoreUrl =
+  "https://play.google.com/store/apps/details?id=dev.bneuhausz.afakalkulator";
 const logoUrl = "https://bneuhausz.dev/images/afa-kalkulator-logo.png";
 const ogImageUrl = "https://bneuhausz.dev/images/afa-kalkulator-og.png";
 const description =
@@ -73,7 +76,7 @@ const faqs = [
   {
     question: "What platforms is it on?",
     answer:
-      "ÁFA kalkulátor is an Android app, coming soon to Google Play. Other platforms may follow later.",
+      "ÁFA kalkulátor is an Android app, available for free on Google Play. Other platforms may follow later.",
   },
 ];
 
@@ -88,6 +91,7 @@ const ldJson = {
       inLanguage: "hu",
       description,
       url: pageUrl,
+      installUrl: playStoreUrl,
       image: logoUrl,
       author: {
         "@type": "Person",
@@ -217,14 +221,7 @@ const screenshots = [
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3">
-        <span
-          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
-        >
-          <span
-            class="inline-block h-2 w-2 rounded-full bg-amber-200"
-            aria-hidden="true"></span>
-          Coming soon to Google Play
-        </span>
+        <GooglePlayBadge href={playStoreUrl} />
       </div>
 
       <div
