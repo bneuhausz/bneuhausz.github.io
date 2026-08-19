@@ -69,6 +69,19 @@ APPS = {
             "store/screenshots/04_guide.png",
         ],
     ),
+    # Sorsvető ships in three languages and shoots a set per language
+    # (store/screenshots/<lang>/); this page is English, so it takes the
+    # English set and the English feature graphic.
+    "sorsveto": (
+        "ciganykartya",
+        "store/feature_graphic_1024x500_en.png",
+        [
+            "store/screenshots/en/01_home.png",
+            "store/screenshots/en/08_widget.png",
+            "store/screenshots/en/05_home_gothic.png",
+            "store/screenshots/en/04_cross.png",
+        ],
+    ),
 }
 
 

@@ -28,6 +28,9 @@ const staticRoutes = [
   '/apps/afa-kalkulator/',
   '/apps/afa-kalkulator/privacy/',
   '/apps/afa-kalkulator/terms/',
+  '/apps/sorsveto/',
+  '/apps/sorsveto/privacy/',
+  '/apps/sorsveto/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 

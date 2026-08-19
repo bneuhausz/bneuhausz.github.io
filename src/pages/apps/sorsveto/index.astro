@@ -1,0 +1,426 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/sorsveto";
+const logoUrl = "https://bneuhausz.dev/images/sorsveto-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/sorsveto-og.png";
+const description =
+  "A fortune-card app for Android on the traditional 36-card Central-European deck — cigánykártya, Wahrsagekarten: a daily card with a flip, spreads for a question, meanings and pair meanings in Hungarian, German and English, a journal, a daily reminder, and today's card as a home-screen widget for Pro. For entertainment. No account, everything on-device.";
+
+const features = [
+  {
+    title: "Today's card, one flip",
+    body: "One card a day, face down until you turn it. Under it, its keywords; a tap opens the full meaning. The card stays the same until midnight and goes into your journal by itself — the ritual is the point, so there is no re-draw button.",
+  },
+  {
+    title: "Spreads for a question",
+    body: "Type a question and lay the cards: Three cards for past, present and future, or — with Pro — the five-card Cross and the 36-card Grand tableau. Tap any card for its meaning, together with what it says next to each of its neighbours.",
+  },
+  {
+    title: "Meanings in three languages",
+    body: "All 36 cards carry keywords, a few sentences of meaning and one line to take with you, written in Hungarian, German and English — plus the classic pair meanings for cards that sit next to each other. Warm and plain, never fatalistic, and never a health, money or legal claim.",
+  },
+  {
+    title: "A journal that remembers",
+    body: "Every reading is kept with its date, your question and your own note — the daily cards too. Open any of them again in its own layout, or share one as plain text. The free app shows the last thirty; Pro keeps the lot.",
+  },
+  {
+    title: "A widget, and a nudge",
+    body: "Pro puts today's card on the home screen: tap to turn it, tap again for its meaning, without opening the app. An optional daily reminder can tell you your card is waiting — at the hour you choose, and only on days you have not turned it yet.",
+  },
+  {
+    title: "Offline, with no account",
+    body: "No registration, no login, no cloud. The cards, the meanings, the journal and the widget all work in airplane mode; the only network traffic is ads and crash reports. Uninstalling takes your readings with it, because they were only ever on your phone.",
+  },
+];
+
+const decks = [
+  {
+    name: "Klasszikus · Classic",
+    price: "Free",
+    body: "The traditional cards: parchment stock, plum ink, old gold. Thirty-six scenes drawn for this app — a horseshoe and a clover for Luck, an anchor over a sunrise for Hope, a letter, a house, a carriage.",
+  },
+  {
+    name: "Szecessziós · Secession",
+    price: "One-time purchase",
+    body: "Vienna 1900, the deck's own era: ivory, black and gold, straight lines and chequered friezes, a black window band with gold squares. The same thirty-six scenes in a different dress.",
+  },
+  {
+    name: "Éjfél · Midnight",
+    price: "One-time purchase",
+    body: "The classic drawing on night cards: deep blue, moon-gold and stars. Every sun in the deck becomes a moon — the same scenes, read after dark.",
+  },
+  {
+    name: "Gótikus · Gothic",
+    price: "One-time purchase",
+    body: "A midnight tale: near-black cards, bone-white lines, a silver moon, blood-red roses and a pointed-arch window. The bird on the cards is a raven here.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is a cigánykártya deck?",
+    answer:
+      "A 36-card fortune-telling deck used across Central Europe — cigánykártya in Hungarian, Wahrsagekarten or Zigeunerkarten in German. Unlike tarot it has no suits and no reversals: each card is one named picture (Luck, Letter, House, Journey, Love), read upright, by its meaning, its position in the spread, and the cards next to it.",
+  },
+  {
+    question: "What does the app do?",
+    answer:
+      "It gives you a card a day to turn, spreads to lay on a question, the meaning of every card and of the classic pairs, and a journal that keeps what you drew. Everything is on your phone; nothing needs an account or a connection.",
+  },
+  {
+    question: "Is this real fortune telling?",
+    answer:
+      "No. Sorsvető is for entertainment. The card meanings are not advice of any kind — not medical, not financial, not legal — and the app says so in its own settings screen as well as here. Read it the way you would read a horoscope over coffee.",
+  },
+  {
+    question: "Is it free?",
+    answer:
+      "Yes. The app is free and shows a banner ad at the bottom of the screen; there are no full-screen ads and no rewarded ads. A one-time Pro purchase removes the ads and unlocks a few things, and the three extra card decks are one-time purchases too. There is no subscription.",
+  },
+  {
+    question: "What does Pro include?",
+    answer:
+      "No ads; today's card as a home-screen widget; the two large spreads — the Cross and the Grand tableau — with their pair meanings; and a journal with no limit instead of the last thirty readings. One payment, no subscription, restorable on a new phone.",
+  },
+  {
+    question: "What are the card decks?",
+    answer:
+      "Four different sets of the same thirty-six cards, drawn for this app: Classic (included), Szecessziós, Éjfél and Gótikus. A deck is bought whole and re-draws every card, in the app and in the home-screen widget. Switching between the ones you own is instant.",
+  },
+  {
+    question: "What languages does it speak?",
+    answer:
+      "Hungarian, German and English — the interface, the card names and every meaning. It follows your phone's language by default, and you can pick a different one in the settings.",
+  },
+  {
+    question: "Do I need an internet connection?",
+    answer:
+      "No. The daily card, the spreads, the meanings, the journal, the reminder and the widget all work offline. A connection is only used to serve ads in the free version, to send crash reports, and by Google Play for a purchase.",
+  },
+  {
+    question: "What data does the app collect?",
+    answer:
+      "The app itself collects none — no account, no analytics, nothing uploaded. Your journal, your questions and your notes never leave the phone. Two things do leave it: crash reports, and the data Google needs to serve ads (with a consent prompt in the EEA). The privacy policy has the full details.",
+  },
+  {
+    question: "What platforms is it on?",
+    answer:
+      "Sorsvető is an Android app, coming soon to Google Play. Other platforms may follow later.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Sorsvető",
+      alternateName: "Sorsveto",
+      operatingSystem: "Android",
+      applicationCategory: "EntertainmentApplication",
+      inLanguage: ["hu", "de", "en"],
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Sorsvető",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
+const featureGraphic = {
+  src: "/images/sorsveto/feature-graphic.png",
+  alt: "Sorsveto feature graphic — two face-down cards and one turned card, the Love card, on linen",
+};
+
+const screenshots = [
+  {
+    src: "/images/sorsveto/screenshot-1.png",
+    alt: "Today's card turned: Hope, an anchor over a sunrise, with its keywords",
+    caption: "Today's card, turned",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/sorsveto/screenshot-2.png",
+    alt: "The home-screen widget showing the day's card",
+    caption: "The Pro home-screen widget",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/sorsveto/screenshot-3.png",
+    alt: "The same screen on the Gothic deck in dark mode",
+    caption: "The Gótikus deck, in dark",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/sorsveto/screenshot-4.png",
+    alt: "The five-card Cross spread laid on a question",
+    caption: "The Cross — a spread for a question",
+    width: 540,
+    height: 960,
+  },
+];
+---
+
+<SiteLayout
+  title="Sorsvető - Cigánykártya Fortune Cards for Android"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Sorsvető — a daily card, spreads and a journal on the traditional 36-card deck"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/sorsveto-logo.png"
+        alt="Sorsvető app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Sorsvető</h1>
+        <p class="text-lg text-amber-200/80">
+          A card a day on the traditional 36-card deck.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        The <strong>cigánykártya</strong> — <em>Wahrsagekarten</em> — on your
+        phone: today's card to turn, spreads for a question, the meaning of every
+        card and of the classic pairs, and a journal that keeps what you drew.
+        Hungarian, German and English, <strong>no account</strong>, nothing
+        uploaded. Pro removes the ads and puts the day's card on your home
+        screen. For entertainment.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a href="/apps/sorsveto/privacy" class="underline-offset-4 hover:underline">
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a href="/apps/sorsveto/terms" class="underline-offset-4 hover:underline">
+          Terms of Use
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">The four decks</h2>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-amber-50/90">
+        Every card in this app is drawn for it — no scanned deck, no stock art.
+        A skin restyles all thirty-six of them without changing what they show,
+        so the reading is the same whichever one you use.
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {
+          decks.map((deck) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">{deck.name}</h3>
+              <p class="text-sm text-amber-200/70">{deck.price}</p>
+              <p class="mt-2 text-base leading-7 text-amber-50/90">
+                {deck.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The deck itself is old and common — most Hungarian households have seen
+        one — and the web is full of sites that deal it. On a phone it is
+        mostly missing: what exists is thin, ad-heavy, or a translated tarot app
+        wearing the wrong pictures. This one starts from the deck: the
+        traditional thirty-six cards in their traditional order, their Hungarian
+        names pinned against four printed sources, and meanings written to be
+        read rather than to frighten.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The art follows from that. The cards are drawn from scratch for the app,
+        which is why they can also be restyled into a whole night deck or a
+        gothic one, and why the same picture can appear at hero size, in a
+        thumbnail and on a home-screen widget without ever being a photograph of
+        someone else's cardboard.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with optional one-time purchases
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The app is free and shows a banner ad served by Google AdMob at the
+        bottom of the screen — never a full-screen one, never a rewarded one —
+        with a consent prompt where the GDPR requires it. <strong
+          >Sorsvető Pro</strong
+        > is a single one-time purchase: no ads, the home-screen widget, the Cross
+        and the Grand tableau, and an unlimited journal. The three extra decks are
+        separate one-time purchases. No subscription, and nothing that gates a
+        card's meaning behind a payment. What the app does and does not collect is
+        spelled out in the
+        <a
+          href="/apps/sorsveto/privacy"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="mt-8 text-center text-sm text-amber-200/70">
+      Sorsvető is for entertainment purposes only. Card readings are not advice
+      of any kind — health, financial or legal.
+    </p>
+  </div>
+</SiteLayout>
