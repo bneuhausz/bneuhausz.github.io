@@ -1,0 +1,437 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/dobokocka";
+const logoUrl = "https://bneuhausz.dev/images/dobokocka-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/dobokocka-og.png";
+const description =
+  "A free dice roller for Android: one die or thirty, dice you make yourself with your own words, emoji, colours or photos, quick modes for coin, yes/no, who starts, draw lots and poker dice, shake-to-roll, RPG notation and a home-screen widget for Pro. Hungarian and English, no account, everything on-device.";
+
+const features = [
+  {
+    title: "One die, or a whole handful",
+    body: "Tap the button or shake the phone — the dice tumble, rattle and settle on the felt. Roll one die or thirty, mixed however you like: two six-sided and one twenty-sided in the same throw. Every result goes into a log that survives a restart.",
+  },
+  {
+    title: "The modes a table actually needs",
+    body: "Coin for heads or tails. Yes / no when all you need is a decision. Who starts? — type the names, the highest roll goes first and a tie is re-rolled by itself. Draw lots — type the options and let the app pick. And poker dice: five dice, three rolls, hold what you like, with the hand named for you.",
+  },
+  {
+    title: "Dice you make yourself",
+    body: "Build a die out of your own words, emoji or colours — anything from two sides to twenty-four. Rock · Paper · Scissors, a die of everyone's name, a die of what to cook. A plain numbered die can have any side count too: d3, d7 and d30 all roll.",
+  },
+  {
+    title: "Simple by default, RPG when you want it",
+    body: "It opens as One die · Two dice · Coin, with no notation in sight. Turn on RPG mode and the grammar appears: 4d6kh3, 2d20kh1 for advantage, d%, a +3 modifier, keep-highest and keep-lowest rules — plus a statistics tab showing what has actually been coming up.",
+  },
+  {
+    title: "Five looks, every one of them free",
+    body: "Blue felt, green felt, midnight, a wooden table and paper. They repaint the table, the built-in dice and the home-screen widget, and they all work in dark mode. Dice you made yourself keep the colours you gave them.",
+  },
+  {
+    title: "Offline, with no account",
+    body: "No registration, no login, no cloud. Rolling, the log, your own dice, the quick modes and the widget all work in airplane mode; the only network traffic is ads and crash reports. Uninstalling takes everything with it, because it was only ever on your phone.",
+  },
+];
+
+const skins = [
+  {
+    name: "Kék · Blue felt",
+    body: "The default: a casino-blue table with ivory dice and black pips. The one the icon wears.",
+  },
+  {
+    name: "Zöld · Green felt",
+    body: "Baize — the board-game table the app was built against before the blue one won.",
+  },
+  {
+    name: "Éjfél · Midnight",
+    body: "A near-black table with charcoal dice and ivory pips, lit by a gold accent.",
+  },
+  {
+    name: "Fa · Wood table",
+    body: "Ivory dice on wood grain — the one that looks least like a casino and most like somebody's kitchen.",
+  },
+  {
+    name: "Papír · Paper",
+    body: "Cream and white, with dark ink. The only light table in the set, and the one that proves the text colour is calculated rather than assumed.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Hatos free?",
+    answer:
+      "Yes. The app is free and shows a single banner ad at the bottom of the screen — no full-screen ads and no rewarded videos, ever. A one-time Hatos Pro purchase removes the banner and unlocks two extras. Everything else, including all five skins, every quick mode, custom dice and RPG mode, is free for everyone. There is no subscription.",
+  },
+  {
+    question: "What does Hatos Pro include?",
+    answer:
+      "Three things: no ads; a home-screen widget that rolls when you tap it, without opening the app; and photo dice faces, so your own pictures can be the sides of a die. One payment, no subscription, restorable on a new phone.",
+  },
+  {
+    question: "Can the widget roll without opening the app?",
+    answer:
+      "Yes — tap the tile on your home screen and it rolls there, with the app closed. Note that the widget rolls on tap only: shake-to-roll needs the app open, because a home-screen widget has no process of its own to watch the accelerometer.",
+  },
+  {
+    question: "Can I make my own dice?",
+    answer:
+      "Yes, and it is free. A custom die can have anywhere from two to twenty-four sides, and each side can be your own text, an emoji or a colour. With Pro a side can also be a photo from your gallery. Your dice sit alongside the built-in ones and can be mixed into any pool.",
+  },
+  {
+    question: "Does it handle RPG notation?",
+    answer:
+      "Yes. Turn on RPG mode in the settings and you get dice notation, modifiers and keep rules: 4d6kh3 for ability scores, 2d20kh1 for advantage, d% for percentile, +3 for a flat bonus. A statistics tab shows the distribution of what you have rolled so far. The app starts in simple mode, so none of that is in the way if you do not want it.",
+  },
+  {
+    question: "Is this a gambling app?",
+    answer:
+      "No. Hatos rolls dice — there is no wager, no stake and no prize, and nothing is won or lost. It is a random-number tool, and the app carries a line in its own settings screen saying exactly that. Poker dice is the game of holding and re-rolling; no money and no chips are involved anywhere in the app.",
+  },
+  {
+    question: "Are the rolls actually random?",
+    answer:
+      "They come from the platform's pseudo-random number generator, the same one behind the shuffle in any other app on your phone. Every result is decided before the dice start moving — the tumbling is a picture of a roll that has already happened, not the thing that determines it.",
+  },
+  {
+    question: "What languages does it speak?",
+    answer:
+      "Hungarian and English — the whole interface, including the quick modes and the dice notation. It follows your phone's language by default, and you can pick the other one in the settings at any time.",
+  },
+  {
+    question: "Do I need an internet connection?",
+    answer:
+      "No. Rolling, the log, your own dice, the quick modes, the statistics and the widget all work offline. A connection is only used to serve ads in the free version, to send crash reports, and by Google Play for a purchase.",
+  },
+  {
+    question: "What data does the app collect?",
+    answer:
+      "The app itself collects none — no account, no analytics, nothing uploaded. Your rolls, your saved pools, your custom dice and any photos you use as dice faces never leave the phone. Two things do leave it: crash reports, and the data Google needs to serve ads (with a consent prompt in the EEA). The privacy policy has the full details.",
+  },
+  {
+    question: "What platforms is it on?",
+    answer:
+      "Hatos is an Android app, coming soon to Google Play. Other platforms may follow later.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Hatos",
+      alternateName: "Dobókocka",
+      operatingSystem: "Android",
+      applicationCategory: "UtilitiesApplication",
+      inLanguage: ["hu", "en"],
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Hatos",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
+const featureGraphic = {
+  src: "/images/dobokocka/feature-graphic.png",
+  alt: "Hatos feature graphic — three ivory dice thrown on dark blue felt beside the wordmark",
+};
+
+const screenshots = [
+  {
+    src: "/images/dobokocka/screenshot-1.png",
+    alt: "The roll screen: two six-sided dice and a twenty-sided die landed on blue felt, totalling 30",
+    caption: "A mixed pool, landed",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/dobokocka/screenshot-2.png",
+    alt: "Who starts? — four names on the felt, each with the die it rolled, and Bence marked as the winner",
+    caption: "Ki kezd? — who starts",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/dobokocka/screenshot-3.png",
+    alt: "Poker dice: five dice on the felt with the hand named Full house and two rolls left",
+    caption: "Poker dice, hand named",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/dobokocka/screenshot-4.png",
+    alt: "The skin picker showing blue felt, green felt, midnight, wood and paper, each previewed with real dice",
+    caption: "Five skins, all free",
+    width: 540,
+    height: 960,
+  },
+];
+---
+
+<SiteLayout
+  title="Hatos - Dice Roller for Android"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Hatos — a dice roller with custom dice, quick modes and a home-screen widget"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/dobokocka-logo.png"
+        alt="Hatos app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Hatos</h1>
+        <p class="text-lg text-amber-200/80">
+          A die in your pocket — and it never rolls off the table.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        A fast, uncluttered <strong>dice roller</strong> for board games, RPG
+        sessions and every moment you would rather let chance decide. Tap or
+        shake, roll one die or thirty, build dice out of your own words, emoji
+        or colours, and settle <em>ki kezd?</em> in one throw. Hungarian and
+        English, <strong>no account</strong>, nothing uploaded. Pro removes the
+        ads and puts a die on your home screen.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="/apps/dobokocka/privacy"
+          class="underline-offset-4 hover:underline"
+        >
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="/apps/dobokocka/terms"
+          class="underline-offset-4 hover:underline"
+        >
+          Terms of Use
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">The five skins</h2>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-amber-50/90">
+        A skin repaints the table, the built-in dice and the ink — app-wide,
+        including the roll log and the home-screen widget. It changes no
+        outcome and touches nothing you made yourself: a die you built in March
+        keeps March's colours forever. <strong>All five are free</strong>;
+        there is no shop.
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {
+          skins.map((skin) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">{skin.name}</h3>
+              <p class="mt-2 text-base leading-7 text-amber-50/90">
+                {skin.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Everybody has lost a die under the sofa five minutes into a board game,
+        and everybody has argued about who goes first. The phone is already on
+        the table — but a dice app is usually either a single six-sided die
+        with nothing around it, or a wall of ads around a physics engine nobody
+        asked for. Hatos starts from what a table actually does with dice: roll
+        a handful, flip a coin, pick a name, draw lots, and settle it.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        That is also why the Hungarian words are the ones on the buttons —
+        <em>ki kezd?</em>, <em>sorsolás</em>, <em>kockapóker</em> are how the
+        thing is asked for in the room, and the English build translates every
+        one of them rather than leaving a word nobody can read. And it is why
+        making your own die is free rather than a paid extra: a die that says
+        <em>Anna · Bence · Csenge · Dávid</em> is the point of a dice app on a
+        phone, not a bonus feature.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with one optional purchase
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The app is free and shows a banner ad served by Google AdMob at the
+        bottom of the screen — never a full-screen one, never a rewarded one —
+        with a consent prompt where the GDPR requires it. <strong>Hatos Pro</strong
+        > is a single one-time purchase: no ads, a home-screen widget that rolls
+        when you tap it, and photo dice faces. No subscription, and nothing else
+        is behind it — the quick modes, custom dice, RPG mode, the log, the
+        statistics and all five skins stay free for everyone. What the app does
+        and does not collect is spelled out in the
+        <a
+          href="/apps/dobokocka/privacy"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="mt-8 text-center text-sm text-amber-200/70">
+      Hatos is a random-number tool: there is no wager, no stake and no prize.
+    </p>
+  </div>
+</SiteLayout>

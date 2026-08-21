@@ -82,6 +82,22 @@ APPS = {
             "store/screenshots/en/04_cross.png",
         ],
     ),
+    # Hatos shoots a set per listing language (store/screenshots/<lang>_*.png);
+    # this page is English, so it takes the `en_` set. Its feature graphic is
+    # bilingual by design ("Dobókocka · Dice roller"), so there is only one.
+    # The custom-dice shot is skipped here on purpose: it is a text list, and
+    # at ~250 CSS px it reads as grey lines, where the skin picker reads as
+    # five colours at any size.
+    "dobokocka": (
+        "dobokocka",
+        "store/feature_graphic_1024x500.png",
+        [
+            "store/screenshots/en_01_roll.png",
+            "store/screenshots/en_02_modes.png",
+            "store/screenshots/en_03_poker.png",
+            "store/screenshots/en_05_skins.png",
+        ],
+    ),
 }
 
 

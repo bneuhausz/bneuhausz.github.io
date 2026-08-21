@@ -31,6 +31,9 @@ const staticRoutes = [
   '/apps/sorsveto/',
   '/apps/sorsveto/privacy/',
   '/apps/sorsveto/terms/',
+  '/apps/dobokocka/',
+  '/apps/dobokocka/privacy/',
+  '/apps/dobokocka/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 
