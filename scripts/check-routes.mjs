@@ -34,6 +34,9 @@ const staticRoutes = [
   '/apps/dobokocka/',
   '/apps/dobokocka/privacy/',
   '/apps/dobokocka/terms/',
+  '/apps/coin-flip/',
+  '/apps/coin-flip/privacy/',
+  '/apps/coin-flip/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 

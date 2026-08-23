@@ -1,0 +1,440 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/coin-flip";
+const logoUrl = "https://bneuhausz.dev/images/coin-flip-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/coin-flip-og.png";
+const description =
+  "A coin toss for Android that actually throws the coin: tap or shake and it spins, arcs, lands and settles on heads or tails. A running tally and stats, one to ten coins at once, an optional landing on its edge, eight coin finishes, and for Pro your own photographs on both sides plus an animated home-screen widget. Hungarian and English, no account, everything on-device.";
+
+const features = [
+  {
+    title: "A coin that is actually thrown",
+    body: "Tap anywhere — or shake the phone — and the coin flicks off your thumb, arcs, spins, lands with a clink and wobbles to a stop. It is drawn frame by frame rather than swapped between two pictures, so you watch the result happen instead of being told it.",
+  },
+  {
+    title: "One coin, or a handful",
+    body: "Throw 1, 3, 5 or 10 at once. They land in a stagger rather than together, and the readout gives you a verdict — Heads wins 3–2 — instead of making you count. Best of five settles an argument faster than five separate throws.",
+  },
+  {
+    title: "It keeps score",
+    body: "A running tally sits under the coin, and a stats screen holds your totals, the split against a fair-coin marker, your current run and the last fifty throws. Clearable whenever you want a fresh start.",
+  },
+  {
+    title: "It can land on its edge",
+    body: "Off by default, because a coin that sometimes refuses to answer is a great toy and a bad arbiter. Switch it on and every so often the coin comes down and stands on its rim — which is not a result: it is not recorded, and you throw that coin again. Rare, sometimes, often, or a number you type.",
+  },
+  {
+    title: "Eight finishes, two of them free",
+    body: "Gold and silver ship free; copper, rose gold, obsidian, verdigris, amethyst and cobalt come with Pro. Every one is drawn by the same renderer as the real coin, so the picker shows you the actual coin rather than a colour swatch.",
+  },
+  {
+    title: "Offline, with no account",
+    body: "No registration, no login, no cloud. Flipping, the tally, the stats and the widget all work in airplane mode; the only network traffic is ads and crash reports. Uninstalling takes everything with it, because it was only ever on your phone.",
+  },
+];
+
+const pro = [
+  {
+    name: "Your own faces",
+    body: "Put a photograph on each side of the coin — a friend, a pet, two options you are choosing between — cropped to a circle inside the app and struck into the metal so the rim still frames it. You can rename the sides too, because a friend's face makes Heads the wrong word.",
+  },
+  {
+    name: "A home-screen widget",
+    body: "A coin on your launcher that throws when you tap it, spins for real, names the side it landed on and adds the throw to the app's tally. It wears the finish you picked and your own photographs, and it never shows an ad.",
+  },
+  {
+    name: "Six more finishes",
+    body: "Copper, rose gold, obsidian, verdigris, amethyst and cobalt, on top of the free gold and silver.",
+  },
+  {
+    name: "No ads",
+    body: "The banner goes, on every screen. One payment, no subscription, restorable on a new phone.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Coin Flip free?",
+    answer:
+      "Yes. The app is free and shows a single banner ad at the bottom of the screen — no full-screen ads and no rewarded videos, ever. A one-time Pro purchase removes the banner and unlocks the cosmetics. Flipping, the stats, throwing up to ten coins at once, shake-to-flip, landing on its edge, and the gold and silver coins are free for everyone. There is no subscription.",
+  },
+  {
+    question: "What does Pro include?",
+    answer:
+      "Four things: no ads; six more coin finishes; your own photographs on both sides of the coin, with your own names for the two sides; and an animated home-screen widget that flips without opening the app. One payment, no subscription, restorable on a new phone.",
+  },
+  {
+    question: "Is the coin fair?",
+    answer:
+      "Yes. Heads and tails are equally likely, and the outcome is derived from the toss itself rather than picked separately — so the coin can never announce a result its animation contradicts. The result is decided before the coin starts moving; the spin is a picture of a toss that has already happened.",
+  },
+  {
+    question: "What is 'landing on its edge'?",
+    answer:
+      "An optional bit of mischief, off by default. Switch it on and every so often the coin comes down and balances on its rim instead of falling flat. That is deliberately not a result — nothing is recorded and no verdict is given — so you throw that coin again. If you threw ten and two are standing, only those two are re-thrown; the eight that settled keep their results. You choose how often it happens, including typing an exact percentage.",
+  },
+  {
+    question: "Can the widget flip without opening the app?",
+    answer:
+      "Yes — tap the tile on your home screen and the coin spins and lands there, with the app closed, and the throw goes into the app's tally next time you open it. Note the widget flips on tap only: shake-to-flip needs the app open, because a home-screen widget has no process of its own to watch the accelerometer.",
+  },
+  {
+    question: "Where do my photographs go?",
+    answer:
+      "Nowhere. A photo you put on the coin is cropped on your device and written to the app's own private storage. It is never uploaded, never transmitted and never seen by us, and it is deleted when you uninstall the app. The app does not even ask for a storage permission — the image arrives through your system's own picker, which hands over only the one picture you selected.",
+  },
+  {
+    question: "Is this a gambling app?",
+    answer:
+      "No. Coin Flip tosses a coin — there is no wager, no stake and no prize, and nothing is won or lost. There is no in-app currency, no balance and no chips. It is a random-number tool and a decision aid; the stats screen counts throws, not winnings.",
+  },
+  {
+    question: "What languages does it speak?",
+    answer:
+      "Hungarian and English — the whole interface. It follows your phone's language by default, and you can pick the other one in the settings at any time. Hungarian is a first-class language here, not a translation bolted on afterwards.",
+  },
+  {
+    question: "Do I need an internet connection?",
+    answer:
+      "No. Flipping, the tally, the stats, the coin finishes, your own photo faces and the widget all work offline. A connection is only used to serve ads in the free version, to send crash reports, and by Google Play for a purchase.",
+  },
+  {
+    question: "What data does the app collect?",
+    answer:
+      "The app itself collects none — no account, no analytics, nothing uploaded. Your throws, your statistics and any photographs you use as coin faces never leave the phone. Two things do leave it: crash reports, and the data Google needs to serve ads (with a consent prompt in the EEA). The privacy policy has the full details.",
+  },
+  {
+    question: "What platforms is it on?",
+    answer:
+      "Coin Flip is an Android app, coming soon to Google Play. Other platforms may follow later.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Coin Flip",
+      alternateName: "Fej vagy Írás",
+      operatingSystem: "Android",
+      applicationCategory: "UtilitiesApplication",
+      inLanguage: ["en", "hu"],
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Coin Flip",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
+const featureGraphic = {
+  src: "/images/coin-flip/feature-graphic.png",
+  alt: "Coin Flip feature graphic — a gold coin at rest on a warm parchment table beside the wordmark",
+};
+
+const screenshots = [
+  {
+    src: "/images/coin-flip/screenshot-1.png",
+    alt: "The flip screen: a gold coin caught mid-spin above its shadow, with the running tally underneath",
+    caption: "Caught mid-spin",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/coin-flip/screenshot-2.png",
+    alt: "Five coins landed on the table with the readout reading Heads wins 4 to 1",
+    caption: "Five at once, with a verdict",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/coin-flip/screenshot-3.png",
+    alt: "The coin finish picker showing gold and silver free, with copper, rose gold, obsidian and verdigris marked Pro",
+    caption: "Eight finishes, two free",
+    width: 540,
+    height: 960,
+  },
+  {
+    src: "/images/coin-flip/screenshot-4.png",
+    alt: "The stats screen: 50 flips, a heads/tails split bar against a fair-coin marker, a three-in-a-row streak and the last fifty results",
+    caption: "It keeps score",
+    width: 540,
+    height: 960,
+  },
+];
+---
+
+<SiteLayout
+  title="Coin Flip - Heads or Tails for Android"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Coin Flip — a coin toss that actually throws the coin, with stats, skins and a home-screen widget"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/coin-flip-logo.png"
+        alt="Coin Flip app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Coin Flip</h1>
+        <p class="text-lg text-amber-200/80">
+          One tap. A real coin toss.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        Most coin flip apps show you a picture of a coin. This one <strong
+          >throws it</strong
+        > — the flick, the arc, the spin, the landing and the little wobble
+        before it settles. Keep score, throw ten at once, let it land on its
+        edge if you like, and with Pro put <strong>your own photographs</strong>
+        on both sides. Hungarian and English, <strong>no account</strong>,
+        nothing uploaded.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="/apps/coin-flip/privacy"
+          class="underline-offset-4 hover:underline"
+        >
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="/apps/coin-flip/terms"
+          class="underline-offset-4 hover:underline"
+        >
+          Terms of Use
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">What Pro adds</h2>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-amber-50/90">
+        One purchase, forever — no subscription, and nothing that changes what
+        the coin does. The free app is a complete coin toss; Pro is cosmetics
+        and convenience.
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {
+          pro.map((item) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">{item.name}</h3>
+              <p class="mt-2 text-base leading-7 text-amber-50/90">
+                {item.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Flipping a coin is the oldest way of settling something, and the phone
+        in your hand is always closer than a coin in your pocket. But almost
+        every coin app does the same thing: it shows a picture of a coin,
+        replaces it with a picture of the other side, and calls that a toss.
+        Nothing is thrown, so nothing is really decided — you are simply told an
+        answer.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        This one draws the coin properly: a struck disc with milling on its rim
+        that flicks off your thumb, arcs, spins, catches the light, lands and
+        rocks briefly before it stops. The outcome is derived from that toss
+        rather than chosen separately, so the coin can never announce a result
+        its own animation contradicts. Everything else — the tally, the handful
+        of coins, the finishes, your own photographs — is built around that one
+        gesture rather than in front of it.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        It is also Hungarian first, not translated afterwards. <em
+          >Fej vagy írás</em
+        > is how the question is actually asked, and the app answers it in that
+        language as naturally as it does in English.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with one optional purchase
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The app is free and shows a banner ad served by Google AdMob at the
+        bottom of the screen — never a full-screen one, never a rewarded one —
+        with a consent prompt where the GDPR requires it. <strong>Pro</strong> is
+        a single one-time purchase: no ads, six more coin finishes, your own
+        photographs on the coin, and a home-screen widget. No subscription, and
+        nothing else is behind it — flipping, the stats, up to ten coins at
+        once, shake-to-flip, landing on its edge and two of the eight finishes
+        stay free for everyone. What the app does and does not collect is
+        spelled out in the
+        <a
+          href="/apps/coin-flip/privacy"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="mt-8 text-center text-sm text-amber-200/70">
+      Coin Flip is a random-number tool: there is no wager, no stake and no
+      prize.
+    </p>
+  </div>
+</SiteLayout>
