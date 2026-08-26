@@ -37,6 +37,7 @@ const staticRoutes = [
   '/apps/coin-flip/',
   '/apps/coin-flip/privacy/',
   '/apps/coin-flip/terms/',
+  '/apps/rofi/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 
