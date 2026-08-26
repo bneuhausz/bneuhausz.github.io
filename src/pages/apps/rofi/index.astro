@@ -1,0 +1,460 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/rofi";
+const logoUrl = "https://bneuhausz.dev/images/rofi-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/rofi-og.png";
+const description =
+  "A Hungarian personal-finance learning app for Android in the Duolingo shape: short daily lessons on inflation, saving, credit, investing, Hungarian savings and taxes, and mortgages, with five exercise types, an explanation after every answer, spaced review, a streak, hearts and badges. Six units free; an optional Prémium subscription removes the ads and the daily limits. Hungarian only, no account, progress stays on the phone.";
+
+const features = [
+  {
+    title: "Five minutes, one lesson",
+    body: "A lesson is eight exercises and takes three to ten minutes: multiple choice, true or false, a missing word, matching pairs, and a decision scenario that asks what you would do. Every answer, right or wrong, is followed by an explanation, because that is where the teaching happens. Miss one and it comes back once later in the same lesson; miss it again and the answer is shown.",
+  },
+  {
+    title: "Six units, all free",
+    body: "Pénzügyi alapok (inflation, interest, compound interest, purchasing power), Megtakarítás és költségvetés (an emergency fund, 50/30/20, bank accounts and fees), Hitel és adósság (THM, credit cards, repayment strategies, KHR), Befektetés alapjai (shares, bonds, funds, ETFs, risk, diversification), Magyar pénzügyek I (állampapír, TBSZ, NYESZ, pension and health funds, kamatadó, SZJA) and Lakás és jelzálog (mortgages, the deposit and the debt brake, THM, state subsidies, renting versus buying, the transfer duty, or illeték). That makes 48 lessons and 377 exercises, and every unit ends with a recap.",
+  },
+  {
+    title: "It remembers what you got wrong",
+    body: "Each exercise moves through learning, familiar and mastered, and comes back for review after 1, 3 and 7 days; a miss drops it a box and brings it back sooner. When something is due, an Ismétlés card appears on the map. A review session is at most ten exercises, costs no hearts, and is free and unlimited for everyone.",
+  },
+  {
+    title: "A streak worth keeping",
+    body: "Any finished lesson or review counts for the day. Streak milestones at 3, 7, 30 and 100 days pay a small XP bonus, and a shield bridges a day you miss; you earn one at 7 days and another at 30, and can hold at most five. XP adds up to levels, and a daily goal of 10, 20 or 30 XP keeps the habit honest. Then there are the 23 badges on the Eredmények screen, an optional 18:00 reminder that nudges you on days you have not learned yet, and a home-screen widget that shows the streak and Röfi's mood.",
+  },
+  {
+    title: "Education, not advice",
+    body: "The lessons explain how a rule or a product works: the mechanism, the trade-off, who decides. They never tell you what to buy. Every Hungary-specific claim cites its source in the content itself, whether MNB, NAV, allampapir.hu or the statute. The lessons were checked against the live rules on 24 August 2026. Rules change every year, so content updates ship with the app, and a notice tells you when a lesson you have already done has changed.",
+  },
+  {
+    title: "Offline, with no account",
+    body: "No registration, no login, no cloud. Lessons, reviews, the streak and the widget all work in airplane mode; the network is used only for ads, crash reports and usage statistics, Google Play billing and Play's update check. Your whole progress is one file in the app's private storage. It exists nowhere else, so uninstalling the app deletes it.",
+  },
+];
+
+const premium = [
+  {
+    name: "No ads",
+    body: "Reklámok nélkül: the banner goes, and so does the full-screen ad between sessions. Nothing about the lessons changes.",
+  },
+  {
+    name: "Unlimited hearts",
+    body: "Végtelen szív: a wrong answer never ends a lesson. A free player has five hearts a day and a miss in a lesson costs one; with Prémium there is nothing to run out of.",
+  },
+  {
+    name: "No daily lesson limit",
+    body: "Nincs napi leckelimit. The free app allows two new lessons a day (three with a rewarded video); Prémium lets you go as far as you like. Replays and reviews are never limited for anyone.",
+  },
+  {
+    name: "Every new unit a month earlier",
+    body: "Minden új egység egy hónappal korábban: new units arrive roughly monthly as app updates, Prémium-only for their first 30 days and then free for everyone. The six launch units are free from day one.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Röfi free?",
+    answer:
+      "Yes. All six units and their 48 lessons are free, and so are reviews, the streak, the badges, the reminder and the widget. The free app shows ads, gives you five hearts a day and lets you finish two new lessons a day (a third for a rewarded video). Röfi Prémium is an optional subscription that removes the ads and both limits and opens each new unit a month early. None of the six launch units is behind it, and every later unit becomes free after its first month.",
+  },
+  {
+    question: "What does Prémium include?",
+    answer:
+      "Four things, in the app's own words: Reklámok nélkül (no ads), Végtelen szív (unlimited hearts, so a mistake never stops you), Nincs napi leckelimit (no daily lesson limit) and Minden új egység egy hónappal korábban (every new unit a month earlier). It is an auto-renewing Google Play subscription with a monthly and a yearly plan; the price is shown in the app and on Google Play. Google Play handles billing, renewal, cancellation and refunds. The app links straight to Play's subscription centre, and a restore button re-checks your Play account on a new phone.",
+  },
+  {
+    question: "What are hearts, and what is the daily limit?",
+    answer:
+      "A free player starts each day with five hearts; a wrong answer in a lesson costs one, and reviews cost nothing. When you are out of hearts, you can wait for tomorrow, watch a rewarded video for one heart back, or subscribe. Separately, the free app lets you finish two new lessons a day, plus one more for a rewarded video (at most one such unlock a day). Replaying a lesson you have done and reviewing what is due are never limited. These numbers may be tuned after launch.",
+  },
+  {
+    question: "What does a lesson look like?",
+    answer:
+      "A short two-paragraph introduction, then eight exercises of five kinds: multiple choice, true or false, a missing word, matching pairs and a decision scenario. Each is followed by an explanation. An exercise you miss is asked again once at the end of the lesson; a second miss reveals the answer. A lesson takes three to ten minutes; a finished one pays 10 XP and a perfect one 15.",
+  },
+  {
+    question: "What is Ismétlés?",
+    answer:
+      "The review. Each exercise you have seen sits in one of three boxes (learning, familiar, mastered) with review intervals of 1, 3 and 7 days. Answering it right moves it up a box; a miss moves it down. When exercises are due, the map offers a review session of at most ten of them. Reviews pay 5 XP, cost no hearts, count towards your streak, and are free and unlimited for everyone.",
+  },
+  {
+    question: "How does the streak work, and what is a shield?",
+    answer:
+      "A day counts when you finish any lesson or review. Reaching 3, 7, 30 and 100 days pays a small XP bonus. A streak shield bridges one day you miss: you earn one at 7 days and one at 30, you can hold at most five, and bundles of one or three shields can also be bought as one-time in-app purchases. If you like, the app can remind you at 18:00 (and once more at 21:00) on days you have not learned yet. The reminder is a local notification, offered after your first lesson and again at a three-day streak, and you can turn it on or off in Settings.",
+  },
+  {
+    question: "Is this financial advice?",
+    answer:
+      "No. Röfi teaches how personal finance works in general terms: what inflation does to savings, what THM includes, how a TBSZ or a mortgage's debt brake works. It never recommends a product or tells you what to do with your money. Every Hungary-specific figure in the lessons cites its source (MNB, NAV, allampapir.hu, the statute) and was checked against the live rules on 24 August 2026, but rules and rates change every year, so the app ships content updates and leaves the decisions to you. For an individual decision, ask a professional.",
+  },
+  {
+    question: "Do I need an account or an internet connection?",
+    answer:
+      "Neither. There is no registration and no login; the lessons, reviews, streak, badges and widget all work offline. A connection is used only to serve ads in the free version, to send crash reports and usage statistics, by Google Play for a purchase, and by Play's update check. All of your progress is a single file on your phone: XP, lessons, mastery, streak, shields, hearts, settings and the purchase state. There is no cloud backup, so uninstalling the app deletes it.",
+  },
+  {
+    question: "What data does the app collect?",
+    answer:
+      "No name, no e-mail, no account. Only Google's services see anything: Firebase Crashlytics receives crash reports (a stack trace, the device model, the OS version, a Firebase installation id) from release builds; Firebase Analytics receives a pseudonymous app-instance id and app events such as lesson started or completed, review done, streak milestone, ad shown, paywall viewed or subscription started; and Google AdMob serves the ads in the free version, with a consent prompt in the EEA that you can revisit in Settings. Nothing is sold, and nothing is shared beyond these Google services. Google Play additionally handles a purchase and the update check. The privacy policy at rofiapp.hu has the full details.",
+  },
+  {
+    question: "What language is it in, and what platforms is it on?",
+    answer:
+      "Hungarian only. The rules that matter are Hungarian, and the terms keep their own names: TBSZ, THM, KHR, állampapír, kamatadó. Röfi is an Android app, coming soon to Google Play, with no iOS version. It is rated for 13 and up and is not directed at children under 13.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Röfi",
+      operatingSystem: "Android",
+      applicationCategory: "EducationalApplication",
+      inLanguage: "hu",
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Röfi",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
+const featureGraphic = {
+  src: "/images/rofi/feature-graphic.png",
+  alt: "Röfi feature graphic: the pig mascot with a coin slot on its back",
+};
+
+const screenshots = [
+  {
+    src: "/images/rofi/screenshot-1.png",
+    alt: "The course map: a winding trail on a lawn with lesson nodes, and a header showing a 12-day streak, hearts, XP and Röfi",
+    caption: "The map",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/rofi/screenshot-2.png",
+    alt: "A lesson intro: the lesson title, a two-paragraph explainer, Röfi, and a Kezdjük! button",
+    caption: "Every lesson starts with an explainer",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/rofi/screenshot-3.png",
+    alt: "An exercise with the verdict panel open below it, showing the verdict on the answer and the explanation",
+    caption: "The explanation is the lesson",
+    width: 540,
+    height: 1212,
+  },
+  {
+    src: "/images/rofi/screenshot-4.png",
+    alt: "The Eredmények screen: the badges, the count of those earned, and Röfi",
+    caption: "23 badges",
+    width: 540,
+    height: 1212,
+  },
+];
+---
+
+<SiteLayout
+  title="Röfi - Hungarian Personal-Finance Lessons for Android"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Röfi: personal finance in five-minute lessons, in Hungarian, with a piggy-bank mascot"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/rofi-logo.png"
+        alt="Röfi app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Röfi</h1>
+        <p class="text-lg text-amber-200/80">
+          Personal finance, five minutes a day. In Hungarian.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        Röfi is a course in personal finance in the Duolingo shape, cut into
+        lessons you finish in a few minutes. It covers inflation, saving,
+        credit, investing, Hungarian savings and taxes, and mortgages. <strong
+          >Every answer comes with an explanation</strong
+        >, what you miss comes back for review, a streak keeps you coming
+        back, and a pig with a coin slot on its back cheers you on. Six units
+        free, <strong>no account</strong>, and your progress stays on the
+        phone.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="https://rofiapp.hu/adatvedelem/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-4 hover:underline"
+        >
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="https://rofiapp.hu/felhasznalasi-feltetelek/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-4 hover:underline"
+        >
+          Terms of Use
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="https://rofiapp.hu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-4 hover:underline"
+        >
+          Hungarian site: rofiapp.hu
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <img
+        src={featureGraphic.src}
+        alt={featureGraphic.alt}
+        width="1024"
+        height="500"
+        loading="lazy"
+        class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">What Prémium adds</h2>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-amber-50/90">
+        An auto-renewing Google Play subscription, monthly or yearly, with the
+        price shown in the app and on Google Play. It changes nothing about
+        what the lessons teach: every unit ends up free, and Prémium removes
+        the ads and the limits and opens each new unit a month early.
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {
+          premium.map((item) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">{item.name}</h3>
+              <p class="mt-2 text-base leading-7 text-amber-50/90">
+                {item.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Most people learn personal finance by making the mistakes first: the
+        credit card that was cheaper than it looked, the savings that inflation
+        quietly ate, the tax on interest nobody mentioned. The Hungarian
+        specifics, such as TBSZ, állampapír, kamatadó, THM and the debt brake
+        on a mortgage, are scattered across statutes, bank PDFs and forum
+        threads, and nobody sits you down to explain them.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Röfi borrows the shape that works for languages: short lessons, an
+        explanation after every answer, spaced review of what you got wrong,
+        and a streak that makes coming back tomorrow the easy thing to do. The
+        teaching happens in the explanation rather than in the question; a
+        right answer still tells you why. Every Hungary-specific claim cites
+        its source in the lesson content, and the lessons were checked against
+        the live rules on 24 August 2026. When a rule changes, the app updates
+        the lesson and can tell you so if you have already done it.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        It is education, not advice. The lessons describe the mechanism and the
+        trade-off: how a rule works, what a product costs and who decides. The
+        decision stays yours. And it is Hungarian only, on purpose: the rules
+        and the terms are Hungarian, and <em
+          >tanulj a pénzről napi 5 percben</em
+        > (learn about money, five minutes a day) is the whole promise.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with an optional subscription
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        The app is free, and all six units, reviews, the streak, the badges,
+        the reminder and the widget are free with it. The free version shows
+        ads served by Google AdMob: a banner, a full-screen ad after roughly
+        every fourth finished session, and rewarded videos that only play when
+        you choose to watch one for a heart or an extra lesson. In the EEA
+        there is a consent prompt, which you can revisit in Settings. The free
+        version also comes with five hearts a day and two new lessons a
+        day. <strong>Röfi Prémium</strong> is an auto-renewing
+        Google Play subscription, monthly or yearly, with the price shown in
+        the app and on Google Play: no ads, unlimited hearts, no daily lesson
+        limit, and every new unit a month earlier. Google Play handles billing,
+        renewal, cancellation and refunds, and you can cancel any time from
+        Play's subscription centre. Bundles of one or three streak shields are
+        also sold as one-time purchases. What the app does and does not collect
+        is spelled out in the
+        <a
+          href="https://rofiapp.hu/adatvedelem/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        > (in Hungarian, with an English version on the same page).
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="mt-8 text-center text-sm text-amber-200/70">
+      Röfi teaches how personal finance works. It is not financial, investment,
+      tax or legal advice.
+    </p>
+  </div>
+</SiteLayout>
