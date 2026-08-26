@@ -1,7 +1,10 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
+import GooglePlayBadge from "../../../components/GooglePlayBadge.astro";
 
 const pageUrl = "https://bneuhausz.dev/apps/rofi";
+const playStoreUrl =
+  "https://play.google.com/store/apps/details?id=dev.bneuhausz.rofi";
 const logoUrl = "https://bneuhausz.dev/images/rofi-logo.png";
 const ogImageUrl = "https://bneuhausz.dev/images/rofi-og.png";
 const description =
@@ -102,7 +105,7 @@ const faqs = [
   {
     question: "What language is it in, and what platforms is it on?",
     answer:
-      "Hungarian only. The rules that matter are Hungarian, and the terms keep their own names: TBSZ, THM, KHR, állampapír, kamatadó. Röfi is an Android app, coming soon to Google Play, with no iOS version. It is rated for 13 and up and is not directed at children under 13.",
+      "Hungarian only. The rules that matter are Hungarian, and the terms keep their own names: TBSZ, THM, KHR, állampapír, kamatadó. Röfi is an Android app on Google Play, with no iOS version. It is rated for 13 and up and is not directed at children under 13.",
   },
 ];
 
@@ -117,6 +120,7 @@ const ldJson = {
       inLanguage: "hu",
       description,
       url: pageUrl,
+      installUrl: playStoreUrl,
       image: logoUrl,
       author: {
         "@type": "Person",
@@ -249,14 +253,7 @@ const screenshots = [
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3">
-        <span
-          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
-        >
-          <span
-            class="inline-block h-2 w-2 rounded-full bg-amber-200"
-            aria-hidden="true"></span>
-          Coming soon to Google Play
-        </span>
+        <GooglePlayBadge href={playStoreUrl} />
       </div>
 
       <div
