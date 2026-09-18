@@ -343,7 +343,7 @@ f = form(signal({
 });
 ```
 
-Yes, you see that right, we have several ways of handling async validation now. There is ``validateAsync``, which we use for ``lastName`` and it uses a ``resource``, but there is also ``validateHttp``, which builds on an ``httpResource``, [which we discussed just a few days ago.](https://bneuhausz.dev/blog/angular-httpresource) Personally, I highly prefer ``httpResource``, which is also experimental for now, but hey, signal forms are also highly experimental, so you probably shouldn't be thinking about using ``validateAsync`` or ``validateHttp`` for now.
+Yes, you see that right, we have several ways of handling async validation now. There is ``validateAsync``, which we use for ``lastName`` and it uses a ``resource``, but there is also ``validateHttp``, which builds on an ``httpResource``, [which we discussed just a few days ago.](https://bneuhausz.dev/blog/angular-httpresource/) Personally, I highly prefer ``httpResource``, which is also experimental for now, but hey, signal forms are also highly experimental, so you probably shouldn't be thinking about using ``validateAsync`` or ``validateHttp`` for now.
 
 > <sub>
   > <b>So it turns out, this issue mentioned below is working as intended. I was missguided in thinking that ``MatFormField`` needs to be ``dirty`` to start showing errors, but it needs to be ``touched`` instead.</b>
@@ -353,4 +353,4 @@ Yes, you see that right, we have several ways of handling async validation now. 
 
 I'm sure there will be lots of changes and additions to this new form type, so I feel like I have to say one more time that everything here is HIGHLY experimental, but I do think it looks great so far. The future is bright.
 
-[A bit shorter article about server side validation after submitting has been released. Take a look!](https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors)
+[A bit shorter article about server side validation after submitting has been released. Take a look!](https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors/)

@@ -20,9 +20,9 @@ draft: false
 
 # AMQP 1.0 Messaging in .NET with Apache Artemis - Part 3
 
-In [part 1 of this series](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1), we've created a dockerized Artemis instance and our starting .NET application.
+In [part 1 of this series](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1/), we've created a dockerized Artemis instance and our starting .NET application.
 
-In [part 2](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2), we've configured an Address on Artemis and created our ``AmqpSender``.
+In [part 2](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2/), we've configured an Address on Artemis and created our ``AmqpSender``.
 
 This time, we'll take a look at receiving messages from Artemis.
 
@@ -129,13 +129,13 @@ These are all the changes we had to make to our code, so let's test it!
 
 ## Running the app
 
-As always, make sure the Artemis container is running and the ``demo-target`` address has been set up. If you've done everything like I did in [part 1](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1), you just have to run ``docker compose up`` in the folder that contains our ``docker-compose.yml`` file.
+As always, make sure the Artemis container is running and the ``demo-target`` address has been set up. If you've done everything like I did in [part 1](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1/), you just have to run ``docker compose up`` in the folder that contains our ``docker-compose.yml`` file.
 
 With this out of the way, let's start our application! If we haven't done any mistakes, this should be the output:
 
 ![app running](/images/dotnet-artemis/part-3/1-application-started.avif)
 
-As you can see, on startup, the demo message has been sent to Artemis, then our application subscribed to the queue and instantly received the message. If you started the app for the first time, you might've received multiple messages, because the queue had no consumers until now, so every message you might've sent while testing our program while following [part 2](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2) was sitting right there. Given, that you've set up Artemis with some kind of persistent storage, like the volume in our ``docker-compose.yml``.
+As you can see, on startup, the demo message has been sent to Artemis, then our application subscribed to the queue and instantly received the message. If you started the app for the first time, you might've received multiple messages, because the queue had no consumers until now, so every message you might've sent while testing our program while following [part 2](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2/) was sitting right there. Given, that you've set up Artemis with some kind of persistent storage, like the volume in our ``docker-compose.yml``.
 
 To further prove that we are receiving the messages, let's go to the Artemis console at http://localhost:8161, click the Addresses tab, then the three dots icon in the row of demo-target. You should see a Send Message option, which opens a pop-up window. Keep our app running though!
 

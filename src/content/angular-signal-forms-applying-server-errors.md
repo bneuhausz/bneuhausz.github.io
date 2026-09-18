@@ -85,7 +85,7 @@ We added a ``(click)`` listener to our button, which will invoke our ``submitFor
 
 Then, we create our ``mockHttpRequest``, which accepts our ``FieldTree`` as a parameter and it will simply return a Promise, which is enough for demonstration purposes. It's important to note that our function accepts the ``FieldTree`` itself, not the value inside. If our validation criteria passes, we return undefined. If it doesn't, then we have to return our error in a specific format.
 
-We are returning an array of errors. The ``kind`` and ``message`` are pretty straightforward and we looked at those in the [first post about the new signal forms.](https://bneuhausz.dev/blog/angular-signal-forms-are-out)
+We are returning an array of errors. The ``kind`` and ``message`` are pretty straightforward and we looked at those in the [first post about the new signal forms.](https://bneuhausz.dev/blog/angular-signal-forms-are-out/)
 
 The ``fieldTree`` property is new though. We pass the specific sub-field we want this error to be applied to. Again, we pass the field and subfield without invoking anything, so make sure it is ``form.name`` and not ``form.name()`` or anything like that. This will be used by ``submit`` in the background to identify which sub-field the error has to be applied to.
 
@@ -119,4 +119,4 @@ interface ValidationError {
 
 ~~I'm sure these little errors will be fixed fairly quickly, but even with these being around, the new Angular signal forms are a huge step in the right direction. I honestly can't wait to actually start using these features in production.~~
 
-[The next issue about more advanced usages of Angular signal forms is out!](https://bneuhausz.dev/blog/angular-signal-forms-advanced)
+[The next issue about more advanced usages of Angular signal forms is out!](https://bneuhausz.dev/blog/angular-signal-forms-advanced/)

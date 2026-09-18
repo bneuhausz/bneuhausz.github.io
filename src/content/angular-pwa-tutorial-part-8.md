@@ -22,13 +22,13 @@ lastMod: 2025-09-20
 # Angular PWA tutorial part 8 - Adding our own install button
 
 Today, we will create our own install button, but this article builds on the earlier pieces of this series. In case you are new here, make sure to catch up on them:
-- [Setup](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1)
-- [New version notification](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
-- [Node backend for sending push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3)
-- [Push notification frontend implementation](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4)
-- [Controlling appearance and installability](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5)
-- [Let's talk caching](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6)
-- [Deploying our apps to GitHub Pages and Render](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-7)
+- [Setup](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/)
+- [New version notification](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/)
+- [Node backend for sending push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/)
+- [Push notification frontend implementation](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4/)
+- [Controlling appearance and installability](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5/)
+- [Let's talk caching](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6/)
+- [Deploying our apps to GitHub Pages and Render](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-7/)
 
 As always, the complete source code will be available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-8)
 

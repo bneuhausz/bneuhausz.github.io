@@ -28,7 +28,7 @@ lastMod: 2025-08-27
 
 In part 2 of this series, we will take a look at how you can notify your users about a new version of your app being available.
 
-In case you've missed part 1 about the setup, [you can get up to speed here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1)
+In case you've missed part 1 about the setup, [you can get up to speed here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/)
 
 ## A bit of styling
 
@@ -194,4 +194,4 @@ One important note is that you have to change something in your application that
 
 The complete code for this chapter is available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-2)
 
-[Part 3 of this series, where we implement a simple backend for push notifications has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3)
+[Part 3 of this series, where we implement a simple backend for push notifications has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/)

@@ -110,4 +110,4 @@ With this, the basic building blocks are in place, so I'll end this article here
 
 [The source code for this article can be found here.](https://github.com/bneuhausz/dotnet-amqp-messaging/tree/part-1)
 
-[Part 2, covering actually sending a message to Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2)
+[Part 2, covering actually sending a message to Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-2/)

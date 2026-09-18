@@ -474,4 +474,4 @@ And BAM, we've just created a resource that sends ``POST`` requests, even though
 
 All in all, I instantly fell in love with ``httpResource`` when I started using it and I'm not planning on looking back. It was a huge quality of life improvement considering the DX of Angular. I can't wait for the new signal forms that should be introduced soon in an experimental state, so you can expect a similar write-up about it in the near future too. I hope you're as excited as I am!
 
-[Another article, looking at what's beyond httpResource is out. Go take a look!](https://bneuhausz.dev/blog/angular-beyond-httpresource)
+[Another article, looking at what's beyond httpResource is out. Go take a look!](https://bneuhausz.dev/blog/angular-beyond-httpresource/)

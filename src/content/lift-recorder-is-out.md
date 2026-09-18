@@ -73,7 +73,7 @@ That's it. No feature bloat, no workout tracker bolted on. It records your lifts
 
 There is no cloud and no server ever sees your videos. Every clip is recorded and stored locally, and nothing is uploaded anywhere.
 
-There is also no account, no sign-up, and no profile. You shouldn't have to hand over personal data just to film a set. The full details of what is and isn't collected are in the [privacy policy](/apps/lift-recorder/privacy).
+There is also no account, no sign-up, and no profile. You shouldn't have to hand over personal data just to film a set. The full details of what is and isn't collected are in the [privacy policy](/apps/lift-recorder/privacy/).
 
 ## Free, with an optional one-time upgrade
 
@@ -89,4 +89,4 @@ If you film your sets and you're tired of your camera app fighting your playlist
   </a>
 </p>
 
-If you run into a bug or have an idea that would make it better, [send me a message](/contact) — I'd love to hear how it holds up in your gym.
+If you run into a bug or have an idea that would make it better, [send me a message](/contact/) — I'd love to hear how it holds up in your gym.

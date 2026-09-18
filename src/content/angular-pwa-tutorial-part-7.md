@@ -27,12 +27,12 @@ lastMod: 2025-09-20
 > </sub>
 
 Today, we will talk about deploying our application, but this article builds on the earlier pieces of this series. In case you are new here, make sure to catch up on them:
-- [Setup](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1)
-- [New version notification](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
-- [Node backend for sending push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3)
-- [Push notification frontend implementation](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4)
-- [Controlling appearance and installability](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5)
-- [Let's talk caching](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6)
+- [Setup](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/)
+- [New version notification](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/)
+- [Node backend for sending push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/)
+- [Push notification frontend implementation](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4/)
+- [Controlling appearance and installability](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5/)
+- [Let's talk caching](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6/)
 
 As always, the complete source code will be available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-7)
 
@@ -139,7 +139,7 @@ When all of those are set, you will have to pick an instance type. Since this is
 
 ![Instance types](/images/pwa-tutorial/part-7/render_instance_type.png)
 
-This is the time, when we have to set up our environment variables. Remember, the ``PORT`` variable will be set by Render, but we do have to set ``CORS_ALLOWED_ORIGIN`` and also, our VAPID keys we generated in [part 2.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
+This is the time, when we have to set up our environment variables. Remember, the ``PORT`` variable will be set by Render, but we do have to set ``CORS_ALLOWED_ORIGIN`` and also, our VAPID keys we generated in [part 2.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/)
 
 ![Environment variables](/images/pwa-tutorial/part-7/render_env.png)
 
@@ -331,4 +331,4 @@ npm run deploy
 
 and your app will be up and running in a minute or two at the https://\<your-github-username\>.github.io/\<repo-name\> URL. In fact, I just did everything exactly like this and you can access the current version of this app [here.](https://bneuhausz.dev/pwa-tutorial/)
 
-[Part 8 of this series, where we create our own install button is out. Go, take a look!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-8)
+[Part 8 of this series, where we create our own install button is out. Go, take a look!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-8/)

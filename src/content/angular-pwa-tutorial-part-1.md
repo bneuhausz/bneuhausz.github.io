@@ -47,7 +47,7 @@ We'll discuss many of these in this series, but let's start at the beginning.
 
 ## First steps
 
-First of all, you'll need to install the [Angular CLI](https://angular.dev/tools/cli/setup-local) and create a fresh Angular project. It is a very basic step, but if you're interested in how I usually do it, you can read about it [here.](https://bneuhausz.dev/blog/angular-project-creation) In the future, some things might change, so it is imporant to note that when writing this, I'm using Angular 20. I named my project ``pwa-tutorial``, so keep that in mind for later.
+First of all, you'll need to install the [Angular CLI](https://angular.dev/tools/cli/setup-local) and create a fresh Angular project. It is a very basic step, but if you're interested in how I usually do it, you can read about it [here.](https://bneuhausz.dev/blog/angular-project-creation/) In the future, some things might change, so it is imporant to note that when writing this, I'm using Angular 20. I named my project ``pwa-tutorial``, so keep that in mind for later.
 
 If you have Angular CLI installed and you generated your project, you'll have to run the following:
 
@@ -171,4 +171,4 @@ That leaves us with our ``isOffline`` computed signal, which is just a publicly 
 
 I'll wrap this up here for this post. The last thing I'll do is leave a link to the [GitHub repo](https://github.com/bneuhausz/pwa-tutorial/tree/part-1) for this series. The ``master`` branch will always contain the up to date version of this application, but I'll create a new branch for each post with a naming convention of part-1, part-2, part-n, etc...
 
-[Part 2 of this series about new version notification has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
+[Part 2 of this series about new version notification has been released, you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/)

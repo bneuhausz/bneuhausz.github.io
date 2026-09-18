@@ -27,7 +27,7 @@ lastMod: 2025-09-20
   > <b>2025-09-20:</b> Fixed icons in manifest.<br>
 > </sub>
 
-In the first post of this series, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1). In the second, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2). In part 3 and 4 we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3) and [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4) for the web push notification feature.
+In the first post of this series, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/). In the second, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/). In part 3 and 4 we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/) and [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4/) for the web push notification feature.
 
 In this edition, we will take a look at how we can take a bit more control about the appearance and installability of our application with the help of the ``manifest.webmanifest`` file.
 
@@ -35,7 +35,7 @@ As always, the complete source code will be available [here.](https://github.com
 
 ## High level view of the manifest
 
-When you manually create a PWA, this file will be in the center of your attention much earlier, as it is not an Angular specific concept, but as we discussed it in [part 1 of this series](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1), the ``@angular/pwa`` schematic of the Angular CLI took care of the basic setup for us. It created the ``manifest.webmanifest`` file in the ``public`` folder of our application, so it gets copied into the built application, next to ``index.html``.
+When you manually create a PWA, this file will be in the center of your attention much earlier, as it is not an Angular specific concept, but as we discussed it in [part 1 of this series](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/), the ``@angular/pwa`` schematic of the Angular CLI took care of the basic setup for us. It created the ``manifest.webmanifest`` file in the ``public`` folder of our application, so it gets copied into the built application, next to ``index.html``.
 
 Also, it added a ``link`` tag to the ``head`` of the ``index.html`` file, like this:
 
@@ -177,4 +177,4 @@ When it opens, you should see our app with some browser controls, our new icon a
 
 ![new icon](/images/pwa-tutorial/part-5/pwa_colored.png)
 
-[Part 6 of this series, where we take a look at the role of the ngsw-config.json file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6)
+[Part 6 of this series, where we take a look at the role of the ngsw-config.json file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-6/)

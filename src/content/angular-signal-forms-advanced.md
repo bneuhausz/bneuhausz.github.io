@@ -28,8 +28,8 @@ lastMod: 2026-02-07
 > </sub>
 
 This time around, we'll take a look at more advanced features of the newly released, experimental signal forms. If you are not up to speed, make sure to take a look at the previous issues:
-- [Angular signal forms are out! (Experimentally)](https://bneuhausz.dev/blog/angular-signal-forms-are-out)
-- [Angular signal forms - Server side error handling](https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors)
+- [Angular signal forms are out! (Experimentally)](https://bneuhausz.dev/blog/angular-signal-forms-are-out/)
+- [Angular signal forms - Server side error handling](https://bneuhausz.dev/blog/angular-signal-forms-applying-server-errors/)
 
 The repo is the same and it can be found [here,](https://github.com/bneuhausz/angular-signal-forms) but as of the release of this article, [the live demo is also up on this site, here.](https://bneuhausz.dev/angular-signal-forms/)
 

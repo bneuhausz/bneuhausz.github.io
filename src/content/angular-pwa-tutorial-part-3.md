@@ -28,7 +28,7 @@ lastMod: 2025-08-28
 
 Sending push notifications is a bit more complex than what we've dealt with before in this series and it requires a separate backend to provide security and reliability. In part 3 of this series, we will set up a very simple backend using Node.js and Express that will be more than enough for learning purposes.
 
-You can find part 1 about the basic setup [here](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1) and part 2 about notifying your users about a new version of your application being available [here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2)
+You can find part 1 about the basic setup [here](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/) and part 2 about notifying your users about a new version of your application being available [here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/)
 
 ## Introducing VAPID
 
@@ -236,4 +236,4 @@ Then, we call ``sendNotification`` with our ``subscription`` and the stringified
 
 Again, we will discuss the contents of the ``subscription`` in the next part, when we implement the frontend, but until then, the complete code for this chapter is available [here.](https://github.com/bneuhausz/pwa-tutorial/tree/part-3)
 
-[Part 4 of this series, where we implement the frontend for our Express app has been released and you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4)
+[Part 4 of this series, where we implement the frontend for our Express app has been released and you can find it here.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4/)
