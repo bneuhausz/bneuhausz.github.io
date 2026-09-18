@@ -2,96 +2,17 @@
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import GooglePlayBadge from "../../../components/GooglePlayBadge.astro";
 
-const pageUrl = "https://bneuhausz.dev/apps/lift-recorder";
+// A portfolio entry. The app's full landing page (features, FAQ, structured
+// data) lives on its own site, liftrecorder.app; this page points there
+// instead of competing with it in search.
+const pageUrl = "https://bneuhausz.dev/apps/lift-recorder/";
+const siteUrl = "https://liftrecorder.app/";
 const playStoreUrl =
   "https://play.google.com/store/apps/details?id=dev.bneuhausz.liftrecorder";
 const logoUrl = "https://bneuhausz.dev/images/lift-recorder-logo.png";
 const ogImageUrl = "https://bneuhausz.dev/images/lift-recorder-og.png";
 const description =
-  "A free Android app for lifters: film your sets for form checks and your coach while Spotify or YouTube Music keeps playing. Silent by default, tags every set, tracks your PRs — on-device, no account.";
-
-const features = [
-  {
-    title: "Your music keeps playing",
-    body: "Spotify, YouTube Music, whatever you train to — it keeps playing. Recording is silent by default: the app leaves the microphone off, so Android has no reason to stop your playlist.",
-  },
-  {
-    title: "Sound only if you want it",
-    body: "Want the clank of the plates or your coach's cue on the clip? Turn on Record sound in Settings or tap the mic on the camera. It stays off until you do — and with it on, some phones pause or lower your music while you record.",
-  },
-  {
-    title: "Tag every set",
-    body: "Set the exercise, weight, reps and RPE on the Next set chip and every clip you record is tagged with it until you change it. Weights show in kg or lb, and you can filter your clips by exercise, date, weight or reps.",
-  },
-  {
-    title: "Personal records, found for you",
-    body: "A trophy marks the clip that holds a record, and the Personal records screen lists them for each exercise, with the video one tap away. Lifts from before you used the app can be added by hand.",
-  },
-  {
-    title: "Everything stays on your device",
-    body: "Clips, sound, tags and records are all stored on your phone. Nothing is uploaded, there is no cloud, and no server ever sees your videos or your numbers.",
-  },
-  {
-    title: "Saved straight to your gallery",
-    body: "Every recording lands in your normal device gallery, ready to review or send to your coach with the tools you already use.",
-  },
-  {
-    title: "Trim clips right in the app",
-    body: "Drag two handles to pick where a clip starts and ends — the preview jumps to that exact frame as you go. Save the cut as a new clip and keep the original (the default), or replace the original if you'd rather not keep both — all on-device.",
-  },
-  {
-    title: "No account, no sign-up",
-    body: "Open it and record. There is no login, no profile, and no personal data to hand over just to film a set.",
-  },
-];
-
-const faqs = [
-  {
-    question: "Does Lift Recorder pause my music while I record?",
-    answer:
-      "Not by default. Recording is silent unless you turn sound on, and with sound off the app never opens the microphone, so Android keeps Spotify, YouTube Music, or any other app playing while you film your set. If you turn sound on, some phones pause or lower your music while a recording runs.",
-  },
-  {
-    question: "Does it record sound?",
-    answer:
-      "Only if you turn it on. Sound is off by default, and the app asks for microphone access only when you switch it on in Settings or with the mic button on the camera. With it off, clips have no audio track — so no copyrighted gym music gets baked into a clip you might share with your coach.",
-  },
-  {
-    question: "Are my videos uploaded anywhere?",
-    answer:
-      "No. Every clip is recorded and stored locally on your phone, and so are your tags and personal records. There is no cloud and no server ever receives your videos or your numbers.",
-  },
-  {
-    question: "Where are my tags and personal records kept?",
-    answer:
-      "In the app's own storage on your phone. They are never uploaded or shared, not even when you share a clip. Like other app data they can be part of your phone's own Android backup, and clearing the app's storage or uninstalling the app deletes them.",
-  },
-  {
-    question: "Where are my recordings saved?",
-    answer:
-      "Straight to your normal device gallery, so you can review or send them to your coach with the tools you already use.",
-  },
-  {
-    question: "Can I trim my clips in the app?",
-    answer:
-      "Yes. Open a clip, drag the two handles to choose the part you want to keep, and save. By default the trimmed version is saved to your gallery as a new clip and the original stays untouched; you can switch to replacing the original instead. Trimming runs on your device — nothing is uploaded — and your music keeps playing while you preview the cut.",
-  },
-  {
-    question: "Do I need an account to use it?",
-    answer:
-      "No. There is no sign-up, login, or profile. Open the app and start recording — there is no personal data to hand over just to film a set.",
-  },
-  {
-    question: "Is Lift Recorder free?",
-    answer:
-      "Yes. The app is free and shows a small AdMob banner ad. A one-time in-app purchase removes ads permanently; once it is active, the app stops loading ads.",
-  },
-  {
-    question: "Is Lift Recorder medical or training advice?",
-    answer:
-      "No. It is a camera and a training log, not a medical device, and it does not diagnose, treat, cure or prevent any medical condition. Your records are worked out only from what you enter. For injuries or medical questions, talk to a healthcare professional.",
-  },
-];
+  "Lift Recorder is a free Android gym camera that keeps your music playing by default, and lets you tag each set with the exercise, weight, reps and RPE.";
 
 const ldJson = {
   "@context": "https://schema.org",
@@ -102,8 +23,9 @@ const ldJson = {
       operatingSystem: "Android",
       applicationCategory: "HealthApplication",
       description,
-      url: pageUrl,
+      url: siteUrl,
       installUrl: playStoreUrl,
+      sameAs: [siteUrl, playStoreUrl],
       image: logoUrl,
       author: {
         "@type": "Person",
@@ -113,7 +35,7 @@ const ldJson = {
       offers: {
         "@type": "Offer",
         price: "0",
-        priceCurrency: "USD",
+        priceCurrency: "EUR",
       },
     },
     {
@@ -138,17 +60,6 @@ const ldJson = {
           item: pageUrl,
         },
       ],
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
     },
   ],
 };
@@ -225,14 +136,18 @@ const screenshots = [
       </div>
 
       <p class="max-w-2xl text-base leading-7 text-amber-50/90">
-        A tiny Android app for athletes who record their lifts for a coach while
-        their playlist keeps running. It records <strong>silently by default</strong>,
-        saves straight to your gallery, tags every set with the exercise, weight,
-        reps and RPE, spots your personal records, lets you trim clips right in the
-        app, and keeps everything on your phone — no account, no uploads.
+        {description} Everything about it — how it keeps your playlist going,
+        tagging, personal records and the FAQ — is on its own site.
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-3">
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={siteUrl}
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/30 bg-amber-100/10 px-6 py-3 font-semibold text-amber-100 transition-colors duration-300 hover:bg-amber-100/20"
+        >
+          Visit liftrecorder.app
+          <span aria-hidden="true">→</span>
+        </a>
         <GooglePlayBadge href={playStoreUrl} />
       </div>
 
@@ -240,14 +155,14 @@ const screenshots = [
         class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
       >
         <a
-          href="/apps/lift-recorder/privacy"
+          href="/apps/lift-recorder/privacy/"
           class="underline-offset-4 hover:underline"
         >
           Privacy Policy
         </a>
         <span aria-hidden="true" class="text-amber-100/30">•</span>
         <a
-          href="/apps/lift-recorder/terms"
+          href="/apps/lift-recorder/terms/"
           class="underline-offset-4 hover:underline"
         >
           Terms of Use
@@ -264,19 +179,6 @@ const screenshots = [
         loading="lazy"
         class="mx-auto w-full max-w-3xl rounded-3xl border border-amber-100/20 shadow-sm"
       />
-    </section>
-
-    <section class="mt-14 grid gap-6 sm:grid-cols-2">
-      {
-        features.map((feature) => (
-          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
-            <h2 class="text-xl font-semibold text-amber-100">
-              {feature.title}
-            </h2>
-            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
-          </article>
-        ))
-      }
     </section>
 
     <section
@@ -311,57 +213,20 @@ const screenshots = [
     >
       <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
       <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
-        On Android, most camera apps request <em>audio focus</em> the moment they
-        open the microphone — and that is what pauses whatever you were listening
-        to. Lift Recorder sidesteps the whole problem by recording without sound by
-        default: the microphone stays off, so nothing takes audio focus. Your coach
-        cares about your movement and form, not gym noise, so the trade is an easy
-        one: the music never stops, and no copyrighted audio ends up baked into a
-        clip you might share. If you do want sound on a clip, you can turn it on —
-        the app tells you up front that some phones pause or lower your music while
-        it records.
-      </p>
-    </section>
-
-    <section
-      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
-    >
-      <h2 class="text-2xl font-semibold text-amber-100">
-        Free, with an optional upgrade
-      </h2>
-      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
-        The app is free and shows a small banner ad served by Google AdMob. A
-        one-time in-app purchase removes ads permanently — once it is active,
-        the app stops loading ads. Full details of what is and isn't
-        collected live in the
+        On Android, most camera apps pause whatever you're listening to the
+        moment they start recording. Lift Recorder was built so a set can be
+        filmed without losing the playlist. The whole story is in the
         <a
-          href="/apps/lift-recorder/privacy"
+          href="/blog/lift-recorder-is-out/"
           class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
-          >Privacy Policy</a
-        >.
+          >launch post</a
+        >, and the app's own site,
+        <a
+          href={siteUrl}
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >liftrecorder.app</a
+        >, has the current details.
       </p>
-    </section>
-
-    <section
-      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
-    >
-      <h2 class="text-2xl font-semibold text-amber-100">
-        Frequently asked questions
-      </h2>
-      <div class="mt-6 flex flex-col gap-6">
-        {
-          faqs.map((faq) => (
-            <div>
-              <h3 class="text-lg font-semibold text-amber-100">
-                {faq.question}
-              </h3>
-              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
-                {faq.answer}
-              </p>
-            </div>
-          ))
-        }
-      </div>
     </section>
   </div>
 </SiteLayout>
