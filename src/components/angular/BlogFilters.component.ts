@@ -75,7 +75,7 @@ interface BlogPostSummary {
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           @for (post of paginatedPosts; track post.slug) {
             <a
-              [href]="'/blog/' + post.slug"
+              [href]="'/blog/' + post.slug + '/'"
               class="flex h-full flex-col rounded-xl border border-neutral-700 bg-neutral p-5 shadow-sm transition-shadow duration-500 hover:border-neutral-500 hover:shadow-{{ post.shadowColor }}"
             >
               <div class="flex items-center gap-4">

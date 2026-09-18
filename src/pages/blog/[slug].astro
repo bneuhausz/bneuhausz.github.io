@@ -13,7 +13,8 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const canonical = `https://bneuhausz.dev/blog/${post.data.slug}`;
+// Trailing slash: pages are served at /blog/<slug>/ and the slash-less URL 301s.
+const canonical = `https://bneuhausz.dev/blog/${post.data.slug}/`;
 const parsedDate = new Date(post.data.date);
 const publishedDate = Number.isNaN(parsedDate.getTime())
   ? String(post.data.date)

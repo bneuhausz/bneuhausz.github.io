@@ -26,7 +26,7 @@ lastMod: 2025-09-07
   > <b>2025-09-07:</b> Added link to part 7.<br>
 > </sub>
 
-First, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1). Then, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2). Later, we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3) and the [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4) for the web push notification feature. In the last post of this series, we've looked at [controlling the appearance and installability of our application.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5)
+First, [we've created and installed our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/). Then, [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/). Later, we implemented the [backend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/) and the [frontend](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-4/) for the web push notification feature. In the last post of this series, we've looked at [controlling the appearance and installability of our application.](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5/)
 
 Today, we discuss caching strategies and the role of the ngsw-config.json file.
 
@@ -278,4 +278,4 @@ If we go back to online mode and toggle ``Todos``, we're back to actually sendin
 
 I think for demo purposes this is more than enough, but you can create very complex caching policies if you have a need for them, [so make sure to poke around in the dataGroups section of the documentation.](https://angular.dev/ecosystem/service-workers/config#datagroups)
 
-[Part 7 of this series, where we take a look at deploying our apps to GitHub Pages and Render is up. Go, take a look!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-7)
+[Part 7 of this series, where we take a look at deploying our apps to GitHub Pages and Render is up. Go, take a look!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-7/)

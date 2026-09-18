@@ -27,7 +27,7 @@ lastMod: 2025-10-03
 > </sub>
 
 
-In [part 1 of this series](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1), we've created a dockerized Artemis instance and our starting .NET application. This time, we'll take a look at creating an address on the Artemis console and sending a message to it.
+In [part 1 of this series](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-1/), we've created a dockerized Artemis instance and our starting .NET application. This time, we'll take a look at creating an address on the Artemis console and sending a message to it.
 
 [The source code for this article can be found here.](https://github.com/bneuhausz/dotnet-amqp-messaging/tree/part-2)
 
@@ -143,4 +143,4 @@ Now let's click on the Message ID to see the message content:
 
 And we're done! Our AmqpSender is fully functional. Next time we'll take a look at receiving messages sent by Artemis.
 
-[Part 3, covering actually receiving messages from Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-3)
+[Part 3, covering actually receiving messages from Artemis is out. Take a look!](https://bneuhausz.dev/blog/dotnet-activemq-artemis-part-3/)

@@ -20,6 +20,16 @@ const {
   ogImageAlt = 'bneuhausz.dev',
   ogType = 'website',
 } = Astro.props;
+
+// Pages are built as /path/index.html and GitHub Pages 301-redirects /path to
+// /path/, so a canonical must name the slash form or it points at a redirect.
+// Normalised here so every page (and any new one) gets it right.
+function withTrailingSlash(url: string): string {
+  const u = new URL(url);
+  if (!u.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(u.pathname)) u.pathname += '/';
+  return u.href;
+}
+const canonicalHref = canonical ? withTrailingSlash(canonical) : undefined;
 ---
 
 <!doctype html>
@@ -30,7 +40,7 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
+    {canonicalHref && <link rel="canonical" href={canonicalHref} />}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />

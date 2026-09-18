@@ -20,9 +20,9 @@ draft: false
 
 # Angular - Beyond httpResource
 
-[We've talked about httpResource extensively,](https://bneuhausz.dev/blog/angular-httpresource) but often it's not the right tool for a task. Maybe you have to work with a package like [angularfire](https://github.com/angular/angularfire) that exposes Observables to you. Maybe you're working with the [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction) and you have to work with Promises. Maybe you have full control over your backend, but you decide to use some OpenAPI generator package that abstracts away the HTTP calls and gives you either Observables or Promises depending on your generator of choice. In these situations, ``resource`` and ``rxResource`` are here to the rescue.
+[We've talked about httpResource extensively,](https://bneuhausz.dev/blog/angular-httpresource/) but often it's not the right tool for a task. Maybe you have to work with a package like [angularfire](https://github.com/angular/angularfire) that exposes Observables to you. Maybe you're working with the [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction) and you have to work with Promises. Maybe you have full control over your backend, but you decide to use some OpenAPI generator package that abstracts away the HTTP calls and gives you either Observables or Promises depending on your generator of choice. In these situations, ``resource`` and ``rxResource`` are here to the rescue.
 
-The source code can be found [here,](https://github.com/bneuhausz/angular-beyond-httpresource) and the demo application can be found [here.](https://bneuhausz.dev/angular-beyond-httpresource)
+The source code can be found [here,](https://github.com/bneuhausz/angular-beyond-httpresource) and the demo application can be found [here.](https://bneuhausz.dev/angular-beyond-httpresource/)
 
 ## The setup
 
@@ -80,7 +80,7 @@ We have a basic ``Post`` interface, we have some dummy data in our ``posts`` var
 
 ## The basics
 
-We went into detail about some of the benefits of using the resource API when [we've talked about httpResource,](https://bneuhausz.dev/blog/angular-httpresource) so I don't want to spend too much time on it, but in a few words, it gives us a signal based way of handling some async stuff. We can register certain signals and our resources will listen to their changes. When that change happens, it triggers our resource to fire whatever it is configured to do. The resource we create exposes a bit of a state for us in the form of signals like ``value``, ``error`` and ``isLoading`` for example. A lot of what we've talked about when it comes to ``httpResource`` is also true for ``resource`` and ``rxResource``, but in this post, we'll mainly focus on how you can use the resource API with whatever that returns a ``Promise`` or an ``Observable``.
+We went into detail about some of the benefits of using the resource API when [we've talked about httpResource,](https://bneuhausz.dev/blog/angular-httpresource/) so I don't want to spend too much time on it, but in a few words, it gives us a signal based way of handling some async stuff. We can register certain signals and our resources will listen to their changes. When that change happens, it triggers our resource to fire whatever it is configured to do. The resource we create exposes a bit of a state for us in the form of signals like ``value``, ``error`` and ``isLoading`` for example. A lot of what we've talked about when it comes to ``httpResource`` is also true for ``resource`` and ``rxResource``, but in this post, we'll mainly focus on how you can use the resource API with whatever that returns a ``Promise`` or an ``Observable``.
 
 ## The simple resource
 
@@ -295,4 +295,4 @@ alteredPostsAsync = resource({
   });
 ```
 
-The resource API is still experimental, so there might be small changes, but it is definitely here to stay, and personally, I'm here for it! Make sure to take into consideration their experimental status when deciding to use them in production, but these have been here for a while and even the [new signal forms](https://bneuhausz.dev/blog/angular-signal-forms-are-out) api is building on these when it comes to async validation, so this is likely a future of Angular.
+The resource API is still experimental, so there might be small changes, but it is definitely here to stay, and personally, I'm here for it! Make sure to take into consideration their experimental status when deciding to use them in production, but these have been here for a while and even the [new signal forms](https://bneuhausz.dev/blog/angular-signal-forms-are-out/) api is building on these when it comes to async validation, so this is likely a future of Angular.

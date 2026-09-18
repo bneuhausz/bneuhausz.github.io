@@ -27,7 +27,7 @@ lastMod: 2025-08-30
 > </sub>
 
 
-In the previous posts [we've created our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1), [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2) and [we've created a simple backend with Node.js and Express to securely handle push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3).
+In the previous posts [we've created our PWA app](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-1/), [we've notified our users about a new version being available](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/) and [we've created a simple backend with Node.js and Express to securely handle push notifications](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-3/).
 
 This time, we will dive into the frontend part of sending push notifications, so in case you are not up to speed, make sure to go through part 1 to part 3.
 
@@ -126,7 +126,7 @@ One last thing I want to mention here, is that you should pay attention to impor
 
 ## Introducing SwPush
 
-Similarly to [SwUpdate](https://angular.dev/api/service-worker/SwUpdate), which we discussed in [part 2 of this series](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2), the [SwPush](https://angular.dev/api/service-worker/SwPush) service is provided by ``@angular/service-worker`` and it enables our application to interact with the [Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API). With ``SwPush``, you can subscribe and listen to notifications. Also, it lets you manage subscriptions. We will focus on the subscribe functionality here, but I've linked further resources above if you want to dive deeper.
+Similarly to [SwUpdate](https://angular.dev/api/service-worker/SwUpdate), which we discussed in [part 2 of this series](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-2/), the [SwPush](https://angular.dev/api/service-worker/SwPush) service is provided by ``@angular/service-worker`` and it enables our application to interact with the [Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API). With ``SwPush``, you can subscribe and listen to notifications. Also, it lets you manage subscriptions. We will focus on the subscribe functionality here, but I've linked further resources above if you want to dive deeper.
 
 ## Implementing the push notification feature
 
@@ -208,4 +208,4 @@ Make sure to click on the "Subscribe to Notifications" button, then click the "S
 
 ![windows notification](/images/pwa-tutorial/part-4/push_notification.avif)
 
-[Part 5 of this series, where we take a look at the role of the manifest.webmanifest file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5)
+[Part 5 of this series, where we take a look at the role of the manifest.webmanifest file is out. Take a look at it here!](https://bneuhausz.dev/blog/angular-pwa-tutorial-part-5/)

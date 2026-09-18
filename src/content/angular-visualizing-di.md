@@ -197,7 +197,7 @@ Both services will have a ``serviceName`` that gets randomly generated when an i
 
 [The source code of the example app used for this demonstration can be found here.](https://github.com/bneuhausz/angular-services-demo)
 
-[The live demo application can also be seen here.](https://bneuhausz.dev/angular-services-demo)
+[The live demo application can also be seen here.](https://bneuhausz.dev/angular-services-demo/)
 
 ### Single instance down the tree
 
