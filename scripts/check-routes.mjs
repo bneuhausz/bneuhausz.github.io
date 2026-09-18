@@ -38,6 +38,9 @@ const staticRoutes = [
   '/apps/coin-flip/privacy/',
   '/apps/coin-flip/terms/',
   '/apps/rofi/',
+  '/apps/canless/',
+  '/apps/canless/privacy/',
+  '/apps/canless/terms/',
 ];
 const siteUrl = 'https://bneuhausz.dev';
 

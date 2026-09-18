@@ -32,11 +32,13 @@ APPS = {
     "lift-recorder": (
         "lift_recorder",
         "plans/release/assets/feature_graphic.png",
+        # The 1.1 set (tagging, records, playback); the 1.0 shots in
+        # plans/release/assets/ show the old UI.
         [
-            "plans/release/assets/store_screenshot_1_camera.jpg",
-            "plans/release/assets/store_screenshot_2_recording.jpg",
-            "plans/release/assets/store_screenshot_3_clips.jpg",
-            "plans/release/assets/store_screenshot_5_trim.jpg",
+            "plans/release/assets/v1.1/store_screenshot_1_camera.jpg",
+            "plans/release/assets/v1.1/store_screenshot_2_clips.jpg",
+            "plans/release/assets/v1.1/store_screenshot_3_playback.jpg",
+            "plans/release/assets/v1.1/store_screenshot_4_records.jpg",
         ],
     ),
     "szokincs": (

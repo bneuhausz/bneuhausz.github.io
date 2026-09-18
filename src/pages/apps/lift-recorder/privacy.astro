@@ -1,7 +1,7 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 
-const lastUpdated = "July 21, 2026";
+const lastUpdated = "September 18, 2026";
 ---
 
 <SiteLayout
@@ -21,9 +21,10 @@ const lastUpdated = "July 21, 2026";
 
     <p>
       <strong>Lift Recorder</strong> has no account, no server, and no analytics or
-      crash reporting. Your videos are recorded and stored on your own device and
-      are never uploaded by the app. The only third party involved is Google, through
-      the ads and the in-app purchase described below.
+      crash reporting of its own. Your videos, any sound you choose to record, and
+      the workout tags and personal records you enter are stored on your own device
+      and are never uploaded by the app. The only third party involved is Google,
+      through the ads and the in-app purchase described below.
     </p>
 
     <h2 class="text-2xl">Who is responsible</h2>
@@ -37,26 +38,112 @@ const lastUpdated = "July 21, 2026";
     <h2 class="text-2xl">Your videos</h2>
     <ul>
       <li>
-        The app records <strong>video only</strong> (no audio track) and saves the
-        file to your device's gallery.
+        The app uses the <strong>camera</strong> only to record your sets, and saves
+        each recording to your device's gallery, in the album you choose.
+      </li>
+      <li>
+        To show your clips in the app, it reads the videos in the albums it has
+        recorded into, after Android asks for your permission to access videos.
+        It lists only those clips.
       </li>
       <li>
         Videos <strong>never leave your device</strong> through the app — no upload,
-        no cloud, no sharing done by the app itself.
+        no cloud. A clip only goes somewhere else when you share it yourself through
+        Android's share sheet, and then only to the app you pick.
       </li>
       <li>
         There is no account and no login, so the app does not know who you are.
       </li>
     </ul>
 
+    <h2 class="text-2xl">Sound (version 1.1 and later; off by default)</h2>
+    <ul>
+      <li>
+        Recordings are <strong>silent by default</strong>. With sound off, the app
+        never opens the microphone, even if you granted the permission earlier.
+      </li>
+      <li>
+        If you turn on <em>Record sound</em> (in Settings, or with the microphone
+        button on the camera), the app first explains what that means and then asks
+        Android for microphone access. The microphone is used only while a
+        recording is running.
+      </li>
+      <li>
+        The sound is saved <strong>only as the audio track of that clip</strong>, on
+        your device. The app never uploads or analyses it; if you share a clip, its
+        sound goes with it.
+      </li>
+      <li>
+        You can turn sound off at any time, and remove the microphone permission in
+        your device's settings. Without the permission, the app switches sound off
+        and keeps recording without it.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl">Workout tags and personal records (version 1.1 and later)</h2>
+    <ul>
+      <li>
+        If you tag a set, the app stores what you entered — the exercise, the weight
+        lifted, reps and RPE — together with the clip's file name and recording
+        date. Exercise names you add, and personal records you type in by hand
+        (with an optional date), are stored the same way.
+      </li>
+      <li>
+        This is used only to label and filter your clips and to work out your
+        <strong>personal records</strong>, which happens on your device. Apart from
+        these workout entries, the app records no body measurements, heart rate or
+        other health data, and it does not connect to Health Connect or any other
+        service.
+      </li>
+      <li>
+        It is kept in the app's private storage on your device and is
+        <strong>never uploaded by the app, sent to us, or shared</strong> with
+        anyone, including advertisers (apart from your own Android backup, below).
+        It is not included when you share a clip.
+      </li>
+      <li>
+        You can change or clear a tag and remove records in the app. Deleting a
+        clip in the app deletes its tag too — unless that set is one of your
+        personal records, which is kept and marked "video deleted" so it stays on
+        your records list. If you delete a clip outside the app, its tag is removed
+        the first time you open your clips at least 30 days later with access to
+        all your videos. Clearing the app's storage or uninstalling it deletes all
+        of this.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl">Android backup</h2>
+    <p>
+      Like most Android apps, Lift Recorder lets Android include its private
+      data — your tags, personal records and settings — in your device's own
+      backup and when you move to a new phone. That backup is made by Android to
+      your Google Account under Google's terms and is never sent to us; on
+      Android 9 and newer with a screen lock it is end-to-end encrypted, and we
+      cannot read it. You can turn backup off in your device's settings. Your
+      videos are not part of this app backup.
+    </p>
+
+    <h2 class="text-2xl">How your data is protected</h2>
+    <p>
+      Everything the app keeps is in Android's app-private storage, which other
+      apps cannot read, and the app itself sends none of it anywhere. Your clips
+      live in your gallery under Android's normal media permissions. Google's
+      advertising SDK sends its data over encrypted (TLS) connections, and Google
+      keeps it according to its own retention policy.
+    </p>
+
     <h2 class="text-2xl">Advertising (Google AdMob)</h2>
     <p>
       In the free version, ads are served by <strong>Google AdMob</strong>. To
-      show and measure ads, Google's advertising SDK may collect device and
-      usage information, including your device's <strong>Advertising ID</strong
-      >, device identifiers, approximate location derived from your IP address,
-      and ad-interaction data. Google processes this as an independent
-      controller under its own terms — see
+      show and measure ads and to prevent fraud, Google's advertising SDK may
+      collect device and usage information, including your device's <strong
+        >Advertising ID</strong
+      > and other device identifiers, approximate location derived from your IP
+      address, how you interact with the app and its ads (such as app launches
+      and taps), and diagnostic and crash information about the app's and the
+      SDK's performance. The app gives it none of your videos, sound, tags or
+      records. Google processes this as an independent controller under its own
+      terms — see
       <a
         href="https://policies.google.com/privacy"
         target="_blank"
@@ -77,8 +164,11 @@ const lastUpdated = "July 21, 2026";
     <p>
       The one-time <strong>"Remove ads"</strong> purchase is handled by
       <strong>Google Play Billing</strong> — the app never sees your card or payment
-      details. Once ads are removed, the advertising SDK is not loaded at all, so
-      no ad data is collected.
+      details. Each time it starts, the app asks Google Play whether you own the
+      purchase, so it can restore it on a new phone. Once ads are removed, the app
+      no longer initialises the advertising SDK or requests ads. (Right after a
+      reinstall, an ad may still load until Google Play has confirmed your
+      purchase.)
     </p>
 
     <h2 class="text-2xl">Children</h2>
@@ -90,10 +180,15 @@ const lastUpdated = "July 21, 2026";
 
     <h2 class="text-2xl">Your rights</h2>
     <p>
-      There is no account for us to access or delete — uninstalling removes the
-      app's data, and your saved videos stay in your gallery until you delete
-      them. For the ad-related data Google collects, use the Google links above
-      and your device's privacy controls. You can contact us at <a
+      There is no account and nothing stored on a server of ours, so there is
+      nothing for us to access or delete — everything the app keeps is on your
+      device. In the app you can clear tags, remove records, delete clips and turn
+      sound off, and in your device's settings you can remove the camera,
+      microphone or video permissions. Clearing the app's storage or uninstalling
+      it deletes its data from your device (a copy in your own Android backup
+      follows your backup settings), and your saved videos stay in your gallery
+      until you delete them. For the ad-related data Google collects, use the
+      Google links above and your device's privacy controls. You can contact us at <a
         href="mailto:contact@bneuhausz.dev">contact@bneuhausz.dev</a
       >, and under the GDPR you may lodge a complaint with your local data
       protection authority.

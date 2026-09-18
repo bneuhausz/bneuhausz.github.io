@@ -1,0 +1,383 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const pageUrl = "https://bneuhausz.dev/apps/canless";
+const logoUrl = "https://bneuhausz.dev/images/canless-logo.png";
+const ogImageUrl = "https://bneuhausz.dev/images/canless-og.png";
+const description =
+  "A free Android app for quitting energy drinks: a quit clock, one honest check-in a day, the money, caffeine and sugar you did not have, a sourced timeline, a craving button and an optional taper. No account, everything on-device.";
+
+const features = [
+  {
+    title: "A quit clock",
+    body: "Days and hours since your last can, your longest run, and the total number of days you have been canless. The home-screen widget shows it without opening the app.",
+  },
+  {
+    title: "One check-in a day",
+    body: "Answer “still canless today?” and your streak grows. Miss a day and a shield covers it, so one bad evening is not the end of a hundred good ones.",
+  },
+  {
+    title: "A slip is data, not a punishment",
+    body: "Tap “I had one” and the clock starts again from now — your badges, your cravings, your totals and your longest run all stay, and the day still counts as a day you showed up.",
+  },
+  {
+    title: "The numbers that make it real",
+    body: "Cans not had, caffeine in milligrams, sugar in grams and sugar cubes, and money in your own currency at your own price per can. Every figure says what it assumes.",
+  },
+  {
+    title: "A sourced timeline",
+    body: "What commonly happens twelve hours, two days, a week, a month and a year after the last can — every entry with the study or the guideline it comes from, one tap away.",
+  },
+  {
+    title: "A craving button",
+    body: "A minute of breathing, a sourced fact, and two honest answers at the end: it passed, or it did not. Both are worth logging.",
+  },
+  {
+    title: "A taper, if cold turkey is not for you",
+    body: "Tell Canless how many you drink and when you want to be at zero, and it plans the way down — a daily allowance that walks to zero. Free, like every counter.",
+  },
+  {
+    title: "Yours, on your phone",
+    body: "No account, no sign-up, no server. Your whole progress is one file on your device; you can export it as a backup and import it on a new phone, free.",
+  },
+];
+
+const premium = [
+  {
+    name: "No ads",
+    body: "The banner goes. Nothing about the counters changes.",
+  },
+  {
+    name: "Craving insights and your full history",
+    body: "Your cravings by hour and by trigger, your beat ratio, and the whole log instead of the last seven days.",
+  },
+  {
+    name: "A savings goal",
+    body: "Name what you are saving for and Canless shows the day you reach it at your pace.",
+  },
+  {
+    name: "Notes on your craving log",
+    body: "A line on any craving — what was happening, what worked.",
+  },
+  {
+    name: "Extra reminder nudges",
+    body: "The evening reminder, at up to three more moments you pick.",
+  },
+  {
+    name: "Automatic backup",
+    body: "Your save file rewritten to a document you choose, every time you leave the app — it survives even an uninstall.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Canless free?",
+    answer:
+      "Yes. Every counter is free, forever — the days, the money, the caffeine, the sugar, the streak, the timeline, the craving button, the taper and the widget. The free version shows a small banner ad. An optional Premium (monthly, yearly, or a one-off lifetime purchase) removes the ads and adds craving insights, a savings goal, notes, extra reminder nudges and automatic backup.",
+  },
+  {
+    question: "Do I need an account?",
+    answer:
+      "No. There is no sign-up, no login, and no server. The app does not know who you are.",
+  },
+  {
+    question: "Where is my data?",
+    answer:
+      "On your phone. Your whole progress is one file in the app's own storage. You can export it as a backup file and import it on a new phone — that is free. Premium can also rewrite a backup automatically to a document you choose.",
+  },
+  {
+    question: "Is Canless medical advice?",
+    answer:
+      "No. Canless is education and habit tracking, not medical advice. It is not a medical device and does not diagnose, treat, cure, or prevent any medical condition. Every health claim in the app cites a primary source you can open from the screen it appears on — EFSA, WHO, StatPearls and the peer-reviewed sleep and withdrawal literature. If you have questions about caffeine and your health, talk to a healthcare professional.",
+  },
+  {
+    question: "What happens if I slip?",
+    answer:
+      "You tap “I had one” and the clock starts again from now. Your badges, your logged cravings, your lifetime totals and your longest run all stay — a slip gives no can back, so the app does not take anything back either. The day still counts as a day you showed up.",
+  },
+  {
+    question: "What platforms is it on?",
+    answer:
+      "Canless is an Android app, coming soon to Google Play. Other platforms may follow later.",
+  },
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      name: "Canless",
+      operatingSystem: "Android",
+      applicationCategory: "HealthApplication",
+      description,
+      url: pageUrl,
+      image: logoUrl,
+      author: {
+        "@type": "Person",
+        name: "Bálint Neuhausz",
+        url: "https://bneuhausz.dev",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://bneuhausz.dev",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Apps",
+          item: "https://bneuhausz.dev/apps",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Canless",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
+
+const screenshots = [
+  {
+    src: "/images/canless/screenshot-1.jpg",
+    alt: "Home: the quit clock at 60 days and the four counters",
+    caption: "The clock and the numbers",
+    width: 540,
+    height: 1080,
+  },
+  {
+    src: "/images/canless/screenshot-2.jpg",
+    alt: "The sourced timeline of what happens after the last can",
+    caption: "What happens next — sourced",
+    width: 540,
+    height: 1080,
+  },
+  {
+    src: "/images/canless/screenshot-3.jpg",
+    alt: "The craving screen: a breathing circle and a sourced fact",
+    caption: "The craving button",
+    width: 540,
+    height: 1080,
+  },
+  {
+    src: "/images/canless/screenshot-4.jpg",
+    alt: "Home in the dark theme",
+    caption: "Dark theme",
+    width: 540,
+    height: 1080,
+  },
+];
+---
+
+<SiteLayout
+  title="Canless - Quit Energy Drinks"
+  description={description}
+  canonical={pageUrl}
+  ogImage={ogImageUrl}
+  ogImageAlt="Canless — quit energy drinks, one day at a time"
+>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(ldJson)}
+  />
+
+  <div class="mx-auto w-full max-w-5xl px-6 py-12 sm:py-16">
+    <section class="flex flex-col items-center gap-6 text-center">
+      <img
+        src="/images/canless-logo.png"
+        alt="Canless app icon"
+        width="80"
+        height="80"
+        class="h-20 w-20 rounded-3xl border border-amber-100/20 shadow-sm"
+      />
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/70">
+          Android app
+        </p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Canless</h1>
+        <p class="text-lg text-amber-200/80">
+          Quit energy drinks, one day at a time.
+        </p>
+      </div>
+
+      <p class="max-w-2xl text-base leading-7 text-amber-50/90">
+        Canless counts the days since your last energy drink, and what those
+        days gave back: the cans you did not open, the caffeine and the sugar
+        you did not drink, and the money that stayed in your pocket. It is a
+        quiet daily check-in, not a lecture. Canless is not a medical device
+        and does not diagnose, treat, cure, or prevent any medical condition.
+        If you have questions about caffeine and your health, talk to a
+        healthcare professional.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/10 px-4 py-2 text-sm text-amber-100"
+        >
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-amber-200"
+            aria-hidden="true"></span>
+          Coming soon to Google Play
+        </span>
+      </div>
+
+      <div
+        class="mt-2 flex flex-wrap items-center justify-center gap-4 text-sm text-amber-200"
+      >
+        <a
+          href="/apps/canless/privacy"
+          class="underline-offset-4 hover:underline"
+        >
+          Privacy Policy
+        </a>
+        <span aria-hidden="true" class="text-amber-100/30">•</span>
+        <a
+          href="/apps/canless/terms"
+          class="underline-offset-4 hover:underline"
+        >
+          Terms of Use
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-14 grid gap-6 sm:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex h-full flex-col rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-7 shadow-sm">
+            <h2 class="text-xl font-semibold text-amber-100">
+              {feature.title}
+            </h2>
+            <p class="mt-3 flex-grow text-amber-50/80">{feature.body}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Screenshots</h2>
+      <div
+        class="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0"
+      >
+        {
+          screenshots.map((shot) => (
+            <figure class="w-48 shrink-0 snap-start sm:w-auto">
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                class="w-full rounded-2xl border border-amber-100/20 shadow-sm"
+              />
+              <figcaption class="mt-3 text-center text-sm text-amber-200/70">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">Why it exists</h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Most people who quit energy drinks do it alone, with nothing marking
+        the days but willpower. Canless gives the attempt a shape: a clock
+        that only moves forward while you do, numbers that translate the
+        streak into money and caffeine and sugar, and a button for the moment
+        a craving hits. The content is education, never a lecture — every
+        health claim in the app cites a primary source you can open from the
+        screen it appears on, from EFSA and WHO to the peer-reviewed
+        withdrawal literature.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Free, with an optional Premium
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
+        Every counter is free, forever — the days, the money, the caffeine,
+        the sugar, the streak, the timeline, the craving button, the taper and
+        the manual backup. The free version shows a small banner ad served by
+        Google AdMob. Premium — monthly, yearly, or a one-off lifetime
+        purchase — adds:
+      </p>
+      <dl class="mt-6 flex flex-col gap-4">
+        {
+          premium.map((item) => (
+            <div>
+              <dt class="text-lg font-semibold text-amber-100">{item.name}</dt>
+              <dd class="mt-1 max-w-3xl text-base leading-7 text-amber-50/80">
+                {item.body}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="mt-6 max-w-3xl text-base leading-7 text-amber-50/90">
+        Full details of what is and isn't collected live in the
+        <a
+          href="/apps/canless/privacy"
+          class="text-amber-100 underline underline-offset-4 hover:text-amber-200"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+
+    <section
+      class="mt-8 rounded-3xl border border-amber-100/20 bg-neutral-900/70 p-8 shadow-sm sm:p-10"
+    >
+      <h2 class="text-2xl font-semibold text-amber-100">
+        Frequently asked questions
+      </h2>
+      <div class="mt-6 flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div>
+              <h3 class="text-lg font-semibold text-amber-100">
+                {faq.question}
+              </h3>
+              <p class="mt-2 max-w-3xl text-base leading-7 text-amber-50/90">
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</SiteLayout>

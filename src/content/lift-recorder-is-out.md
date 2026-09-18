@@ -1,7 +1,7 @@
 ---
 title: Lift Recorder is out on Google Play!
 slug: lift-recorder-is-out
-description: A free Android app that records your lifts without pausing Spotify or YouTube Music — video-only, saved to your gallery, no account needed.
+description: A free Android app that records your lifts without pausing Spotify or YouTube Music — silent by default, saved to your gallery, no account needed.
 date: 2026-08-18
 coverImage: /images/lift-recorder-og.png
 coverImageMedium: /images/lift-recorder-og.png
@@ -16,10 +16,12 @@ iconDescription: Lift Recorder app icon
 tags: [Android, Lift Recorder]
 shadowColor: default
 draft: false
-lastMod: 2026-08-18
+lastMod: 2026-09-18
 ---
 
 # Lift Recorder is out on Google Play!
+
+> **Update, September 2026:** Lift Recorder 1.1 adds optional sound recording, per-set tags (exercise, weight, reps and RPE) and personal records. Recording is still silent by default — the microphone stays off unless you turn sound on, and with sound on some phones pause or lower your music. The rest of this post describes the app as it launched in August; the [Lift Recorder page](/apps/lift-recorder) has the current details.
 
 For a while now, I've been building a small Android app on the side, and the day has come: it's live on Google Play! It's called Lift Recorder, and it does exactly one thing well: it films your sets at the gym without pausing your music.
 
