@@ -21,7 +21,7 @@ lastMod: 2026-09-18
 
 # Lift Recorder is out on Google Play!
 
-> **Update, September 2026:** Lift Recorder 1.1 adds optional sound recording, per-set tags (exercise, weight, reps and RPE) and personal records. Recording is still silent by default — the microphone stays off unless you turn sound on, and with sound on some phones pause or lower your music. The rest of this post describes the app as it launched in August; the [Lift Recorder page](/apps/lift-recorder) has the current details.
+> **Update, September 2026:** Lift Recorder 1.1 adds optional sound recording, per-set tags (exercise, weight, reps and RPE) and personal records. Recording is still silent by default — the microphone stays off unless you turn sound on, and with sound on some phones pause or lower your music. The rest of this post describes the app as it launched in August. The app now has its own site at [liftrecorder.app](https://liftrecorder.app), with the current details.
 
 For a while now, I've been building a small Android app on the side, and the day has come: it's live on Google Play! It's called Lift Recorder, and it does exactly one thing well: it films your sets at the gym without pausing your music.
 
@@ -31,7 +31,7 @@ For a while now, I've been building a small Android app on the side, and the day
   </a>
 </p>
 
-Or take a look at the [Lift Recorder page](/apps/lift-recorder) first, if you want the full rundown.
+Or take a look at [liftrecorder.app](https://liftrecorder.app) first, if you want the full rundown.
 
 ## Why recording video pauses your music on Android
 
