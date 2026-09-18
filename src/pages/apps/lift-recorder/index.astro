@@ -8,16 +8,28 @@ const playStoreUrl =
 const logoUrl = "https://bneuhausz.dev/images/lift-recorder-logo.png";
 const ogImageUrl = "https://bneuhausz.dev/images/lift-recorder-og.png";
 const description =
-  "A free Android app for lifters: film your sets for form checks and your coach while Spotify or YouTube Music keeps playing. Video-only, on-device, no account.";
+  "A free Android app for lifters: film your sets for form checks and your coach while Spotify or YouTube Music keeps playing. Silent by default, tags every set, tracks your PRs — on-device, no account.";
 
 const features = [
   {
     title: "Your music keeps playing",
-    body: "Spotify, YouTube Music, whatever you train to — it never pauses. The app records video only and never touches the microphone, so Android has no reason to stop your playlist.",
+    body: "Spotify, YouTube Music, whatever you train to — it keeps playing. Recording is silent by default: the app leaves the microphone off, so Android has no reason to stop your playlist.",
+  },
+  {
+    title: "Sound only if you want it",
+    body: "Want the clank of the plates or your coach's cue on the clip? Turn on Record sound in Settings or tap the mic on the camera. It stays off until you do — and with it on, some phones pause or lower your music while you record.",
+  },
+  {
+    title: "Tag every set",
+    body: "Set the exercise, weight, reps and RPE on the Next set chip and every clip you record is tagged with it until you change it. Weights show in kg or lb, and you can filter your clips by exercise, date, weight or reps.",
+  },
+  {
+    title: "Personal records, found for you",
+    body: "A trophy marks the clip that holds a record, and the Personal records screen lists them for each exercise, with the video one tap away. Lifts from before you used the app can be added by hand.",
   },
   {
     title: "Everything stays on your device",
-    body: "Clips are recorded and saved locally. Nothing is uploaded, there is no cloud, and no server ever sees your videos.",
+    body: "Clips, sound, tags and records are all stored on your phone. Nothing is uploaded, there is no cloud, and no server ever sees your videos or your numbers.",
   },
   {
     title: "Saved straight to your gallery",
@@ -25,7 +37,7 @@ const features = [
   },
   {
     title: "Trim clips right in the app",
-    body: "Drag two handles to pick where a clip starts and ends — the preview jumps to that exact frame as you go. Saving keeps the original and writes the trimmed cut to your gallery as a new clip, all on-device with your music still playing.",
+    body: "Drag two handles to pick where a clip starts and ends — the preview jumps to that exact frame as you go. Save the cut as a new clip and keep the original (the default), or replace the original if you'd rather not keep both — all on-device.",
   },
   {
     title: "No account, no sign-up",
@@ -37,17 +49,22 @@ const faqs = [
   {
     question: "Does Lift Recorder pause my music while I record?",
     answer:
-      "No. It records video only and never opens the microphone, so Android keeps Spotify, YouTube Music, or any other app playing while you film your set.",
+      "Not by default. Recording is silent unless you turn sound on, and with sound off the app never opens the microphone, so Android keeps Spotify, YouTube Music, or any other app playing while you film your set. If you turn sound on, some phones pause or lower your music while a recording runs.",
   },
   {
     question: "Does it record sound?",
     answer:
-      "No. Recordings are video-only with no audio track. That also means no copyrighted gym music gets baked into a clip you might share with your coach.",
+      "Only if you turn it on. Sound is off by default, and the app asks for microphone access only when you switch it on in Settings or with the mic button on the camera. With it off, clips have no audio track — so no copyrighted gym music gets baked into a clip you might share with your coach.",
   },
   {
     question: "Are my videos uploaded anywhere?",
     answer:
-      "No. Every clip is recorded and stored locally on your phone. There is no cloud and no server ever receives your videos.",
+      "No. Every clip is recorded and stored locally on your phone, and so are your tags and personal records. There is no cloud and no server ever receives your videos or your numbers.",
+  },
+  {
+    question: "Where are my tags and personal records kept?",
+    answer:
+      "In the app's own storage on your phone. They are never uploaded or shared, not even when you share a clip. Like other app data they can be part of your phone's own Android backup, and clearing the app's storage or uninstalling the app deletes them.",
   },
   {
     question: "Where are my recordings saved?",
@@ -57,7 +74,7 @@ const faqs = [
   {
     question: "Can I trim my clips in the app?",
     answer:
-      "Yes. Open a clip, drag the two handles to choose the part you want to keep, and save. The original stays untouched and the trimmed version is saved to your gallery as a new clip. Trimming runs on your device — nothing is uploaded — and your music keeps playing while you preview the cut.",
+      "Yes. Open a clip, drag the two handles to choose the part you want to keep, and save. By default the trimmed version is saved to your gallery as a new clip and the original stays untouched; you can switch to replacing the original instead. Trimming runs on your device — nothing is uploaded — and your music keeps playing while you preview the cut.",
   },
   {
     question: "Do I need an account to use it?",
@@ -67,7 +84,12 @@ const faqs = [
   {
     question: "Is Lift Recorder free?",
     answer:
-      "Yes. The app is free and shows a small AdMob banner ad. A one-time in-app purchase removes ads permanently, and once it is active the ads code is not even loaded.",
+      "Yes. The app is free and shows a small AdMob banner ad. A one-time in-app purchase removes ads permanently; once it is active, the app stops loading ads.",
+  },
+  {
+    question: "Is Lift Recorder medical or training advice?",
+    answer:
+      "No. It is a camera and a training log, not a medical device, and it does not diagnose, treat, cure or prevent any medical condition. Your records are worked out only from what you enter. For injuries or medical questions, talk to a healthcare professional.",
   },
 ];
 
@@ -139,29 +161,29 @@ const featureGraphic = {
 const screenshots = [
   {
     src: "/images/lift-recorder/screenshot-1.jpg",
-    alt: "Camera view, ready to record",
-    caption: "Camera",
+    alt: "Camera ready to record, with the microphone off and the Tag next set chip above the record button",
+    caption: "Camera — silent by default",
     width: 540,
     height: 1080,
   },
   {
     src: "/images/lift-recorder/screenshot-2.jpg",
-    alt: "Recording a set while music keeps playing",
-    caption: "Recording — your music keeps playing",
+    alt: "Clips grouped by day, each tagged with exercise, weight, reps and RPE, with trophies on personal records",
+    caption: "Your clips, tagged",
     width: 540,
     height: 1080,
   },
   {
     src: "/images/lift-recorder/screenshot-3.jpg",
-    alt: "The list of recorded clips",
-    caption: "Your clips",
+    alt: "Playing back a squat clip tagged as a personal record, with frame-step and skip controls",
+    caption: "Review your form",
     width: 540,
     height: 1080,
   },
   {
     src: "/images/lift-recorder/screenshot-4.jpg",
-    alt: "Trimming a clip",
-    caption: "Trim",
+    alt: "Personal records listed by exercise, each linked to its video",
+    caption: "Personal records",
     width: 540,
     height: 1080,
   },
@@ -204,9 +226,10 @@ const screenshots = [
 
       <p class="max-w-2xl text-base leading-7 text-amber-50/90">
         A tiny Android app for athletes who record their lifts for a coach while
-        their playlist keeps running. It records <strong>video only</strong>,
-        saves straight to your gallery, lets you trim clips right in the app, and
-        keeps everything on your phone — no account, no uploads.
+        their playlist keeps running. It records <strong>silently by default</strong>,
+        saves straight to your gallery, tags every set with the exercise, weight,
+        reps and RPE, spots your personal records, lets you trim clips right in the
+        app, and keeps everything on your phone — no account, no uploads.
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-3">
@@ -290,10 +313,13 @@ const screenshots = [
       <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
         On Android, most camera apps request <em>audio focus</em> the moment they
         open the microphone — and that is what pauses whatever you were listening
-        to. Lift Recorder sidesteps the whole problem by recording video without an
-        audio track. Your coach cares about your movement and form, not gym noise,
-        so the trade is an easy one: the music never stops, and no copyrighted audio
-        ends up baked into a clip you might share.
+        to. Lift Recorder sidesteps the whole problem by recording without sound by
+        default: the microphone stays off, so nothing takes audio focus. Your coach
+        cares about your movement and form, not gym noise, so the trade is an easy
+        one: the music never stops, and no copyrighted audio ends up baked into a
+        clip you might share. If you do want sound on a clip, you can turn it on —
+        the app tells you up front that some phones pause or lower your music while
+        it records.
       </p>
     </section>
 
@@ -306,7 +332,7 @@ const screenshots = [
       <p class="mt-4 max-w-3xl text-base leading-7 text-amber-50/90">
         The app is free and shows a small banner ad served by Google AdMob. A
         one-time in-app purchase removes ads permanently — once it is active,
-        the ads code is not even loaded. Full details of what is and isn't
+        the app stops loading ads. Full details of what is and isn't
         collected live in the
         <a
           href="/apps/lift-recorder/privacy"

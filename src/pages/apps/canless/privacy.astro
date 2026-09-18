@@ -1,0 +1,141 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+
+const lastUpdated = "August 31, 2026";
+---
+
+<SiteLayout
+  title="Canless Privacy Policy - bneuhausz.dev"
+  description="Privacy policy for the Canless Android app."
+  canonical="https://bneuhausz.dev/apps/canless/privacy"
+>
+  <section
+    class="prose dark:prose-invert text-left max-w-screen-md mx-auto px-8 pb-16"
+  >
+    <p class="text-sm text-amber-200/70">
+      <a href="/apps/canless">← Back to Canless</a>
+    </p>
+
+    <h1 class="text-3xl">Canless — Privacy Policy</h1>
+    <p class="text-sm text-amber-200/70">Last updated: {lastUpdated}</p>
+
+    <p>
+      <strong>Canless</strong> has no account and no server of ours. Everything
+      you record in the app — your quit date, check-ins, cravings, slips and
+      settings — is stored in a single file on your own device and is never
+      uploaded by us. The third party involved is Google, through the ads,
+      the purchases, and the crash reporting and usage statistics described
+      below.
+    </p>
+
+    <h2 class="text-2xl">Who is responsible</h2>
+    <p>
+      The app is published by Bálint Neuhausz (Hungary), the data controller
+      under the GDPR. Contact: <a href="mailto:contact@bneuhausz.dev"
+        >contact@bneuhausz.dev</a
+      >. Full business details are in the <a href="/imprint">Imprint</a>.
+    </p>
+
+    <h2 class="text-2xl">Your data stays on your device</h2>
+    <ul>
+      <li>
+        Your whole progress is <strong>one file</strong> in the app's private
+        storage. There is no cloud copy and no server that receives it.
+      </li>
+      <li>
+        <strong>Export</strong> hands that file to you through the Android share
+        sheet, and <strong>import</strong> reads a file you pick — both happen
+        only when you ask, and the file goes only where you send it.
+      </li>
+      <li>
+        The optional <strong>automatic backup</strong> (Premium) rewrites your
+        save to a document <strong>you choose</strong> — for example a folder a
+        cloud app of yours syncs. The app writes only to that one document you
+        picked; where it syncs from there is between you and that app.
+      </li>
+      <li>
+        There is no account and no login, so the app does not know who you
+        are. What you log about your habit is never transmitted by us and is
+        not shared with anyone.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl">Advertising (Google AdMob)</h2>
+    <p>
+      In the free version, a banner ad is served by <strong>Google AdMob</strong
+      >. To show and measure ads, Google's advertising SDK may collect device
+      and usage information, including your device's <strong
+        >Advertising ID</strong
+      >, device identifiers, approximate location derived from your IP
+      address, and ad-interaction data. Google processes this as an
+      independent controller under its own terms — see
+      <a
+        href="https://policies.google.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer">Google's Privacy Policy</a
+      >.
+    </p>
+    <p>
+      In the European Economic Area, the UK, and Switzerland, the app shows a
+      Google-certified <strong>consent prompt</strong> before personalized ads
+      are used, so you can accept or decline. You can change your choice any
+      time from <em>Settings → Ad privacy options</em> in the app. With
+      Premium, the banner is not shown.
+    </p>
+
+    <h2 class="text-2xl">Crash reports and usage statistics</h2>
+    <p>
+      The app uses <strong>Firebase Crashlytics</strong> to receive crash
+      reports and <strong>Firebase Analytics</strong> for anonymous usage
+      statistics (which screens and features are used, never the content of
+      what you log — your check-ins, cravings and figures stay on the
+      device). These services may process device identifiers and diagnostic
+      information; Google's handling is described in
+      <a
+        href="https://policies.google.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer">Google's Privacy Policy</a
+      >.
+    </p>
+
+    <h2 class="text-2xl">Purchases (Google Play Billing)</h2>
+    <p>
+      The Premium subscription, the one-off lifetime purchase and the shield
+      packs are handled entirely by <strong>Google Play Billing</strong> — the
+      app never sees your card or payment details, only whether a purchase is
+      active.
+    </p>
+
+    <h2 class="text-2xl">Notifications</h2>
+    <p>
+      The daily reminder and any extra nudges are <strong
+        >scheduled locally on your device</strong
+      >. There is no push service and nothing about them leaves your phone.
+      They are off until you turn them on.
+    </p>
+
+    <h2 class="text-2xl">Children</h2>
+    <p>
+      Canless is a general-audience app for people quitting energy drinks and
+      is <strong>not directed at children under 13</strong>.
+    </p>
+
+    <h2 class="text-2xl">Your rights</h2>
+    <p>
+      There is no account for us to access or delete — uninstalling the app
+      deletes its data from your device. Backup files you exported or set up
+      yourself stay where you put them until you delete them. For the
+      ad-related data Google collects, use the Google links above and your
+      device's privacy controls. You can contact us at <a
+        href="mailto:contact@bneuhausz.dev">contact@bneuhausz.dev</a
+      >, and under the GDPR you may lodge a complaint with your local data
+      protection authority.
+    </p>
+
+    <h2 class="text-2xl">Changes</h2>
+    <p>
+      If this policy changes, this page and the "last updated" date above will
+      be updated.
+    </p>
+  </section>
+</SiteLayout>
